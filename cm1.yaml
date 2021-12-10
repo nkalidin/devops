@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm1
+  namespace: dxc-ramesh
+  labels:
+    cm: cm1
+data:
+  dish: vadapav
+  hostname: dxc.com
+  app1: prod.google.com
+  region: ap-south-1
