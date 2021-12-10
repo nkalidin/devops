@@ -1,0 +1,56 @@
+  169  cd /openshift/
+  170  oc get routes -n openshift-console
+  171  cat auth/kubeadmin-password
+  172  clear
+  173  oc project dxc-ramesh
+  174  oc get is
+  175  oc new-app --name=app1 --as-deployment-config misalpav
+  176  oc tag misalpav dxc-ramesh/misalpav:latest
+  177  oc get is
+  178  oc new-app --name=app1 --as-deployment-config misalpav
+  179  oc new-app --name=app1 --as-deployment-config misalpav:latest
+  180  oc new-app --name=app1 --as-deployment-config nginx
+  181  oc new-app --name=app2 --as-deployment-config nginx
+  182  oc get services
+  183  oc delete services app1 app2 app3
+  184  oc new-app --name=app1 --as-deployment-config nginx
+  185  oc new-app --name=app4 --as-deployment-config nginx
+  186  oc get pods
+  187  oc get dc
+  188  oc get bc
+  189  oc get dc
+  190  oc get pods
+  191  oc get rc
+  192  oc logs dc/app4
+  193  oc get builds
+  194  oc get build
+  195  oc get buildConfig
+  196  oc new-app --name=app4 --as-deployment-config --docker-image=docker.io/nginx
+  197  oc new-app --name=app5 --as-deployment-config --docker-image=docker.io/nginx
+  198  oc get bc
+  199  oc get builds
+  200  oc get dc
+  201  oc get pods
+  202  oc new-app --name=app6 --as-deployment-config --docker-image=docker.io/nginx
+  203  clear
+  204  oc describe resourcequota rq1
+  205  oc logs bc
+  206  oc get builds
+  207  oc get dc
+  208  oc logs -f app1
+  209  oc logs -f dc/app1
+  210  oc describe dc app1
+  211  clear
+  212  oc get pods
+  213  oc get pods | grep -i running
+  214  oc scale dc/app6 --replicas=4
+  215  oc scale dc/app5 --replicas=4
+  216  oc new-app --name=app7 --as-deployment-config --docker-image=docker.io/nginx
+  217  oc get dc
+  218  oc describe dc/app7
+  219  oc delete dc/app6
+  220  oc get dc
+  221  oc get pods
+  222  histroy
+  223  history
+  224  oc get pods -A
