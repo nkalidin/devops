@@ -1,0 +1,25 @@
+az login
+az vm list-usage -l eastasia --query "[?contains(name.value, 'standardDSv3Family')]" -o table
+az account set --subscription 
+------------------------------
+
+az vm list-usage -l eastasia --query "[?contains(name.value, 'standardDSv3Family')]" -o table
+
+az account set --subscription 1355a0e4-8825-4483-aeae-2535dd99e04b
+
+az provider register -n Microsoft.RedHatOpenShift --wait
+az provider register -n Microsoft.Compute --wait
+az provider register -n Microsoft.Storage --wait
+az provider register -n Microsoft.Authorization --wait
+
+az network vnet create --resource-group openshift --name aro-vnet --address-prefixes 10.0.0.0/22
+az network vnet subnet create --resource-group openshift --vnet-name aro-vnet --name master-subnet --address-prefixes 10.0.0.0/23 --service-endpoints Microsoft.ContainerRegistry
+
+az network vnet subnet create --resource-group openshift --vnet-name aro-vnet --name worker-subnet --address-prefixes 10.0.2.0/23 --service-endpoints Microsoft.ContainerRegistry
+
+az network vnet subnet update --name master-subnet --resource-group openshift  --vnet-name aro-vnet --disable-private-link-service-network-policies true
+
+az aro create --resource-group openshift --name dxc --vnet aro-vnet --master-subnet master-subnet --worker-subnet worker-subnet --pull-secret @pull_secret.txt
+
+
+az aro list-credentials --name=priar --resource-group openshift
