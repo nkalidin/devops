@@ -1,0 +1,51 @@
+1291  oc new-project project2
+ 1292  oc project project2
+ 1293  oc adm policy add-scc-to-user anyuid -z default
+ 1294  oc get is
+ 1295  oc new-app --name=a1 --as-deployment-config --docker-image=kharatramesh
+ 1296  oc new-app --name=a1 --as-deployment-config --docker-image=kharatramesh/k8s_rollaback:webv1.0
+ 1297  oc expose service/a1
+ 1298  oc get routes
+ 1299  curl a1-project2.apps.dxc.priartw.com
+ 1300  oc rollout history dc/a1
+ 1301  clear
+ 1302  oc import-image --help
+ 1303  oc import-image web:v2.0 --from=kharatramesh
+ 1304  oc import-image web:v2.0 --from=kharatramesh/k8s_rollaback:webv2.0 --confirm
+ 1305  oc get is
+ 1306  oc rollout dc/a1 web:v2.0
+ 1307  oc rollout --help
+ 1308  oc rollout latest dc/a1
+ 1309  oc rollout history dc/a1
+ 1310  oc edit dc/a1
+ 1311  oc get is
+ 1312  oc edit is web:v2.0
+ 1313  oc edit is web
+ 1314  oc edit is a1
+ 1315  oc get pods
+ 1316  oc edit is a1
+ 1317  oc get pods
+ 1318  oc get rc
+ 1319  oc rollout history dc/a1
+ 1320*
+ 1321   oc rollout undo dc/a1 --to-revision=1
+ 1322  oc edit is a1
+ 1323  oc rollout history dc/a1
+ 1324  oc get rc
+ 1325  oc get pods
+ 1326  curl http://a1-project2.apps.dxc.priartw.com/
+ 1327  oc edit is a1
+ 1328  oc get pods
+ 1329  oc get is
+ 1330  oc import-image vadapav:v1.0 --from=kharatramesh/vadapavimages:vadapav --confirm
+ 1331  oc get is
+ 1332  oc new-app --name=v1 --as-deployment-config vadapav:v1.0
+ 1333  oc expose service/v1
+ 1334  oc get routes
+ 1335  oc get pods
+ 1336  oc edit is vadapav
+ 1337  watch oc get pods
+ 1338  oc rollout history dc/v1
+ 1339  oc rollout undo dc/v1 --to-revision=1
+ 1340  watch oc get pods
+ 1341  history
