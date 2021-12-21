@@ -2,3 +2,22 @@
    79  ls
    80  chmod +x /usr/local/bin/docker-compose
    81  docker-compose --help
+
+   87  touch dc1.yaml
+   88  vi dc1.yaml
+   89  docker --version
+   90  docker-compose --version
+   91  vi dc1.yaml
+   93  docker-compose -f dc1.yaml config
+   94  docker-compose -f dc1.yaml up -d
+   95  docker-compose status
+   96  docker-compose ps
+   97  docker-compose -f dc1.yaml ps
+   98  docker ps
+  100  docker-compose -f dc1.yaml ps
+  101  docker-compose -f dc1.yaml stop website
+  102  docker-compose -f dc1.yaml start website
+  103  docker-compose -f dc1.yaml rm website
+  104  docker-compose -f dc1.yaml stop website
+  105  docker-compose -f dc1.yaml rm website
+  106  docker-compose -f dc1.yaml ps
