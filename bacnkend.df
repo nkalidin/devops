@@ -1,0 +1,14 @@
+root@bse-docker-vdps:/dockerfiles# cat backend.df
+FROM mysql
+
+ENV MYSQL_DATABASE priar
+COPY ./createtable.sql /docker-entrypoint-initdb.d/
+COPY ./insertvalues.sql /docker-entrypoint-initdb.d/
+root@bse-docker-vdps:/dockerfiles# cat createtable.sql
+CREATE TABLE priarworld ( firstname varchar(20), rollnumber int(5));
+root@bse-docker-vdps:/dockerfiles# cat insertvalues.sql
+INSERT INTO priarworld (firstname, rollnumber) VALUES ('Pushpak',1);
+INSERT INTO priarworld (firstname, rollnumber) VALUES ('Nayan',2);
+INSERT INTO priarworld (firstname, rollnumber) VALUES ('Chait',3);
+INSERT INTO priarworld (firstname, rollnumber) VALUES ('Rutuja',4);
+INSERT INTO priarworld (firstname, rollnumber) VALUES ('Tanmay',5);
