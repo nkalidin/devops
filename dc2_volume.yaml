@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  web:
+    image: docker.io/nginx
+    deploy:
+      replicas: 1
+    volumes:
+      - "/data:/usr/share/nginx/html"
+      - samosa:/vadapav
+  database:
+    image: docker.io/mysql
+    environment:
+    - MYSQL_DATABASE='bse'
+    - MYSQL_ROOT_PASSWORD='123'
+volumes:
+  samosa:
