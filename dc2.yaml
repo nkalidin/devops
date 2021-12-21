@@ -1,0 +1,10 @@
+root@bse-docker-vdps:/data# cat dc2.yaml
+version: "3.0"
+services:
+  web:
+    image: docker.io/nginx
+  database:
+    image: docker.io/mysql
+    environment:
+    - MYSQL_DATABASE='bse'
+    - MYSQL_ROOT_PASSWORD='123'
