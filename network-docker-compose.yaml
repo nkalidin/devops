@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  webnetwork:
+    image: docker.io/nginx
+    deploy:
+      replicas: 1
+    networks:
+      net1:
+         ipv4_address: 11.11.0.11
+         ipv6_address: 2001:3984:3989::21
+networks:
+  net1:
+    enable_ipv6: true
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 11.11.0.0/24
+          gateway: 11.11.0.1
+        - subnet: 2001:3984:3989::/64
+          gateway: 2001:3984:3989::1
