@@ -1,0 +1,36 @@
+name: uploading Artifacts
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  testing-jfrog:
+    runs-on: ubuntu-latest
+      
+    steps:
+      - uses: actions/checkout@v2
+      - uses: jfrog/setup-jfrog-cli@v1
+        env:
+           JF_ARTIFACTORY_1: ${{ secrets.artifactory_token_1 }}
+      - run: |
+          
+          jfrog --version
+          jfrog c use priar
+          jfrog rt ping
+          # jfrog rt u 1.txt artifacts/
+          curl -H "X-JFrog-Art-Api:AKCp8kqqmokih18TMm2CaAXwcJRsgLhcqPqAWDY6gwa55Aa8FYYUK2QseceAPKg9UjE5v1XPi" -T 1.txt "https://priar.jfrog.io/artifactory/priar/one.txt"
+          mkdir priar
+          cd priar
+          curl -H "X-JFrog-Art-Api:AKCp8kqqmokih18TMm2CaAXwcJRsgLhcqPqAWDY6gwa55Aa8FYYUK2QseceAPKg9UjE5v1XPi" -O "https://priar.jfrog.io/artifactory/priar/one.txt"
+      
+      - name: Upload 1.txt file to folder called as homework
+        uses: actions/upload-artifact@v2
+        with:
+          name: homework
+          path: 1.txt
+      - name: Download 1.txt file from folder called as homework
+        uses: actions/download-artifact@v2
+        with:
+          name: homework
+         
