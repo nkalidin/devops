@@ -1,0 +1,92 @@
+
+
+
+---------------------------------------------------------------------
+Called Workflow -- Working
+
+name: docker pull and push
+on: 
+  workflow_call:
+    inputs:
+      image_name:
+        required: true
+        type: string
+      tag:
+        type: string
+    secrets:
+      DOCKER_USER:
+        required: true
+      DOCKER_PASSWORD:
+        required: true
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:      
+      - uses: actions/checkout@v2
+      
+      - name: Setup BuildX
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to the Registry
+        uses: docker/login-action@v1
+        with:
+          username: ${{secrets.DOCKER_USER}}
+          password: ${{secrets.DOCKER_PASSWORD}}
+    
+    - name: Set the tag
+        run: |
+          if [ -z "${{inputs.tag}}" ]
+          then
+            echo "final_tag=latest" >> $GITHUB_ENV
+          else
+            echo "final_tag=${{inputs.tag}}" >> $GITHUB_ENV
+          fi
+    
+
+   - name: Build and Push the Image
+       uses: docker/build-push-action@v2
+       with:
+         context: .
+         push: true
+         tags: ${{secrets.DOCKER_USER}}/${{inputs.image_name}}:${{env.final_tag}}
+    
+    
+-----------------------------------------
+
+Caller Workflow --- working
+
+name: Reusable Workflow user
+env:
+          DOCKER_USER: ${{secrets.DOCKER_USER}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+    
+on:
+  workflow_dispatch
+jobs:
+  do-it:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: echo Hello, world-Looking Good1!
+
+  calling-called:
+  
+    uses: rameshkharat/called/.github/workflows/main.yml@main
+    
+  calling-called-workflow-2:
+  
+    uses: rameshkharat/called-workflow-2/.github/workflows/main.yml@main
+   
+        
+  calling-called-workflow-with-secrets:
+    uses: rameshkharat/called-workflow-with-secrets/.github/workflows/main.yml@main
+    with:
+      image_name: idlisamosa
+      tag: $HITHUB_RUN_NUMBER
+    secrets:
+      DOCKER_USER: ${{secrets.DOCKER_USER}}
+      DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        
+	
