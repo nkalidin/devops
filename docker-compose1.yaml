@@ -1,0 +1,40 @@
+version: "3.9"
+services:
+  website:
+    image: docker.io/httpd
+    scale: 1
+    ports:
+    - "9090:80"
+  frontend:
+    image: docker.io/nginx
+    scale: 1
+    ports:
+    - "9091:80"
+    networks:
+      sg-net1:
+        ipv4_address: 31.31.0.2
+  fromdfile:
+    build:
+      context: .
+      dockerfile: ./frontend.df
+    scale: 1
+    ports:
+    - "9092:80"
+    volumes:
+    - "/data:/var/www/html"
+    depends_on:
+      - database
+  database:
+    build:
+      context: .
+      dockerfile: ./backend.df
+    environment:
+    - MYSQL_ROOT_PASSWORD=123
+networks:
+  sg-net1:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 31.31.0.0/24
+          gateway: 31.31.0.1
