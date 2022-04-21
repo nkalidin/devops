@@ -1,0 +1,39 @@
+[root@ip-1-0-1-4 trainer]# cat php.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend
+  name: frontend
+  namespace: trainer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - image: public.ecr.aws/s4x3d8h0/trainer:frontend1
+        name: trainer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: frontend
+  name: frontend
+  namespace: trainer
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: frontend
+  type: LoadBalancer
+
+...
