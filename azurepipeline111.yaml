@@ -1,0 +1,19 @@
+jobs: 
+- deployment: VMDeploy
+  displayName: web
+  environment:
+    name: pizza
+    resourceType: VirtualMachine
+  strategy:
+      rolling:
+        maxParallel: 2  #for percentages, mention as x%
+        
+        deploy:
+          steps:
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Modify deployment script based on the app type
+                echo "Starting deployment script run"
+                sudo touch /home/yourname.html
