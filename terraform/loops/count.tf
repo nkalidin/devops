@@ -26,3 +26,15 @@ variable "hexa1" {
   default = ["h1", "h2", "h3", "h4"]
 
 }
+
+resource "azurerm_resource_group" "hexagon-rg2" {
+  count    = var.test1
+  location = "southindia"
+  name     = "samosa-${count.index}"
+
+}
+
+variable "test1" {
+  type    = number
+  default = 4
+}
