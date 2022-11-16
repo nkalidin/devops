@@ -1,0 +1,22 @@
+ 13  # dockerfile --> image --container
+   14  mkdir /dockerfiles
+   15  cd /dockerfiles/
+   16  ls
+   17  touch 1.df one.dockerfile
+   18  vi 1.df
+   19  cat 1.df
+   20  clear
+   21  docker build . -f 1.df -t mywebserver:v1.0
+   22  touch 1.txt 2.txt 1.tar index.html
+   23  ls
+   24  vi index.html
+   25  clear
+   26  docker build . -f 1.df -t mywebserver:v1.0
+   27  vi index.html
+   28  vi 1.df
+   29  docker build . -f 1.df -t mywebserver:v1.0
+   30  vi 1.df
+   31  docker build . -f 1.df -t mywebserver:v1.0
+   32  docker images
+   33  docker run -d --name=web99 -p 9999:80 mywebserver:v1.0
+   34  docker ps -a
