@@ -1,0 +1,21 @@
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "hexa-rg" {
+
+  location = "eastus"  
+  name = "hexa1" 
+  
+}  
+
+
+variable "rg" {
+  type    = list(string)
+  default = ["hexa1", "hexa2", "hexa3"]
+}
+
+output "printrg" {
+  value = [ for i in var.rg : i]
+  
+}
