@@ -54,7 +54,10 @@ sudo apt install -y kubelet kubeadm kubectl
 # Step 9 --- only on master node
 
 kubeadm init
-
+## copy join commnad and fire on both worker nodes to join them in k8s cluster
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 kubectl cluster-info
 kubectl get nodes
