@@ -54,11 +54,11 @@ sudo apt install -y kubelet kubeadm kubectl
 # Step 9 --- only on master node
 
 kubeadm init
-kubeadm reset
-kubeadm init
-  291  kubectl cluster-info
-  292  kubectl get nodes
-  293  curl https://projectcalico.docs.tigera.io/manifests/calico.yaml -O
-  294  kubectl apply -f calico.yaml
-  295  watch kubectl get nodes
-  296  watch kubectl get pods -n kube-system
+
+
+kubectl cluster-info
+kubectl get nodes
+curl https://projectcalico.docs.tigera.io/manifests/calico.yaml -O
+kubectl apply -f calico.yaml
+watch kubectl get nodes
+watch kubectl get pods -n kube-system
