@@ -1,0 +1,27 @@
+ 38  kubectl run pod1 --image=httpd
+   39  kubectl get pods -o wide
+   40  kubectl expose pod/pod1 --name=pod1 --type=NodePort --port=80
+   41  kubectl get service
+   42  cat /etc/os-release
+   43  clear
+   44  kubectl create deployment/app1 --image=kharatramesh/vadapavimages:biryani
+   45  kubectl create deployment app1 --image=kharatramesh/vadapavimages:biryani
+   46  kubectl expose deployment/app1 --type=NodePort --port=80
+   
+   47  kubectl get service
+-----------------------------------------------
+
+
+ 3 kubectl get nodes
+   4 kubectl create deployment app1 --image=httpd
+   5 kubectl expose deployment/app1 --name=s1 --type=LoadBalancer --port=80
+   6 kubectl get service
+   7 kubectl get service
+   8 kubectl create deployment app2 --image=httpd
+   9 kubectl expose deployment/app2 --name=s2 --type=LoadBalancer --port=80
+  10 kubectl expose deployment/app2 --name=s2 --type=LoadBalancer --external-ip=2.2.2.2  --port=80
+  11 kubectl expose deployment/app2 --name=s3 --type=LoadBalancer --external-ip=2.2.2.2  --port=80
+  12 kubectl get service
+  
+  -------------------
+  
