@@ -24,4 +24,30 @@
   12 kubectl get service
   
   -------------------
-  
+    537  kubectl create deployment app1 --image=httpd -n google
+  538  kubectl get deployment -n google
+  539  kubectl get rs -n google
+  540  kubectl get pods -n google
+  541  kubectl scale deployment/app1 --replicas=3 -n google
+  542  kubectl get pods -n google
+  543  kubectl get rs -n google
+  544  kubectl get pods -n google
+  545  kubectl delete pod app1-6d574fc79b-ktb7p -n google
+  546  history
+  547  clear
+  548  kubectl get deployment -n google
+  549  kubectl expose deployment/app1 --type=LoadBalancer --port=80 -n google
+  550  kubectl get service -n google
+  551  kubectl edit deployment/app1 -n google
+  552  kubectl get pods -n google
+  553  kubectl get pods -n google
+  554  kubectl get pods -n google
+  555  kubectl get rs -n google
+  556  kubectl edit deployment/app1 -n google
+  557  kubectl get rs -n google
+  558  kubectl get rs -n google
+  559  kubectl get rs -n google
+  560  kubectl get rs -n google
+  561  kubectl get pods -n google
+  562  kubectl get rs -n google
+  563  history
