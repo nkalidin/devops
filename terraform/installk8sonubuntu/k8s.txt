@@ -44,16 +44,18 @@ containerd config default | sudo tee /etc/containerd/config.toml >/dev/null 2>&1
 sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
 systemctl restart containerd
 sudo systemctl enable containerd
+
 Step8:
 
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 sudo apt update
-sudo apt install -y kubelet kubeadm kubectl
+sudo apt-get install -y kubelet=1.24.0-00 kubeadm=1.24.0-00 kubectl=1.24.0-00
 
 # Step 9 --- only on master node
 
-kubeadm init
+kubeadm config images pull --cri-socket /run/containerd/containerd.sock --kubernetes-version v1.24.0
+kubeadm init --pod-network-cidr=10.244.0.0/16 --upload-certs --kubernetes-version=v1.24.3 --control-plane-endpoint=publicIPofMasterIP --ignore-preflight-errors=Mem --cri-socket /run/containerd/containerd.sock
 ## copy join commnad and fire on both worker nodes to join them in k8s cluster
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -61,7 +63,6 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 kubectl cluster-info
 kubectl get nodes
-curl https://projectcalico.docs.tigera.io/manifests/calico.yaml -O
-kubectl apply -f calico.yaml
+kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml
 watch kubectl get nodes
 watch kubectl get pods -n kube-system
