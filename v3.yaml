@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod4
+spec:
+  containers:
+  - name: c4
+    image: nginx
+    volumeMounts:
+    - name: v4
+      mountPath: /usr/share/nginx/html
+    - name: v5
+      mountPath: /gulabjamun
+  volumes:
+  - name: v4
+    hostPath: 
+      path: /samosa
+      type: DirectoryOrCreate
+  - name: v5
+    hostPath:
+      path: /sweets
+      type: DirectoryOrCreate
