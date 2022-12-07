@@ -14,19 +14,19 @@ Step2 : (Fire on all nodes)
 # disable swap (Fire on all nodes)
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
-# Step3 (Fire on all nodes)
+# Step3 (Fire on all nodes-copy all lines together)
 
 sudo tee /etc/modules-load.d/containerd.conf <<EOF
 overlay
 br_netfilter
 EOF
 
-Step4: (Fire on all nodes)
+Step4: (Fire on all nodes-copy all lines together)
 
 sudo modprobe overlay
 sudo modprobe br_netfilter
 
-Step5: (Fire on all nodes)
+Step5: (Fire on all nodes-copy all lines together)
 
 cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
@@ -38,7 +38,7 @@ Step6: (Fire on all nodes)
 
 sudo sysctl --system
 
-Step7: (Fire on all nodes)
+Step7: (Fire on all nodes-line by line)
 apt update -y
 sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/docker.gpg
@@ -51,7 +51,7 @@ sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/c
 systemctl restart containerd
 sudo systemctl enable containerd
 
-Step8: (Fire on all nodes)
+Step8: (Fire on all nodes -- line by line)
 
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
@@ -61,7 +61,7 @@ sudo apt-get install -y kubelet=1.24.0-00 kubeadm=1.24.0-00 kubectl=1.24.0-00
 # Step 9 --- only on master node (use public IP of master node)
 
 kubeadm config images pull --cri-socket /run/containerd/containerd.sock --kubernetes-version v1.24.0
-kubeadm init --pod-network-cidr=10.244.0.0/16 --upload-certs --kubernetes-version=v1.24.3 --control-plane-endpoint=publicIPofMasterIP --ignore-preflight-errors=Mem --cri-socket /run/containerd/containerd.sock
+kubeadm init --pod-network-cidr=10.244.0.0/16 --upload-certs --kubernetes-version=v1.24.0 --control-plane-endpoint=publicIPofMasterIP --ignore-preflight-errors=Mem --cri-socket /run/containerd/containerd.sock
 ## copy join commnad and fire on all worker nodes(Not on Master Node) to join them in k8s cluster
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
