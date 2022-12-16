@@ -30,6 +30,10 @@ services:
       dockerfile: ./backend.df
     environment:
     - MYSQL_ROOT_PASSWORD=123
+    volumes:
+    - "v1:/var/lib/mysql"
+volumes:
+  v1:
 networks:
   sg-net1:
     driver: bridge
