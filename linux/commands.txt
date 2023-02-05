@@ -2,3 +2,152 @@ Linux Commands
 --------------------------
 File I/O Operations
 -------------------------
+  232  cd /vadapav/
+  233  clear
+  234  history
+  235  clear
+  236  # file I/O operations
+  237  # create files
+  238  # touch 1.txt
+  239  # dd if=/dev/zero of=2.txt bs=1M count=100
+  240  # cat >> 3.txt
+  241  # cat > 4.txt
+  242  # > 5.txt
+  243  # >> 6.txt
+  244  # vi 7.txt
+  245  # nano 8.txt
+  246  # vim 9.txt
+  247  # vimtutor
+  248  touch 1.txt
+  249  cd /
+  250  pwd
+  251  ls
+  252  which ls
+  253  which man
+  254  which passwwd
+  255  which passwd
+  256  which dd
+  257  cd /usr/sbin/
+  258  ls
+  259  pwd
+  260  cd /bin
+  261  ls
+  262  cd /sbin
+  263  ls
+  264  pwd
+  265  clear
+  266  # every executable file can behave like command if you keep it in standard system path
+  267  echo $PATH
+  268  which ls
+  269  cp /usr/bin/ls /usr/sbin/misalpav
+  270  ls
+  271  clear
+  272  cd /hom
+  273  cd /home
+  274  misalpav
+  275  ls
+  276  misalpav
+  277  cd /etc/
+  278  ls
+  279  clear
+  280  misalpav
+  281  clear
+  282  echo $PATH
+  283  history
+  284  clear
+  285  cd /dev
+  286  ls
+  287  ls -l
+  288  tty
+  289  clear
+  290  ip a s
+  291  clear
+  292  cd /sys
+  293  ls
+  294  cd dev
+  295  ls
+  296  cd block/
+  297  ls
+  298  ls -l
+  299  cd ..
+  300  cd class/
+  301  ls
+  302  cd net
+  303  ls
+  304  cd ens34
+  305  ls
+  306  cat address
+  307  cat duplex
+  308  cat mtu
+  309  cat broadcast
+  310  cd /
+  311  ls
+  312  cd /boot
+  313  ls
+  314  clear
+  315  ls -ld /tmp
+  316  cd /
+  317  ls
+  318  cd /proc
+  319  ls
+  320  cd /run
+  321  ls
+  322  cat sshd.pid
+  323  cat docker.pid
+  324  cd /opt
+  325  ls
+  326  cd /
+  327  ls
+  328  clear
+  329  mkdir /idli
+  330  mkdir /home/idli
+  331  mkdir /home/idli/samosa
+  332  touch /tmp/1.txt
+  333  mkdir /india/maha/mumbai/kharghar/23
+  334  mkdir -p /india/maha/mumbai/kharghar/23
+  335  mkdir  /india/maha1/mumbai1/kharghar1/23
+  336  mkdir  -p /india/maha1/mumbai1/kharghar1/23
+  337  tree /india/
+  338  yum install tree -y
+  339  clear
+  340  tree /india
+  341  mkdir /vadapav/
+  342  cd /vadapav/
+  343  mkdir -p 1/2/3/4/5/6/7/8/9
+  344  tree 1
+  345  cd 1/2/3/4/5/6/7/8/9/
+  346  pwd
+  347  cd ..
+  348  pwd
+  349  cd ../../../..
+  350  pwd
+  351  cd ../
+  352  pwd
+  353  cd ../../..
+  354  pwd
+  355  cd -
+  356  cd ~
+  357  cd -
+  358  cd 4/5/6/7/8/9/
+  359  pwd
+  360  cd ..
+  361  cd ../..
+  362  cd .
+  363  cd ..
+  364  ls
+  365  ls -l
+  366  ls -al
+  367  cd .
+  368  cd ..
+  369  ls -al
+  370  ls
+  371  ls -a
+  372  history
+  373  cd ..
+  374  pwd
+  375  rm 1
+  376  rm -f 1
+  377  rm -r 1
+  378  mkdir -p 1/2/3/4/5/6/7/8/9
+  379  rm -rf 1
+  380  history
