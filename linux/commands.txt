@@ -151,3 +151,44 @@ File I/O Operations
   378  mkdir -p 1/2/3/4/5/6/7/8/9
   379  rm -rf 1
   380  history
+=============================================
+comression and decompression
+
+  423  # compression and decompression
+  424  clear
+  425  dd if=/dev/zero of=1.txt bs=1M count=1000
+  426  df -h
+  427  clear
+  428  dd if=/dev/zero of=2.txt bs=1M count=1000
+  429  dd if=/dev/zero of=3.txt bs=1M count=1000
+  430  ls -lh
+  431  lsblk
+  432  tar -cvf misalpav.tar 1.txt 2.txt 3.txt
+  433  ls -lh
+  434  rm ?.txt
+  435  ls -lh
+  436  gzip misalpav.tar
+  437  ls -lh misalpav.tar.gz
+  438  bzip2 misalpav.tar.gz
+  439  yum install bzip2
+  440  bzip2 misalpav.tar.gz
+  441  ls -lh misalpav.tar.gz.bz2
+  442  xz misalpav.tar.gz.bz2
+  443  ls -lh misalpav.tar.gz.bz2.xz
+  444  history
+  445  clear
+  446  man gzip
+  447  ls -lh misalpav.tar.gz.bz2.xz
+  448  mkdir /samosa
+  449  mv misalpav.tar.gz.bz2.xz /samosa/
+  450  ls
+  451  cd /samosa/
+  452  ls
+  453  unxz misalpav.tar.gz.bz2.xz
+  454  ls -lh
+  455  bunzip2 misalpav.tar.gz.bz2
+  456  ls -lh
+  457  gunzip misalpav.tar.gz
+  458  ls -lh misalpav.tar
+  459  tar -xvf misalpav.tar
+  460  ls -lh
