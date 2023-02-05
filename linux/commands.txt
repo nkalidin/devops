@@ -192,3 +192,97 @@ comression and decompression
   458  ls -lh misalpav.tar
   459  tar -xvf misalpav.tar
   460  ls -lh
+  464  useradd A1
+  465  tail -1 /etc/passwd
+  466  tail -n 1 /etc/passwd
+  467  tail -n 2 /etc/passwd
+  468  tail -n 5 /etc/passwd
+  469  head -n 5 /etc/passwd
+  470  head -n 1 /etc/passwd
+  471  tail -n 1 /etc/passwd
+  472  # username:passwordrelated field: user id : priamry group id :Gecos(comments):home directory:shell
+  473  useradd A2
+  474  useradd A3
+  475  useradd A4
+  476  useradd A5
+  477  useradd A6
+  478  tail -n 6 /etc/passwd
+  479  cd /home/
+  480  ls
+  481  clear
+  482  tail -1 /etc/shadow
+  483  # /etc/passwd -- holds user information
+  484  # /etc/shadow -- hold user passwords and aging parameters
+  485  tail -1 /etc/shadow
+  486  tail -6 /etc/shadow
+  487  # EPOCH year : 1st Jan 1970
+  488  passwd A1
+  489  tail -6 /etc/shadow
+  490  passwd A2
+  491  tail -6 /etc/shadow
+  492  chage -l A1
+  493  clear
+  494  chage -l
+  495  chage -W 100 A6
+  496  tail -1 /etc/passwd
+  497  tail -1 /etc/shadow
+  498  chage -M 200 A6
+  499  tail -1 /etc/shadow
+  500  chage -m 7 A6
+  501  tail -1 /etc/shadow
+  502  passwd -l A6
+  503  passwd -l A1
+  504  getent passwd A1
+  505  getent shadow A1
+  506  passwd -u A1
+  507  getent shadow A1
+  508  passwd -l A1
+  509  getent shadow A1
+  510  passwd -u A1
+  511  getent shadow A1
+  512  history
+  513  clear
+  ---------------------------
+  user management
+  ----------------------------
+  514  # username
+  515  # userid : u
+  516  # primary groupid: g
+  517  # Secondary Group : G
+  518  # Gecos : Comments : c
+  519  # Shell : s
+  520  # home : d
+  521  groupadd IT
+  522  groupadd HR
+  523  groupadd FIN
+  524  useradd -u 9001 -g IT -G HR -C "System Admin" -s /bin/bash -d /india/mah bob
+  525  useradd -u 9001 -g IT -G HR -c "System Admin" -s /bin/bash -d /india/mah bob
+  526  clear
+  527  tail -1 /etc/passwd
+  528  useradd -d /india/mah1 -u 9002 -s /bin/sh -g HR -G FIN -c ""VP" user1
+  529  useradd -d /india/mah1 -u 9002 -s /bin/sh -g HR -G FIN -c "VP" user1
+  530  tail -2 /etc/passwd
+  531  tail -2 /etc/shadow
+  532  mkdir /oracle
+  533  groupadd -g 9000 oracle
+  534  useradd -d /oracle/dba1 -u 10001 -g oracle -G IT -s /sbin/false -c "test1" dba1
+  535  tail -3 /etc/passwd
+  536  passwd db1
+  537  passwd dba1
+  538  usermod -s /bin/bash dba1
+  539  tail -3 /etc/passwd
+  540  history
+  541  userdel -r dba1
+  542  userdel -r A1
+  543  userdel -r A2
+  544  userdel -r A3
+  545  userdel -r A4
+  546  userdel -r A5
+  547  userdel -r A6
+  548  userdel -r user1
+  549  tail -1 /etc/passwd
+  550  userdel -r bob
+  551  tail -1 /etc/passwd
+  552  # userdel -r dba : it deletes user from /etc/passwd , /etc/shadow, /etc/group alongwith its home directory
+  553  # userdel dba : it deletes user from /etc/passwd , /etc/shadow, /etc/group without deleting  its home directory
+  554  history
