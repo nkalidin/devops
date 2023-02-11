@@ -1,0 +1,56 @@
+ 108  # file permissions
+  109  # r,w,x,s,S,t,T,a,i,+
+  110  # umask
+  111  # acl
+  112  # selinux
+  113  mkdir /vadapav/
+  114  mkdir /vadapav
+  115  cd /vadapav/
+  116  ls
+  117  ls -a
+  118  clear
+  119  ls
+  120  touch 1.txt
+  121  mkdir A1
+  122  ls -l
+  123  chmod 000 1.txt
+  124  ls -l 1.txt
+  125  chmod 001 1.txt
+  126  ls -l 1.txt
+  127  chmod 010 1.txt
+  128  ls -l 1.txt
+  129  chmod 111 1.txt
+  130  ls -l 1.txt
+  131  chmod 777 1.txt
+  132  ls -l 1.txt
+  133  chmod 400 1.txt
+  134  ls -l 1.txt
+  135  chmod 444 1.txt
+  136  ls -l 1.txt
+  137  chmod 666 1.txt
+  138  chmod 542 1.txt
+  139  ls -l 1.txt
+  140  chmod 000 A1
+  141  ls -ld A1
+  142  chmod 777  A1
+  143  ls -ld A1
+  144  clear
+  145  history
+  146  clear
+  147  # numerical or octal method
+  148  # numerical or octal method -- 000 ---777
+  149  # symbolic method
+  150  # symbolic method -= u , g, o
+  151  # symbolic method = r, rwx,
+  152  ls -l 1.txt
+  153  chmod a-rwx 1.txt
+  154  ls -l 1.txt
+  155  chmod a+rwx 1.txt
+  156  ls -l 1.txt
+  157  chmod u-r 1.txt
+  158  ls -l 1.txt
+  159  chmod g-w 1.txt
+  160  ls -l 1.txt
+  161  chmod ugo-x 1.txt
+  162  chmod a-x 1.txt
+  163  history
