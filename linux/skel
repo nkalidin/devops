@@ -1,0 +1,19 @@
+ cp -r /etc/skel /etc/hr
+ cp -r /etc/skel /etc/fin
+ cd /etc/hr
+   85  ls
+       touch hr1.jpg payslip.xls
+   86  ls -al
+   
+   87  cd /etc/fin/
+   88  ls
+   89  rm -fr hr.jpg payslip1.xls
+   90  touch fin1.jpg fin1.xls fin1.docs
+   91  ls
+   92  pwd
+   93  useradd -m -k /etc/fin -u 8001 -g 0 -G IT -c "vp1" -s /bin/bash a6
+   94  useradd -m -k /etc/hr -u 8002 -g 0 -G IT -c "hr1" -s /bin/bash h6
+   95  passwd a6
+   96  passwd h6
+   97  history
+login using individual users and check contents of home directory of every user. 
