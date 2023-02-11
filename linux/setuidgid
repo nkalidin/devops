@@ -1,0 +1,36 @@
+317  # whenever s is set on userside, is called as setuid , it assigns privileges of root user to all other users in system for that file/command
+  318* # whenever s is set on groupside, is called as setgid , it assigns privileges of group owner  to all other users in system for that file/command
+  319  mkdir -p /home/materials
+  320  ls -ld /home/materials/
+  321  groupadd sysadmin
+  322  chgrp sysadmin /home/materials/
+  323  ls -ld /home/materials/
+  324  chmod 777 /home/materials/
+  325  passwd a6
+  326  chmod g+s /home/materials/
+  327  ls -ld /home/materials/
+  328  cd /home/materials/
+  329  ls
+  330  ls -ltr
+  331  touch root.txt
+  332  ls -l
+  333  history
+  334  clear
+  335  mkdir -p /home/samosa
+  336  ls -ld /home/samosa/
+  337  cd /home/samosa/
+  338  ls
+  339  touch 1.txt
+  340  ls -l 1.txt
+  341  cd ..
+  342  chgrp IT /home/samosa/
+  343  ls -ld /home/samosa/
+  344  cd /home/samosa/
+  345  ls
+  346  touch 2.txt
+  347  ls -ltr
+  348  chmod a+rwx /home/samosa/
+  349  chmod g+s /home/samosa/
+  350  touch 5.txt
+  351  ls -ltr
+  352  history
