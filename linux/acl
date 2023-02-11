@@ -1,0 +1,25 @@
+ 225  useradd changu
+  226  useradd mangu
+  227  passwd changu
+  228  passwd mangu
+  229  ls -ld /home/changu/
+  230  chmod o+x /home/changu/
+  231  ls -ld /home/changu/
+  232  chmod o+x /home/mangu/
+  233  chmod o+r /home/mangu/
+  234  chmod o+w /home/mangu/
+  235  ls -ld /home/changu/
+  236  ls -ld /home/mangu/
+  237  chmod o-rwx /home/mangu/
+  238  ls -ld /home/mangu/
+  239  clear
+  240  # mangu wants to allow changu only to come to his home
+  241  # ACL
+  242  setfacl -m u:changu:r-x /home/mangu/
+  243  setfacl -m g:IT:rwx /home/mangu/
+  244  ls -ld /home/mangu/
+  245  getacl /home/mangu/
+  246  getfacl /home/mangu/
+  247  setfacl -x g:IT /home/mangu/
+  248  setfacl -x u:changu /home/mangu/
+  249  getfacl /home/mangu/
