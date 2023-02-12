@@ -1,0 +1,131 @@
+ 414  # storage
+  415  # storage --- HDD disk architecture, PArtitioning , formating , mounting , fstab, filesystem,superblocks
+  416  # how to find total number of hardisks
+  417  lsblk
+  418  fdisk -l
+  419  parted
+  420  clear
+  421  fdisk -l
+  422  blockdev /dev/sda1
+  423  blockdev --getblk /dev/sda1
+  424  blockdev --getbsz /dev/sda1
+  425  blockdev --getsz /dev/sda1
+  426  fdisk -l
+  427  clear
+  428  blockdev --getsz /dev/sda1
+  429  blockdev --getbsz /dev/sda1
+  430  fdisk -l
+  431  blockdev --getbsz /dev/sda2
+  432  blockdev --getsz /dev/sda2
+  433  blkid /dev/sda1
+  434  blkid /dev/sda2
+  435  blkid /dev/sda3
+  436  clear
+  437  # creating partitions
+  438  fdisk -l
+  439  lsblk
+  440  fdisk /dev/sda
+  441  partprobe
+  442  lsblk
+  443  cd /dev/sda5
+  444  ls -l /dev/sda5
+  445  mkdir /oracle
+  446  cd /oracle/
+  447  ls
+  448  cd ..
+  449  mount /dev/sda5 /oracle
+  450  # formating -- attaching filesystem type
+  451  # win --- NTFS, FAT132
+  452  # Linux -- ext2, ext3,ext4,xfs,zfs,btrfs
+  453  mkfs.ext4 /dev/sda5
+  454  mkfs.xfs /dev/sda5
+  455  mkfs.xfs -f /dev/sda5
+  456  df -i
+  457  mount /dev/sda5 /oracle/
+  458  df -i
+  459  umount /oracle
+  460  mkfs.ext4 -f /dev/sda5
+  461  mkfs.ext4  /dev/sda5
+  462  mount /dev/sda5 /oracle/
+  463  df -i
+  464  cd /oracle/
+  465  touch {1..100000}.txt
+  466  ls
+  467  # 65536 -10
+  468  cd ..
+  469  umoun t/oracle
+  470  umount /oracle
+  471  clear
+  472  fdisk -l
+  473  mkfs.ext4 /dev/sda5
+  474  mount /dev/sda5 /oracle
+  475  lsblk
+  476  cd /oracle/
+  477  ls
+  478  rm -fr lost+found/
+  479  ls
+  480  touch {1..65536}.txt
+  481  ls -il 1.txt
+  482  ls -il 2.txt
+  483  ls -il 65526.txt
+  484  rm -fr 1.txt
+  485  df -i
+  486  touch a.txt
+  487  ls -il a.txt
+  488  ls -il 2.txt
+  489  rm -fr 2.txt
+  490  touch b.txt
+  491  touch c.txt
+  492  ls -il b.txt
+  493  df -i
+  494  rm -fr
+  495  *
+  496  rm -fr *
+  497  df -i
+  498  df -h
+  499  ls
+  500  df -i
+  501  touch {1..10}.txt
+  502  df -h
+  503  df -i
+  504  # inode number is a unique number in each partition assigned to file or folder which points to filename,attributes of file and address of blocks where data is stored
+  505  touch 1.txt
+  506  ls -l 1.txt
+  507  echo 123 > 1.txt
+  508  clear
+  509  ls -l
+  510  ls -li
+  511  rm -fr 9.txt
+  512  ls
+  513  find /oracle -inum 18
+  514  find /oracle -inum 11
+  515  find /oracle -inum 12
+  516  find /oracle -inum 12 -exec rm -fr {}\;
+  517  find /oracle -inum 12 exec rm -fr {}\;
+  518  find /oracle -inum 12 -exec rm -fr {} \;
+  519  find /oracle -inum 11 -exec rm -fr {} \;
+  520  find /oracle -inum 17 -exec rm -fr {} \;
+  521  find /oracle -inum 18 -exec rm -fr {} \;
+  522  ls
+  523  dumpe2fs /dev/sda5
+  524  touch 1111.txt
+  525  dumpe2fs /dev/sda5
+  526  clear
+  527  fdisk -l
+  528  lsblk
+  529  cd /oracle/
+  530  ls
+  531  echo 123 > 6.txt
+  532  cat 6.txt
+  533  lsblk
+  534  blockdev -getbsz /dev/sda5
+  535  blockdev --getbsz /dev/sda5
+  536  blockdev --getsz /dev/sda5
+  537  dd if=/dev/sda5 of=/dev/sda6 bs=4096 count=2097152
+  538  mkdir /dosa
+  539  mount /dev/sda6 /dosa
+  540  df -h
+  541  cd /dosa/
+  542  ls
+  543  cat 6.txt
+  544  history
