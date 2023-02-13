@@ -1,0 +1,19 @@
+760  # username@hostname
+  761  # ~ : home directory of user
+  762  # # : logged in by using superuser
+  763  # $ : logged in by normal user
+  764  date
+  765  date "+%d"
+  766  date "+%d-%m-%y"
+  767  date "+%d-%m-%Y"
+  768  date "+%d-%b-%Y"
+  769  date "+%d/%b/%Y"
+  770  date "+%d/%b/%Y:%H"
+  771  date
+  772  date "+%d/%b/%Y:%H:%M"
+  773  date "+%d/%b/%Y:%H:%M:%s"
+  774  date "+%d-%b-%Y:%H:%M:%s"
+  775  man date
+  776  date "+%d-%b-%Y:%H:%M:%s--%j-days"
+  777  date --help
+  778  history
