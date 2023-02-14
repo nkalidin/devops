@@ -63,4 +63,15 @@
   993  # cut paste
   994  mv hello.txt /tmp/dosa.txt
   995  history
+
 ------------------------------------
+ copy folder 
+997  mkdir  A1 A2
+  998  ls
+  999  cp A1 Aone
+ 1000  cp -r A1 Aone
+ 1001  mv A1 Aone
+ 1002  ls
+ 1003  cp -r Aone /home/
+ 1004  mv Aone /tmp/
+ 1005  history
