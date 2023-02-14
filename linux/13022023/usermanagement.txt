@@ -1,0 +1,32 @@
+ 1109  # user management
+ 1110  # create users / change password / login / delete
+ 1111  useradd user1
+ 1112  useradd user2
+ 1113  useradd user3
+ 1114  useradd user4
+ 1115  useradd user5
+ 1116  useradd user6
+ 1117  useradd user7
+ 1118  useradd user8
+ 1119  useradd user9
+ 1120  useradd user10
+ 1121  # /etc/passwd
+ 1122  tail -n 10 /etc/passwd
+ 1123  tail -n 1 /etc/passwd
+ 1124  tail -n 2 /etc/passwd
+ 1125  tail -n 3 /etc/passwd
+ 1126  tail -n 10 /etc/passwd
+ 1127  clear
+ 1128  tail -n 10 /etc/passwd
+ 1129  tail -n 10 /etc/shadow
+ 1130  passwd user1
+ 1131  tail -n 10 /etc/shadow
+ 1132  userdel -r user1
+ 1133  userdel -r user2
+ 1134  userdel -r user3
+ 1135  userdel -r user4
+ 1136  userdel -r user5
+ 1137  userdel -r user6
+ 1138  userdel -r user7
+ 1139  userdel -r user9
+ 1140  userdel -r user10
