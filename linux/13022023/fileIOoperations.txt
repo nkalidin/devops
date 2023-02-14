@@ -25,3 +25,12 @@
   886  clear
 ---------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------
+ 917  mkdir 1
+  918  mkdir 1/2
+  919  mkdir 1/2/3/4/5/6/7/8/9
+  920  mkdir -p 1/2/3/4/5/6/7/8/9
+  921  mkdir -p india/maha/mumbai/kharghar/23/4
+  922  mkdir -p vadapav/samosa/idli/dosa/upma/shira/pohe/biryani/pavbhaji/misalpav/bhajji/panipuri/chapati/bhakari
+  923  tree vadapav
+  924  tree 1
+  925  tree india
