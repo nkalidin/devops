@@ -75,3 +75,31 @@
  1003  cp -r Aone /home/
  1004  mv Aone /tmp/
  1005  history
+------------------------------
+
+ 1092  # create three files using dd command
+ 1074  dd if=/dev/zero of=3.txt bs=1M count=500
+ 1075  dd if=/dev/zero of=2.txt bs=1M count=500
+ 1076  dd if=/dev/zero of=1.txt bs=1M count=500
+ 1093  # archive three files into 1.tar using tar command
+       tar -cvf 1.tar 1.txt 2.txt 3.txt
+ 1094  # use gzip to compress
+        gzip 1.tar
+ 1087   bzip2 1.tar.gz
+ 1088  ls -lh 1.tar.gz.bz2
+ 1089  xz 1.tar.gz.bz2
+ 1095  # use bzip2 to compress
+ 1096  # use xz to compress
+ 1097  ls -lh 1.tar.gz.bz2.xz
+ 1098  # uncompress
+ 1099  unxz 1.tar.gz.bz2.xz
+ 1100  ls -lh 1.tar.gz.bz2
+ 1101  bunzip2 1.tar.gz.bz2
+ 1102  ls -lh 1.tar.gz
+ 1103  gunzip 1.tar.gz
+ 1104  ls -lh 1.tar.gz
+ 1105  ls -lh 1.tar
+ 1106  tar -xvf 1.tar
+ 1107  ls -lh
+ 1108  history
+-------------------------------------------
