@@ -34,3 +34,10 @@
   923  tree vadapav
   924  tree 1
   925  tree india
+  ------------------------------
+   967  mkdir -p 1/2/3/4/5/6/7/8/9
+  968  rm -rf 1
+  969  rm -rf india
+  970  rm -rf vadapav
+  971  history
+------------------------------------
