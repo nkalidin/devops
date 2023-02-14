@@ -41,3 +41,26 @@
   970  rm -rf vadapav
   971  history
 ------------------------------------
+ 974  # copy operation
+  975  cp 1.txt hello.txt
+  976  # cp source_file destination_location
+  977  cp /upma/1.txt /home/one.txt
+  978  ls
+  979  mv 1.txt samosa.txt
+  980  ls
+  981  # to rename -- mv command can be used
+  982  # mv -- to cut paste
+  983  ls
+  984  mv samosa.txt /home/
+  985  ls
+  986  # copy 2.txt to /tmp dir
+  987  cp 2.txt /tmp
+  988  cp 2.txt /tmp/two.txt
+  989  cp /upma/2.txt /tmp/kachori.txt
+  990  # rename 2.txt to pedha.txt
+  991  mv 2.txt pedha.txt
+  992  ls
+  993  # cut paste
+  994  mv hello.txt /tmp/dosa.txt
+  995  history
+------------------------------------
