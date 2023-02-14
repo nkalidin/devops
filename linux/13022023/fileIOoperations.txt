@@ -1,0 +1,16 @@
+  849  # mkdir /upma
+  850  # cd /upma
+  851  # touch 1.txt
+  852  # touch a.txt
+  853  # touch {1..100000}.txt
+  854  # rm 1.txt
+  855  # rm -f 2.txt
+  856  # rm -f ?.txt
+  857  # rm -f ??.txt
+  858  # rm -f ???.txt
+  859  # rm -f ????.txt
+  860  # rm -f pune*.txt
+  861  # rm -f mumbai*.txt
+  862  # rm -f *mumbai*.txt
+  863  # rm -f *pune*.txt
+----------------------------------------------
