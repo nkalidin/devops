@@ -14,3 +14,14 @@
   862  # rm -f *mumbai*.txt
   863  # rm -f *pune*.txt
 ----------------------------------------------
+-------------------------------------------------
+ 879  dd if=/dev/zero of=1.txt bs=1M count=1000
+  880  ls -lh 1.txt
+  881  dd if=/dev/zero of=2.txt bs=1M count=1
+  882  ls -lh
+  883  dd if=/dev/zero of=3.txt bs=1M count=500
+  884  ls -lh
+  885  # dd == disk dump , if=input file , of= output file , bs - block size , count
+  886  clear
+---------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
