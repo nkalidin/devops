@@ -3,5 +3,8 @@
   517  # cd /var/www/html
   518  # touch index.html
   519  # vi index.html and copied html code and saved it
+  or just type
+  echo "I like vadapav" > /var/www/html/index.html
   520  # setenforce 0
   521  # systemctl stop firewalld
+use IP address to browse the website from browser
