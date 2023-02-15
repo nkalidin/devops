@@ -30,3 +30,31 @@
  1138  userdel -r user7
  1139  userdel -r user9
  1140  userdel -r user10
+------------------------------
+ 527  useradd user1
+  528  # 67 places in OS
+  529  # /etc/passwd -- user information details : username:X:uid:gid:comments:homedirectory:shell
+  530  tail -1 /etc/passwd
+  531  # shell --- it set of instructions/commands assigned to user to interact with OS
+  532  # shell -- /bin/bash , ksh, zsh, tsh, nologin, false
+  533  tail -1 /etc/passwd
+  534  usermod -s /sbin/nologin user1
+  535  passwd user1
+  536  usermod -s /bin/bash user1
+  537  usermod -u 9001 user1
+  538  usermod -c "VP of Google" user1
+  539  tail -1 /etc/passwd
+  540  groupadd IT
+  541  groupadd HR
+  542  groupadd FIN
+  543  useradd -s /bin/sh -u 9002 -g IT -G HR -c "Data Scientist" -d /vadapav  u1
+  544  tail -2 /etc/passwd
+  545  passwd u1
+  546  clear
+  547  useradd u2
+  548  useradd -d /samosa/u2 -s /bin/bash -g HR -G FIN -c "SA" u3
+  549  passwd u2
+  550  passwd u3
+  551  tail -2 /etc/passwd
+  552  # useradd ---: -s : shell , -u: uid , -g: Primary Group, -G: Secondary Group, -d: home directory, -c: GEcos(Comments/nick)
+  553  history
