@@ -1,0 +1,7 @@
+ 515  # yum install httpd -y
+  516  # systemctl enable --now httpd
+  517  # cd /var/www/html
+  518  # touch index.html
+  519  # vi index.html and copied html code and saved it
+  520  # setenforce 0
+  521  # systemctl stop firewalld
