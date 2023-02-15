@@ -87,4 +87,15 @@
   580  chage -l root
   581  chage -l us4
   582  history
+-------------------------------------
+ 585  yum install finger
+  586  finger root
+  587  chage -l root
+  588  clear
+  589  userdel us4
+  590  userdel us5
+  591  userdel -r user1
+  592  userdel -r u1
+  593  # userdel -r u1 : delete user from system with homedirectory also
+  594  # userdel u1 : delete user from system without homedirectory
 
