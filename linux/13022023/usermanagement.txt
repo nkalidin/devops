@@ -98,4 +98,18 @@
   592  userdel -r u1
   593  # userdel -r u1 : delete user from system with homedirectory also
   594  # userdel u1 : delete user from system without homedirectory
+-------------------------------------------
+ 629  # useradd u1
+  630  # usermod -s /bin/bash u1
+  631  # userdel -r u1
+  632  # groupadd IT
+  633  # groupdel IT
+  634  # chage -l u1
+  635  # chage -m 9 u1
+  636  # passwd u1
+  637  # cat /etc/passwd
+  638  # cat /etc/shadow
+  639  # cat /etc/group
+  640  # uid of the root user is 0
+  641  id
 
