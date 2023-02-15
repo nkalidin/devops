@@ -58,3 +58,33 @@
   551  tail -2 /etc/passwd
   552  # useradd ---: -s : shell , -u: uid , -g: Primary Group, -G: Secondary Group, -d: home directory, -c: GEcos(Comments/nick)
   553  history
+  ---------------------------------------------------------------
+    555  useradd us4
+  556  useradd us5
+  557  # /etc/shadow
+  558  # /etc/shadow --- stores passwords and aging parameters
+  559  tail -2 /etc/shadow
+  560  # 100 years : 36500
+  561  # weekends : 5200 only
+  562  # 1st Jan 1970 -- EPOCH year
+  563  chage -l
+  564  chage -m 30 us4
+  565  tail -2 /etc/shadow
+  566  chage -m 10 us5
+  567  tail -2 /etc/shadow
+  568  chage -W 30 us4
+  569  tail -2 /etc/shadow
+  570  clear
+  571  tail -2 /etc/passwd
+  572  passwd us4
+  573  tail -2 /etc/passwd
+  574  tail -2 /etc/shadow
+  575  passwd -l us4
+  576  tail -2 /etc/shadow
+  577  passwd -u us4
+  578  tail -2 /etc/shadow
+  579  clear
+  580  chage -l root
+  581  chage -l us4
+  582  history
+
