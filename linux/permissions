@@ -167,3 +167,12 @@
   867  chown A1 1.txt
   868  history
 ---------------------
+  870  # storage
+  871  # storage -- HDD/pendrive
+  872  fdisk -l
+  873  lsblk
+  874  parted
+  875  fdisk -l
+  876  lsblk
+  877  parted
+  878  history
