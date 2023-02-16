@@ -33,6 +33,28 @@
   140  chmod 000 A1
   141  ls -ld A1
   142  chmod 777  A1
+  
+  ---------------------------------
+    716  # Symbolic Method
+  717  clear
+  718  ls -l 1.txt
+  719  chmod u-rwx 1.txt
+  720  ls -l 1.txt
+  721  chmod g-rwx 1.txt
+  722  ls -l 1.txt
+  723  chmod o-rwx 1.txt
+  724  ls -l 1.txt
+  725  chmod ugo+rwx 1.txt
+  726  ls -l 1.txt
+  727  chmod a-rwx 1.txt
+  728  ls -l 1.txt
+  729  chmod u+r 1.txt
+  730  ls -l 1.txt
+  731  chmod go+rwx 1.txt
+  732  ls -l 1.txt
+  733  # u=user,g=group,o=others
+  734  chmod u-rwx,g+w,o-wx 1.txt
+
   143  ls -ld A1
   144  clear
   145  history
