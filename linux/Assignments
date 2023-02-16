@@ -1,0 +1,105 @@
+Que1: 
+1. create collaborative directory /home/materials
+2. Group ownership is given to sysadmins group
+3. Directory is accessible,writable,and readbale for all memebrs of sysadmin group and not to any other members.
+4. files created in /home/materials should have automatic ownership of sysadmins group
+
+
+Que2: Create group called as fruits and add various users in this group.
+
+Que3: create 100 files and 10 directories  in current date folder and change its permission to 000 to 777 by octal and numerical method.
+
+Que4: Create the following users , groups , and group memebership 
+
+1. A group called as sysadmins
+2. User Natasha belongs to sysadmins as a secondary group
+3.User harry belongs to sysadmins as a secondary group
+4. User Sarah who dosenot have access to interactive shell --/sbin/nologin
+5.password : redhat
+
+Que5:
+1. Create Directory in home as $todays_date  and create 10 files inside it.
+2. Copy 1.txt file to /root location
+3. rename 3.txt as 33.txt
+4. change permissions of 5.txt to 777 
+5. remove all permission from group and others on 6.txt
+6. Allow only user N1 to execute the 6.txt file
+7. Delete 9.txt and 10.txt 
+
+
+Q6.  a. Create 10 files using touch command 
+      b. assign 000 permissions to all files 
+      c. change ownership to N1 user
+      d. change group ownership to IT
+      e. Create Directory A
+      f. Change permission of Dir A to 777 and ownership to N2 user
+		and group to HR user
+      g. create 10 files in A dir. and change permission of all to 000 including parent directory.
+
+Q7. Increase Your swap space by 512MB .Both swap partiotions must be avaliable.
+Your new space should be mounted at booting time.
+
+Q8. copy the file /etc/fstab to /var/tmp . configure the permissions of /var/tmp/fstab as below
+
+	1. the file /var/tmp/fstab is owned by root
+	2. it belongs to group IT
+	3. Executable by everyone
+	4. Natasha is able to read and write
+	5. harry no permissions
+	6. others have only read permissions
+
+Q9.  Locate the files created by user harry and copy them at location /var/tmp/test
+
+Q10.  Make tarball of existing home directory to home.tar.gz
+
+Q11. Create user jean having uid as 4032 and his home directory should be in /home/Redhat
+
+Q12. Create Volume group named as oraclevg which is having physical extend size of 8mb and
+create logical volume kbp1 of 100 extends.Assign filesystem ext3 and should be permananetly
+mount on /mnt/data
+
+Q13. Create Volume group as your surname , create logical volume group as surname1 with size 
+50M and mount it on directory /surname . After Mounting extend it by 80M
+
+Q14. User natasha must configure cron job that runs daily at 14:23 local time and execute the
+
+/bin/echo "hello world "
+
+Q15 . Create user as your $Name with below attributes
+	1. home directory in : /Oracle 
+	2. Uid : 90001
+	3. Primary Group : gid: 20000: Vadapav
+	4. Secondary Group : gid : 30000 : Idli
+	5. Comments : Programmer
+	6. Shell : /sbin/nologin
+	7. Passwd : 123
+
+Q16. Create Users with your all family memebrs first name with below attributes	
+	1. Primary Group : $Surname
+	2. Secondary Group : $Area Name
+	3. Uid : starts from 30001
+	4. Home Directory in /$HouseName
+	5. Shell : /bin/bash
+
+Q17. Create 2 Partitions of 500M each and test RAID1
+
+Q18. Write iptables rule to block icmp protocol 
+
+Q19. Write iptables rule to block tcp protocol
+
+Q20. Create a file with name as dxc.$todays'date
+
+Q21. Assign IPv4 100.100.0.0/24 to enp0s10 using nmcli, nmtui, ifconfig and configuration file in server and client 
+
+Q22. Create folder with your name in /home/01112018, apply sticky bit and perform following operations
+1. assign all permissions to file inside folder created by three non root users.
+2. Modify contents of file created by other user
+3. Try to delete files created by other user.
+
+Q23. Find out disk tps , Number of CPU's and their frequency , RAM utilization and Swap Size.
+================
+
+1. create a script which will add multiple users in a system using for loop 
+2. create a script which will add any number of users specified as postional paramenters
+  e.g bash user.sh B1 B2
+ eval 
