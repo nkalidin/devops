@@ -92,3 +92,29 @@
   761  ls -ld A1
   762  # 0777-0044 =0733
 --------------------------------------------
+ 782  cd /vadapav/
+  783  ls
+  784  touch oracle.db
+  785  chmod 777 oracle.db
+  786  rm -fr oracle.db
+  787  ls
+  788  touch oracle.db
+  789  chattr +a oracle.db
+  790  rm -fr oracle.db
+  791  # +a -- append
+  792  echo 123 >> oracle.db
+  793  cat oracle.db
+  794  rm -fr oracle.db
+  795  chattr +i oracle.db
+  796  echo 123 >> oracle.db
+  797  rm -fr oracle.db
+  798  # i=immutable
+  799  ls -l oracle.db
+  800  chmod 777 oracle.db
+  801  lsattr oracle.db
+  802  clear
+  803  chattr --help
+  804  man chattr
+  805  chattr -i oracle.db
+  806  clear
+----------------------------------------
