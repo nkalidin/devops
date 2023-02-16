@@ -118,3 +118,12 @@
   805  chattr -i oracle.db
   806  clear
 ----------------------------------------
+  818  # ACL
+  819  setfacl -m u:changu:rwx /home/mangu
+  820  setfacl -m g:IT:rwx /home/mangu
+  821  setfacl -m g:IT:r0x /home/mangu
+  822  setfacl -m g:IT:r-x /home/mangu
+  823  getfacl /home/mangu/
+  824  setfacl -x g:IT /home/mangu
+  825  setfacl -x u:changu /home/mangu
+  826  getfacl /home/mangu/
