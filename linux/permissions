@@ -127,3 +127,43 @@
   824  setfacl -x g:IT /home/mangu
   825  setfacl -x u:changu /home/mangu
   826  getfacl /home/mangu/
+-------------------------------------------------
+  831  # permission s,t
+  832  passwd A1
+  833  ls -l /etc/shadow
+  834  which passwd
+  835  ls -l /usr/bin/passwd
+  836  chmod u-s /usr/bin/passwd
+  837  ls -l /usr/bin/passwd
+  838  passwd A1
+  839  chmod u+s /usr/bin/passwd
+  840  ls -l /usr/bin/passwd
+  841  clear
+  842  # when s permission is assigned to user side , is called as set uid . It assigns privileges of owner to all other users
+  843  # when s permission is assigned to group side , is called as set gid . It assigns privileges of group owner(IT,HR,FIN,SYSadmin) to all other users
+  844  touch 1.txt
+  845  chmod 000 1.txt
+  846  chmod 4000 1.txt
+  847  ls -l 1.txt
+  848  chmod 2000 1.txt
+  849  ls -l 1.txt
+  850  chmod 1000 1.txt
+  851  ls -l 1.txt
+  852  chmod 7000 1.txt
+  853  ls -l 1.txt
+  854  chmod 7111 1.txt
+  855  ls -l 1.txt
+  856  # when t permission is assigned on folder , is called as sticky bit, it allows all users to create, modify and append the files created by any user, but only owner or root user can delete the file
+  857  mkdir /test
+  858  chmod 1777 /test
+  859  ls -ld /test
+  860  ls -ld /tmp
+  861  history
+  862  chmod o+t /test
+  863  chmod o+t 1.txt
+  864  ls -l 1.txt
+  865  chmod a+rwx 1.txt
+  866  ls -l 1.txt
+  867  chown A1 1.txt
+  868  history
+---------------------
