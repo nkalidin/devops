@@ -1,0 +1,43 @@
+ 657  mkdir /vadapav
+  658  cd /vadapav/
+  659  ls
+  660  touch 1.txt
+  661  ls -l 1.txt
+  662  mkdir A1
+  663  ls -l
+  664  useradd  I1
+  665  groupadd IT
+  666  useradd  I2
+  667  groupadd HR
+  668  chown I1 1.txt
+  669  ls -l 1.txt
+  670  chgrp IT 1.txt
+  671  ls -l 1.txt
+  672  chown I2:HR 1.txt
+  673  ls -l 1.txt
+  674  chown I1:FIN 1.txt
+  675  ls -l 1.txt
+  676  # chown owner:group 1.txt
+  677  # chgrp HR 1.txt
+  678  # chown owner 1.txt
+  679  clear
+  680  ls -l 1.txt
+  681  chmod 000 1.txt
+  682  ls -l 1.txt
+  683  chmod 001 1.txt
+  684  ls -l 1.txt
+  685  chmod 010 1.txt
+  686  ls -l 1.txt
+  687  chmod 100 1.txt
+  688  ls -l 1.txt
+  689  chmod 111 1.txt
+  690  ls -l 1.txt
+  691  chmod 400 1.txt
+  692  chmod 640 1.txt
+  693  chmod 666 1.txt
+  694  ls -l 1.txt
+  695  chmod 521 1.txt
+  696  chmod 345 1.txt
+  697  chmod 777 1.txt
+  698  ls -l 1.txt
+  699  history
