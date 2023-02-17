@@ -9,3 +9,29 @@ touch {1..3}.txt
 cd ..
 umount /dosa
 -----------------------------------------------------
+  970  # /etc/fstab -- permanently mount
+  971  cp /etc/fstab /etc/fstab.17022023
+  972  vi /etc/fstab
+  973  df -h
+  974  cd ..
+  975  umount /170223/
+  976  df -h
+  977  init 6
+  978  nmcli c up ens34
+  979  nmcli c up ens33
+  980  ip a s
+  981  df -h
+  982  cat /etc/fstab
+  983  lsblk
+  984  mkfs.ext4 /dev/sda6
+  985  mount /dev/sda6 /dosa
+  986  mkdir /dosa
+  987  mount /dev/sda6 /dosa
+  988  df -h
+  989  umount /dosa
+  990  df -h
+  991  vi /etc/fstab
+  992  mount -a
+  993  df -h
+  994  history
+-----------------------------
