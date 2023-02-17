@@ -1,0 +1,11 @@
+create partition/mount/umount
+
+fdisk /dev/sda
+mkfs.ext4 /dev/sda6
+mkdir /dosa
+mount /dev/sda6 /dosa
+cd /dosa
+touch {1..3}.txt
+cd ..
+umount /dosa
+-----------------------------------------------------
