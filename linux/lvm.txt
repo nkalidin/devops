@@ -21,3 +21,34 @@
  1025  touch {1..10}.txt
  1026  ls
  1027  history
+-------------------------------------
+ 1068  pvcreate /dev/sda{5..9}
+ 1069  pvs
+ 1070  vgs
+ 1071  vgcreate google /dev/sda{5..6}
+ 1072  vgs
+ 1073  lvcreate -L 500M -n google_app1 "google"
+ 1074  lvs
+ 1075  lvcreate -L 600M -n google_db1 "google"
+ 1076  lvcreate -L 400M -n google_db1 "google"
+ 1077  lvs
+ 1078  mkfs.ext4 /dev/google/google_app1
+ 1079  mkfs.ext4 /dev/google/google_db1
+ 1080  lvs
+ 1081  mkdir /google_app1
+ 1082  mkdir /google_db1
+ 1083  mount /dev/google/google_app1 /google_app1
+ 1084  mount /dev/google/google_db1 /google_db1
+ 1085  df -h
+ 1086  history
+ 1087  df -h
+ 1088  vgs
+ 1089  vgextend google /dev/sda7
+ 1090  vgextend google /dev/sda8
+ 1091  vgs
+ 1092  lvextend -L 700M /dev/google/google_app1
+ 1093  lvextend -L+300M /dev/google/google_db1
+ 1094  resize2fs /dev/google/google_app1
+ 1095  resize2fs /dev/google/google_db1
+ 1096  df -h
+ 1097  vgs
