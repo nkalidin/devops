@@ -1,0 +1,23 @@
+ 1005  fdisk /dev/sda
+ 1006  partprobe
+ 1007  lsblk
+ 1008  pvcreate /dev/sda6
+ 1009  pvs
+ 1010  pvcreate /dev/sda7
+ 1011  pvs
+ 1012  vgcreate vadapav /dev/sda6 /dev/sda7
+ 1013  vgs
+ 1014  pvcreate /dev/sda8
+ 1015  vgextend vadapav /dev/sda8
+ 1016  vgs
+ 1017  lvcreate -L 400M -n lv1 vadapav
+ 1018  lvcreate -L 200M -n lv2 vadapav
+ 1019  vgs
+ 1020  mkfs.ext4 /dev/vadapav/lv1
+ 1021  mkdir /lv1
+ 1022  mount /dev/vadapav/lv1 /lv1
+ 1023  df -h
+ 1024  cd /lv1/
+ 1025  touch {1..10}.txt
+ 1026  ls
+ 1027  history
