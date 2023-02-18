@@ -52,3 +52,19 @@
  1095  resize2fs /dev/google/google_db1
  1096  df -h
  1097  vgs
+ ------------------------------------
+  1112  lvcreate -l 100 -n google_backup -v google
+ 1113  lvs
+ 1114  lvcreate -l 400 -n google_monitoring -v google
+ 1115  lvs
+ 1116  history
+ 1117  # lvcreate -L 400M -n lv1 -v google
+ 1118  # lvcreate -l 400 -n lv2 -v google
+ 1119  # lvextend -L+100M -n /dev/google/lv1
+ 1120  # lvextend -L 400M -n /dev/google/lv1
+ 1121  # lvremove /dev/google/google_app1
+ 1122  # vgremove goofle
+ 1123  # pvremove /dev/sda7
+ 1124  # vgcreate -s 8M google /dev/sda7 /dev/sda8
+ 1125  # vgcreate -s 32M google /dev/sda7 /dev/sda8
+
