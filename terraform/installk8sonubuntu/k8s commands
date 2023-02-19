@@ -1,5 +1,8 @@
+ To Create Pod named as pod1 with image httpd
  38  kubectl run pod1 --image=httpd
-   39  kubectl get pods -o wide
+ 39 kubectl get pods -o wide
+  --------------------------------------- 
+   
    40  kubectl expose pod/pod1 --name=pod1 --type=NodePort --port=80
    41  kubectl get service
    42  cat /etc/os-release
