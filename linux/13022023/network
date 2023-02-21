@@ -1,0 +1,65 @@
+ 1000  ifconfig -a
+ 1001  yum install net-utils -y
+ 1002  yum install net-tools -y
+ 1003  clear
+ 1004  ifconfig -a
+ 1005  clear
+ 1006  ifconfig ens37
+ 1007  ifconfig ens37 1.0.0.1/29
+ 1008  ifconfig ens37
+ 1009  ifconfig ens37 1.0.0.1/30
+ 1010  ifconfig ens37
+ 1011  clear
+ 1012  ifconfig ens37 1.0.0.1/24
+ 1013  ifconfig ens37
+ 1014  # maximum transmission unit ---->
+ 1015  # ether : MAC address : Physical Address of LAN card
+ 1016  ifconfig ens37
+ 1017  yum install httpd -y
+ 1018  yum install screen -y
+ 1019  ifconfig ens37
+ 1020  clear
+ 1021  ifconfig ens37 99.9.9.9/24
+ 1022  ifconfig ens37
+ 1023  # nmtui
+ 1024  # nmtui -- network manager terminal user interface
+ 1025  nmtui
+ 1026  ifconfig ens37
+ 1027  nmtui
+ 1028  ifconfig ens37
+ 1029  clear
+ 1030  history
+ 1031  ifconfig ens37 99.9.9.9/33
+ 1032  ifconfig ens37
+ 1033  ifconfig ens37 99.9.9.9/100
+ 1034  ifconfig ens37
+ 1035  clear
+ 1036  ip a s
+ 1037  nmtui
+ 1038  ip a s
+ 1039  clear
+ 1040  cat /etc/resolv.conf
+ 1041  ping google.com
+ 1042  vi /etc/resolv.conf
+ 1043  ping google.com
+ 1044  ping yahoo.com
+ 1045  vi /etc/resolv.conf
+ 1046  ping yahoo.com
+ 1047  ping google.com
+ 1048  clear
+ 1049  netstat -rn
+ 1050  # What are the factors that impacts performance of application
+ 1051  # user concurrency
+ 1052  # Hardware COnfiguration : CPU / RAM / HDD
+ 1053  # Network Bandwidth
+ 1054  # Bad Coding
+ 1055  # Infra issues
+ 1056  # application benchmarking (Process management)
+ 1057  # schedular / logs
+ 1058  # shell scripting
+ 1059  # file I/O operations
+ 1060  # user management
+ 1061  # file permissions
+ 1062  # storage
+ 1063  # Networking
+ 1064  history
