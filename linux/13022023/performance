@@ -1,0 +1,30 @@
+ 1009  netstat -an | grep -i established
+ 1010  netstat -an | grep -i established | wc -l
+ 1011  netstat -an | grep -i established | grp -i 22
+ 1012  netstat -an | grep -i established | grep -i 22
+ 1013  netstat -an | grep -i established | grep -i 22 | wc -l
+ 1014  netstat -an | grep -i established | grep -i 80 | wc -l
+ 1015  clear
+ 1016  iostat -d
+ 1017  yum install sysstat
+ 1018  clear
+ 1019  iostat -d
+ 1020  free -h
+ 1021  lscpu
+ 1022  dmidecode -t 4
+ 1023  clear
+ 1024  # dmidecode -- is used for listing more information about hardware
+ 1025  man dmidecode
+ 1026  dmidecode -t 1
+ 1027  dmidecode -t 0
+ 1028  dmidecode -t 2
+ 1029  dmidecode -t 3
+ 1030  dmidecode -t 4
+ 1031  history
+ 1032  clear
+ 1033  lspci
+ 1034  yum install pciutils
+ 1035  clear
+ 1036  lspci
+ 1037  clear
+ 1038  history
