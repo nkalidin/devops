@@ -1,0 +1,26 @@
+root@master:/yamls/Kubernetes/tata# cat v1.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: v1
+  name: v1
+spec:
+  containers:
+  - image: httpd
+    name: v1
+    volumeMounts:
+    - name: tmpv1
+      mountPath: /samosa
+    - name: hp1
+      mountPath: /vadapav
+
+  volumes:
+  - name: tmpv1
+    emptyDir:
+      sizeLimit: 200Mi
+
+  - name: hp1
+    hostPath:
+      path: /oracle
+      type: DirectoryOrCreate
