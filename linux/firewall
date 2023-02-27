@@ -1,0 +1,49 @@
+ 779  # firewall
+  780  systemctl status firewalld
+  781 
+  782  firewall-cmd --help
+  783  firewall-cmd --list-all
+  784  yum install httpd -y
+  785  cd /var/www/html/
+  786  ls
+  787  systemctl status httpd
+  788  clear
+  789  firewall-cmd --add-service http
+  790  firewall-cmd --remove-service http
+  791  firewall-cmd --list-all
+  792* firewall-cmd --rel
+  793  firewall-cmd --list-all
+  794  firewall-cmd --add-port 80/tcp
+  795  firewall-cmd --reload
+  796  firewall-cmd --list-all
+  797  firewall-cmd --add-port 80/tcp
+  798  firewall-cmd --add-port 80/tcp --permanenet
+  799  firewall-cmd --add-port 80/tcp --permanent
+  800  firewall-cmd --reload
+  801  firewall-cmd --list-all
+  802  firewall-cmd --remove-port 80/tcp --permanent
+  803  firewall-cmd --reload
+  804  firewall-cmd --list-all
+  805  firewall-cmd --remove-port 443/tcp --permanent
+  806  firewall-cmd --add-port 443/tcp --permanent
+  807  firewall-cmd --reload
+  808  firewall-cmd --list-all
+  809  firewall-cmd --add-service https --permanent
+  810  firewall-cmd --reload
+  811  firewall-cmd --list-all
+  812  firewall-cmd --add-service nfs --permanent
+  813  firewall-cmd --reload
+  814  firewall-cmd --list-all
+  815  firewall-cmd --add-port 443/udp --permanent
+  816  firewall-cmd --reload
+  817  firewall-cmd --list-all
+  818  history
+  819  firewall-cmd --remove-port 443/udp --permanent
+  820  firewall-cmd --remove-port 443/tcp --permanent
+  821  firewall-cmd --remove-service nfs --permanent
+  822  firewall-cmd --reload
+  823  firewall-cmd --list-all
+  824  firewall-cmd --remove-service https --permanent
+  825  firewall-cmd --reload
+  826  firewall-cmd --list-all
+  827  history
