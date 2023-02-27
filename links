@@ -18,3 +18,26 @@
   723  # inodes of both files are different
   724  # it can be created cross partitions as well
   725  history
+ 728  dd if=/dev/zero of=1.txt bs=1M count=1000
+  729  df -h
+  730  clear
+  731  ls -lh
+  732  ln 1.txt one
+  733  ls -lh
+  734  ls -ilh
+  735  ln 1.txt two
+  736  ls -ilh
+  737  ln 1.txt three
+  738  ls -ilh
+  739  ln 1.txt four
+  740  ls -ilh
+  741  rm -fr 1.txt
+  742  ls -ilh
+  743  rm -fr four
+  744  ls -ilh
+  745  # hard links can be made within partition
+  746  # hard links have same inode numbers
+  747  # all hardlinks points to same data blocks
+  748  ls -il
+  749  ls -ilh
+  750  history
