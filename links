@@ -1,0 +1,20 @@
+  706  # links -- shortcut , soft , symbolic
+  707  cd /vadapav/
+  708  ls
+  709  rm -fr swap1
+  710  clear
+  711  touch 1.txt
+  712  echo "Let us learn links" > 1.txt
+  713  cat 1.txt
+  714  ln -s 1.txt one.txt
+  715  ls -il
+  716  cat one.txt
+  717  echo "welocme to linux" >> one.txt
+  718  cat one.txt
+  719  rm -fr 1.txt
+  720  ls -l
+  721  cat one.txt
+  722  # it is shortcut file
+  723  # inodes of both files are different
+  724  # it can be created cross partitions as well
+  725  history
