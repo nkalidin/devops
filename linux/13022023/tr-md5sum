@@ -1,0 +1,120 @@
+ 1000  # awk --- works on column
+ 1001  # sed -- works on rows
+ 1002  # md5sum
+ 1003  #
+ 1004  md5sum /etc/passwd
+ 1005  cp /etc/passwd /home/passwd1
+ 1006  md5sum  /home/passwd1
+ 1007  cd /shell/
+ 1008  ls
+ 1009  cp 10.sh ten.sh
+ 1010  cp f1.sh fone.sh
+ 1011  find / -type f -exec md5sum {} \;
+ 1012  find /shell -type f -exec md5sum {} \;
+ 1013  find /shell -type f -exec md5sum {} \; | uniq -dw 32
+ 1014  find /shell -type f -exec md5sum {} \; | uniq -Dw 32
+ 1015  find /shell -type f -exec md5sum {} \; | uniq
+ 1016  find /shell -type f -exec md5sum {} \; | uniq -d 32
+ 1017  find /shell -type f -exec md5sum {} \; | uniq -w 32
+ 1018  man uniq
+ 1019  find /shell -type f -exec md5sum {} \; | uniq -dw 32
+ 1020  man uniq
+ 1021  find /shell -type f -exec md5sum {} \; | uniq -d 32
+ 1022  find /shell -type f -exec md5sum {} \; | uniq -dW 32
+ 1023  find /shell -type f -exec md5sum {} \; | uniq -dw 32
+ 1024  find /shell -type f -exec md5sum {} \;
+ 1025  find /shell -type f -exec md5sum {} \; | uniq
+ 1026  find /shell -type f -exec md5sum {} \; | uniq -d 32
+ 1027  find /shell -type f -exec md5sum {} \; | uniq -d -w 32
+ 1028  find /shell -type f -exec md5sum {} \; | uniq
+ 1029  find /shell -type f -exec md5sum {} \; | wc
+ 1030  find /shell -type f -exec md5sum {} \; | uniq -d -w 24
+ 1031  find /shell -type f -exec md5sum {} \; | uniq -d -w 32
+ 1032  find /shell -type f -exec md5sum {} \; | uniq -d -w32
+ 1033  find /shell -type f -exec md5sum {} \; | uniq -dw32
+ 1034  find /shell -type f -exec md5sum {} \; | uniq -w32
+ 1035  find /shell -type f -exec md5sum {} \; | uniq -w32 --all-repeated=separate
+ 1036  find /shell -type f -exec md5sum {} \; | uniq -d
+ 1037  find /shell -type f -exec md5sum {} \; | uniq -d32
+ 1038  find /shell -type f -exec md5sum {} \; | uniq -D32
+ 1039  find /shell -type f -exec md5sum {} \; | uniq -Dw32
+ 1040  find /shell -type f -exec md5sum {} \; | uniq -dw32
+ 1041  clear
+ 1042  cat /etc/passwd
+ 1043  cat /etc/passwd | awk -F ":" '{print  $7}'
+ 1044  cat /etc/passwd | awk -F ":" '{print $1, $7}'
+ 1045  cat /etc/passwd | awk -F ":" '{print $1 "\t\t" $7}'
+ 1046  cat /etc/passwd | awk -F ":" '{print $7 "\t\t" $1}'
+ 1047  history
+ 1048  find /shell -type f -exec md5sum {} \; |sort -nr |  uniq -d -w32
+ 1049  find /shell -type f -exec md5sum {} \; |sort -nr |  uniq -D -w32
+ 1050  clear
+ 1051  find / -type f md5sum {} \;
+ 1052  find /vadapav -type f -exec md5sum {} \;
+ 1053  find /shell -type f -exec md5sum {} \;
+ 1054  find /shell -type f -exec md5sum {} \; | sort
+ 1055  find /shell -type f -exec md5sum {} \; | sort -nr
+ 1056  find /shell -type f -exec md5sum {} \; | sort -nr | uniq -d -w 32
+ 1057  find /shell -type f -exec md5sum {} \; | sort -nr | uniq -D -w 32
+ 1058  find /shell -type f -exec md5sum {} \; | sort -nr | uniq -d -w 32
+ 1059  find /shell -type f -exec md5sum {} \; | sort -nr | uniq -D -w 32
+ 1060  ls -l | sort
+ 1061  ls | sort
+ 1062  ls | sort -n
+ 1063  ls | sort
+ 1064  ls | sort -n
+ 1065  ls | sort -nr
+ 1066  ls | sort
+ 1067  du -sh *
+ 1068  du -sh /etc
+ 1069  du -sh /home
+ 1070  du -sh /tmp
+ 1071  du -sh /
+ 1072  history
+ 1073  clear
+ 1074  # tr
+ 1075  # tr -- translate
+ 1076  echo "vadapav"
+ 1077  echo "vadapav" | tr [:lower:][:upper:]
+ 1078  echo "vadapav" | tr [:lower:] [:upper:]
+ 1079  echo "vadapav" | tr [a-z] [A-Z]
+ 1080  echo "Vadapav" | tr [A-Z] [a-z]
+ 1081  echo "VadapaV" | tr [:upper:] [:lower:]
+ 1082  echo "VadapaV" | tr -cd V
+ 1083  echo "VadapaV" | tr -c V
+ 1084  echo "VadapaV" | tr -d V
+ 1085  echo "VadapaV 123" | tr -d [:digit:]
+ 1086  echo "VadapaV 123" | tr -d [a-z]
+ 1087  echo "VadapaV 123" | tr -d [a-z] []A-z]
+ 1088  echo "VadapaV 123" | tr -d [a-z] [A-Z]
+ 1089  echo "VadapaV 123" | tr -d {a-z} {A-Z}
+ 1090  echo "VadapaV 123" | tr -d {a-z}
+ 1091  echo "VadapaV 123" | tr -d {A-Z}
+ 1092* echo "VadapaV 123" | tr
+ 1093  echo "VadapaV 123" | tr -d {A-Z}
+ 1094  history
+ 1095  man tr
+ 1096  echo "VadapaV 123" | tr -d [alpha]
+ 1097  man tr
+ 1098  echo "VadapaV 123" | tr -d [:alpha:]
+ 1099  echo "VadapaV 123" | tr -d [:alnum:]
+ 1100  man tr
+ 1101  history
+ 1102  clear
+ 1103  cp /etc/passwd /home/
+ 1104  cp -r /etc /tmp/etc-bkp
+ 1105  # scp
+ 1106  # rsync
+ 1107  scp -pr /etc hadoop@192.168.1.8:/backup/etc-bkp1
+ 1108  scp -pr /etc hadoop@192.168.1.8:/backup/etc-bkp2
+ 1109  scp -pr /etc hadoop@192.168.1.8:/backup/etc-bkp-`date "+%d-%b-%y:%H:%M"`
+ 1110  history
+ 1111  rsync -cavz /etc hadoop@192.168.1.8:/backup/etc-bkp-`date "+%d-%b-%y:%H:%M:%s"`
+ 1112  yum install rsync
+ 1113  rsync -cavz /etc hadoop@192.168.1.8:/backup/etc-bkp-`date "+%d-%b-%y:%H:%M:%s"`
+ 1114  # rsync command can be used for full backup or incremental backup , it use compression while transfering the data therefore it fast and used widely
+ 1115  history
+ 1116  rsync -cavz /etc hadoop@127.0.0.1:/backup/etc-bkp-`date "+%d-%b-%y:%H:%M:%s"`
+ 1117  rsync -cavz /etc root@127.0.0.1:/backup/etc-bkp-`date "+%d-%b-%y:%H:%M:%s"`
+ 1118  mkdir /backup
+ 1119  rsync -cavz /etc root@127.0.0.1:/backup/etc-bkp-`date "+%d-%b-%y:%H:%M:%s"`
