@@ -118,3 +118,23 @@
  1117  rsync -cavz /etc root@127.0.0.1:/backup/etc-bkp-`date "+%d-%b-%y:%H:%M:%s"`
  1118  mkdir /backup
  1119  rsync -cavz /etc root@127.0.0.1:/backup/etc-bkp-`date "+%d-%b-%y:%H:%M:%s"`
+ 
+  1212  c
+ 1213  history
+ 1214  # find out all partitions whose disk utilization is more than 70%
+ 1215  clear
+ 1216  # find out all partitions whose disk utilization is more than 70%
+ 1217  df -h
+ 1218  df -h | awk -F " " '{print $6 "\t\t" $5}'
+ 1219  df -h | awk -F " " '{print $6 "\t\t" $5}' | sed 1d
+
+ 1221  df -h | awk -F " " '{print $6 "\t\t" $5}' | sed 1,3d
+ 1222  df -h | awk -F " " '{print $6 "\t\t" $5}' | sed 1d
+ 1223  df -h | awk -F " " '{print $6 "\t\t" $5}' | sed 1d | tr -d %
+ 1224  df -h | awk -F " " '{print $6 "\t\t" $5}' | sed 1d | tr -d % | awk ($2 >=70)
+ 1225  df -h | awk -F " " '{print $6 "\t\t" $5}' | sed 1d | tr -d % | awk '($2 >=70)'
+ 1226  df -h | awk -F " " '{print $6 "\t\t" $5}' | sed 1d | tr -d % | awk '($2 >=10)'
+ 1227  df -h | awk -F " " '{print $6 "\t\t" $5}' | sed 1d | tr -d % | awk '($2 >=0)'
+ 1228  df -h | awk -F " " '{print $6 "\t\t" $5}' | sed 1d | tr -d % | awk '($2 >=1)'
+ 1229  df -h | awk -F " " '{print $6 "\t\t" $5}' | sed 1d | tr -d % | awk '($2 >=70)'
+
