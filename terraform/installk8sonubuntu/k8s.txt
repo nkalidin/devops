@@ -5,9 +5,13 @@ Fire below commands on master and worker nodes
 
 Step1. Setup hostnames
 
+sudo -i
 hostnamectl set-hostname master
+bash
 hostnamectl set-hostname worker1
+bash
 hostnamectl set-hostname worker2
+bash
 
 Step2 : (Fire on all nodes)
 
@@ -60,15 +64,13 @@ sudo apt-get install -y kubelet=1.24.0-00 kubeadm=1.24.0-00 kubectl=1.24.0-00
 
 # Step 9 --- only on master node (use public IP of master node)
 
-kubeadm config images pull --cri-socket /run/containerd/containerd.sock --kubernetes-version v1.24.0
-kubeadm init --pod-network-cidr=10.244.0.0/16 --upload-certs --kubernetes-version=v1.24.0 --control-plane-endpoint=publicIPofMasterIP --ignore-preflight-errors=Mem --cri-socket /run/containerd/containerd.sock
-## copy join commnad and fire on all worker nodes(Not on Master Node) to join them in k8s cluster
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+kubeadm config images pull --cri-socket /run/containerd/containerd.sock --kubernetes-version v1.24.0  (execute on master node only )
+kubeadm init --pod-network-cidr=10.244.0.0/16 --upload-certs --kubernetes-version=v1.24.0 --control-plane-endpoint=publicIPofMasterIP --ignore-preflight-errors=Mem --cri-socket /run/containerd/containerd.sock  (execute on master node only )
+## copy join commnad and fire on all worker nodes only (Not on Master Node) to join them in k8s cluster  
+mkdir -p $HOME/.kube  (execute on master node only)
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config  (execute on master node only)
+sudo chown $(id -u):$(id -g) $HOME/.kube/config  (execute on master node only)
 
-kubectl cluster-info
-kubectl get nodes
-kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml
+kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml  (execute on master node)
 watch kubectl get nodes
 watch kubectl get pods -n kube-system
