@@ -1,0 +1,44 @@
+name: docker pull and push
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker login
+      env:
+        DOCKER_USER: {{secrets.DOCKER_USER}}
+        DOCKER_PASSWORD: {{secrets.DOCKER_PASSWORD}}
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - name: image create    
+      run: |
+        docker build ./web1 -f 1.df -t kharatramesh/vadapavimages:web1
+    - name: docker push
+      run: | 
+        docker push kharatramesh/vadapavimages:web1
+
+-----------------------------------------------------
+
+name: upload images to jfrog
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Login to JFrog 🐸  
+        uses: docker/login-action@v1
+        with:
+          registry: priar.jfrog.io
+          username: ${{ secrets.JFROG_USER_WRITER }}
+          password: ${{ secrets.JFROG_PASSWORD_WRITER }}
+      - name: Build and push 🐳
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: priar.jfrog.io/vadapav:latest

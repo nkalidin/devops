@@ -1,0 +1,210 @@
+name: workflow-level-custom-environment-variables
+on: [push]
+# Here the environment variable is declared in workflow level
+env:
+    dish: Samosa is Available for all jobs in this workflow
+
+jobs:
+    sample-job-1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: step-1
+              run: echo "${dish}"
+              # This will echo the value/string of PUBLICENV
+
+            - name: step-2
+              run: echo "${dish}"
+              # This will echo the value/string of PUBLICENV
+
+    sample-job-2:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "${dish}"
+            # This will echo the value/string of PUBLICENV
+-----------------------------------------------------
+
+name: job-level-custom-environment-variables
+
+on: [push]
+
+jobs:
+    sample-job-1:
+        env:
+            dish: Samosa is Available for this specific job only
+            # Here the environment variable is declared in job level
+        runs-on: ubuntu-latest
+        steps:
+            - name: step-1
+              run: echo "${dish}"
+              # This will echo the value/string of dish
+
+            - name: step-2
+              run: echo "${dish}"
+              # This will echo the value/string of dish
+
+    sample-job-2:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "${dish}"
+            # This will NOT echo the value/string of dish
+----------------------------------------------------------------------------
+
+name: step-level-custom-environment-variables
+
+on: [push]
+
+jobs:
+    sample-job-1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: step-1
+              env:
+                  dish: samosa is Available for this specific job only
+                  # Here the environment variable is declared in step level
+
+              run: echo "${dish}"
+              # This will echo the value/string of dish
+
+            - name: step-2
+              run: echo "${dish}"
+              # This will NOT echo the value/string of dish
+
+    sample-job-2:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "${dish}"
+            # This will NOT echo the value/string of dish
+--------------------------------------------------------
+
+name: default-environment-variables
+
+on: [push]
+
+jobs:
+    sample-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: echo-default-env-variables
+              run: |
+                  echo "Home: ${HOME}"
+                  echo "GITHUB_WORKFLOW: ${GITHUB_WORKFLOW}"
+                  echo "GITHUB_ACTIONS: ${GITHUB_ACTIONS}"
+                  echo "GITHUB_ACTOR: ${GITHUB_ACTOR}"
+                  echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
+                  echo "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
+                  echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
+                  echo "GITHUB_SHA: ${GITHUB_SHA}"
+                  echo "GITHUB_REF: ${GITHUB_REF}"
+
+
+-------------------------------------------------
+name: samosa_workflow
+on: [push]
+jobs:
+  upload1:
+    name: uploading office files to server
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          echo "Samosa is very tasty" > 1.txt
+          echo "samosa is not health" > 2.txt
+          hostname > 3.txt
+          date > 4.txt
+          sudo apt update -y
+      - name: upload file from marketplace actions
+        uses: actions/upload-artifact@v1
+        with:
+          name: hello-world
+          path: 1.txt 
+      - name: upload file from marketplace actions1
+        uses: actions/upload-artifact@v1 
+        with:
+          name: hello-world
+          path: 2.txt 
+          
+  download1:
+    name: downloading files
+    needs: upload1
+    runs-on: windows-latest
+    steps:
+      - name: Download files 
+        uses: actions/download-artifact@v1
+        with:
+          name: hello-world
+          path: test1
+      - name: Download files 
+        uses: actions/download-artifact@v1
+        with:
+          name: hello-world
+          path: test1   
+      - shell: bash
+        run: |
+          v1=`cat test1/1.txt`
+          v2=`cat test1/2.txt`
+          echo $v1
+          echo $v2
+      
+    
+
+--------------------------------------------
+name: containers
+on: push
+jobs:
+ node-docker:
+   runs-on: ubuntu-latest
+   container:
+     image: node:14.15.0-alpine3.12
+   steps:
+     - name: Log the node version
+       run: |
+            node -v
+            cat /etc/os-release 
+
+--------------------------------------------
+
+name: workflow-name
+on: push
+
+jobs:
+  job-name:
+    runs-on: ubuntu-latest
+    services:
+      service-name-1:
+        image: docker.io/httpd
+        ports:
+           - 3001:80
+
+      service-name-2:
+        image: docker.io/nginx
+        ports:
+           - 4001:80
+
+    steps:
+      - name: Get from service-1
+        run: curl http://localhost:3001
+
+      - name: Get from service-2
+        run: curl http://localhost:4001
+
+-----------------------------------------------------
+name: docker pull and push
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker login
+      env:
+        DOCKER_USER: {{secrets.DOCKER_USER}}
+        DOCKER_PASSWORD: {{secrets.DOCKER_PASSWORD}}
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - name: image create    
+      run: |
+        docker build ./web1 -f 1.df -t kharatramesh/vadapavimages:web1
+    - name: docker push
+      run: | 
+        docker push kharatramesh/vadapavimages:web1
+        

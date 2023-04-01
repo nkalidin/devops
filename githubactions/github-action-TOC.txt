@@ -1,0 +1,71 @@
+1. Set the applications : JAVA -- Springboot -- postgres
+2. react js
+----------------------------
+Friday : 
+https://github.com/Vishwastp89/CF
+https://github.com/jhunt/cf-push
+https://i0.wp.com/www.kevinrchant.com/wp-content/uploads/2021/05/GitHub-Actions-workflow.jpg?w=1374&ssl=1
+
+
+
+
+1. Env parameters --- github workflow -- secrets -- Workflow 
+2. Workflows --- deploy the containers on github runners
+3. Dockerfile --- image --- push --dockerhub ( Workflow)
+4. Setup selfhosted Runners
+---------------------------------------------------------- 
+5. Pushing workflow actions to private github actions
+6. Artifact testing
+6. Calling variables from file 
+7. using action/artificats instead runs-on
+8. Reuse workflows 
+9. Frontend-backend configuration
+10. Integrating with SonarKube/SwaggerUI
+11. Github Actions -- versioning while pushing code in jfrog artifact registery
+12. Scheduled triggers branchwise
+13. sequencing workflow
+14. Running actions using docker
+15. integrating issues/bugs with azureboard and tracking it 
+16. gradle build 
+17. Using Terraform scripts in CICD with Github actions
+1. Events, Schedulars, External Events & Filters
+2. Environment Variables, Encryptions and context
+3. Using Strategy, Matrix and Docker containers in Jobs
+4. Common Variable Declaration 
+5. Scheduled triggeers branchwise
+------------------------------------------------
+Discussion on 17th Feb
+
+1. Calling variables from file
+2. Release Versioning of application -- using jfrog
+3. Frontend-backend configuration
+4. Integrating with SonarKube/SwaggerUI
+5. sequencing workflow -- How to setup starter workflow -- Seperate CI/CD with approvals
+6. integrating issues/bugs with azureboard and tracking it and test plans from azure (Important)
+7. Using Terraform scripts in CICD with Github actions
+6. Running actions using docker
+8. Security in workflow
+9. (Github Repo to repo using webhook)
+----------------------------
+kharatramesh@gmail.com
+7208033455
+----------------------------
+
+----------------
+
+Discussion on 17th Feb
+
+1. Calling variables from file
+2. Release Versioning of application -- using jfrog
+3. Frontend-backend configuration
+4. Integrating with SonarKube/SwaggerUI
+5. sequencing workflow -- How to setup starter workflow -- Seperate CI/CD with approvals
+6. integrating issues/bugs with azureboard and tracking it and test plans from azure (Important)
+7. Using Terraform scripts in CICD with Github actions
+6. Running actions using docker
+8. Security in workflow
+9. (Github Repo to repo using webhook)
+----------------------------
+
+-----------------------
+

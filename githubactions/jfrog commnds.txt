@@ -1,0 +1,50 @@
+AKCp8kqqmokih18TMm2CaAXwcJRsgLhcqPqAWDY6gwa55Aa8FYYUK2QseceAPKg9UjE5v1XPi
+curl -H "X-JFrog-Art-Api:AKCp8kqqmokih18TMm2CaAXwcJRsgLhcqPqAWDY6gwa55Aa8FYYUK2QseceAPKg9UjE5v1XPi" -T <PATH_TO_FILE> "https://priar.jfrog.io/artifactory/priar/<TARGET_FILE_PATH>"
+
+Generate Identity token
+
+eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJiY1R5WWdvNi1BWEZacndEV3BTQXJGTFpaM3RvM3A4WjdoMF9sWDlIUFBNIn0.eyJleHQiOiJ7XCJyZXZvY2FibGVcIjpcInRydWVcIn0iLCJzdWIiOiJqZmFjQDAxZnc1eGFkeTVmYTlrMHAyZWZlM20wMmhzXC91c2Vyc1wva2hhcmF0cmFtZXNoQGdtYWlsLmNvbSIsInNjcCI6ImFwcGxpZWQtcGVybWlzc2lvbnNcL3VzZXIiLCJhdWQiOiIqQCoiLCJpc3MiOiJqZmZlQDAwMCIsImV4cCI6MTY3NzA1Nzg3NywiaWF0IjoxNjQ1NTIxODc3LCJqdGkiOiJlMWY2MWU5YS0xY2Q4LTQxZjMtYWU3MC02Y2FlMGMzZmU2NTgifQ.T7XClVjm6hGiJCb35yd7R3k4Bsx1c8OEL97vODmSN8WVXsZ3gqKeDtaPPVSV6G7cg51-DkUrKeNezm5-Nl5Xu8nza3LlyJ54AEhI3TV6FJX_IdSt6Yeeqco9C5b8a4aOd9YvgrFSsEb1f36IVGHT6FBoIOn8JCjYddPwG5qUBfGjvylxEgwO0LWey_1tN00xubS7rgDo4lcqDhfCtcz0flLPkxSsbLjdOtpHeEe7HD_PCffQredKYbeO9SftaoFRTFSZevozBUnSiyYfvvB8LIft8O_HQhkTge4A1oK6lL_7oCDwjJWwavSs4tyJptCT5y50vSOxS58W2etcz9b1_Q
+
+
+Server ID:                      priar
+JFrog platform URL:             https://priar.jfrog.io/
+Artifactory URL:                https://priar.jfrog.io/artifactory/
+Distribution URL:               https://priar.jfrog.io/distribution/
+Xray URL:                       https://priar.jfrog.io/xray/
+Mission Control URL:            https://priar.jfrog.io/mc/
+Pipelines URL:                  https://priar.jfrog.io/pipelines/
+Access token:                   ***
+Default:                        true
+------------
+
+jf
+clear
+cls
+jf version
+jf --version
+jfrog rt s
+jfrog rt s export
+jf rt s export
+jf --version
+jfrog rt ping
+jf rt ping
+jfrog c add
+jf c add
+jf c show
+jf c export priar
+jf c add
+jf rt ping
+jf c use priar1
+jf rt ping
+jf c use priar
+jf rt ping
+jf c add
+clear
+cls
+jf c add
+jfrog -v
+jf -v
+jfrog c add
+jf c add
+jf c export priar
+

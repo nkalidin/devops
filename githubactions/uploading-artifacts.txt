@@ -1,0 +1,20 @@
+name: upload artifacts
+on: [push]
+jobs:
+  upload-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: create directory
+        run: mkdir test1
+      - name: crate files/artifacts
+        run: |
+          cd test1
+          echo "hello1" > i1.html
+          echo "hellow2" > i2.html
+          echo "hello3" > i3.html
+          cd ..
+      - name: upload artifacts
+        uses: actions/upload-artifact@v2
+        with: 
+          name: artifacts-priar
+          path: test1

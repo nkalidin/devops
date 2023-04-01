@@ -1,0 +1,17 @@
+
+
+CI=true
+npm run test
+npm run test -- --coverage
+npm run build
+-------------
+Deploying the application using surge
+surge
+--------------------
+Using Prettier to Check for Code Formatting Rules
+npx prettier --check "**/*.js"
+
+npm run format:check
+  502  npm run format
+  503  npm run format:check
+  504  npm run format

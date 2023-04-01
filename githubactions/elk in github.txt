@@ -1,0 +1,18 @@
+https://anecdotes.dev/integrating-github-actions-logs-to-your-elasticsearch-306a81738106
+
+- name: Upload GitHub Action workflows logs to elastic 
+        uses: knutfr/github-actions-to-elk@v1.0.4
+        with:
+          githubToken: "${{ secrets.GITHUB_TOKEN }}"
+          githubOrg: "philips-internal"
+          githubRepository: "ampm-cicd-reference-application"
+          githubRunId: "${{ github.run_id }}"
+          elasticHost: "${{ secrets.ELASTIC_HOST }}"
+          elasticApiKeyId: "${{ secrets.ELASTIC_KEY_ID }}"
+          elasticApiKey: "${{ secrets.ELASTIC_API_KEY }}"
+          elasticIndex: "ci-cd"
+--------------------------------------------------------------------
+
+https://github.com/shafivulla339/SS-Actions-Auto-Version/blob/main/.github/workflows/CI.yml
+https://anecdotes.dev/integrating-github-actions-logs-to-your-elasticsearch-306a81738106
+https://github.com/angelalbertomv/act_elastic_job_log_collector

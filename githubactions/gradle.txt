@@ -1,0 +1,44 @@
+name: ci_cd_pipeline
+on:
+  push:
+    branches: [ branch** ]   
+  pull_request:
+    branches:
+     - main
+     - develop
+     
+jobs:
+  ci:
+    runs-on: [self-hosted, linux, X64, research]
+    steps:
+      - name: Step 1 - Checkout dev branch from GitHub
+        uses: actions/checkout@v2
+      
+      - name: Step 2 - Gradle wrapper version validation
+        uses: gradle/wrapper-validation-action@v1
+      
+      - name: Step 3 - Use Java version 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17
+          distribution: 'adopt'
+          cache: gradle
+                
+      - name: Step 4 - Granting permissions to gradlew file
+        run: chmod +x ./gradlew
+                  
+      - name: Step 5 - Build with Gradle
+        uses: gradle/gradle-build-action@v2.1.1
+        with:
+          arguments: build
+          
+      - name: Step 6 - Listing the build file name
+        run: |
+          ls '${{ github.workspace }}'/build/libs
+
+------------------------------
+I m getting graddle wrapper error
+Run gradle/wrapper-validation-action@v1
+Error: Gradle Wrapper Validation Failed!
+  See https://github.com/gradle/wrapper-validation-action#reporting-failures
+

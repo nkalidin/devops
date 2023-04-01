@@ -1,0 +1,39 @@
+name: Example workflow
+on:
+  workflow_dispatch
+jobs:
+  run-demo-app:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        #submodules: 'recursive'
+        token: ${{ secrets.GITHUB }}
+         
+    - name: Set up Python 3.7.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.7.8'
+    - name: Run script that echo outputs
+      run: |
+        ls
+        chmod a+x main.py
+        python main.py
+ 
+  upload-logs-to-elastic:
+     runs-on: ubuntu-latest
+     needs: run-demo-app
+     if: always()
+     steps:
+     - name: Upload GitHub Action workflows logs to elastic
+       uses: shahargl/upload-github-workflow-logs-to-elastic@1.0.13
+       with:
+         github_token: "${{ secrets.GITHUB }}"
+         github_org: "priar-technoworld"
+         github_repository: "elasticsearch"
+         github_run_id: "${{ github.run_id }}"
+         elastic_host: "https://priar-elasticsearch.com:9243"
+         elastic_api_key_id: "${{ secrets.ELASTIC_KEY_ID }}"
+         elastic_api_key: "${{ secrets.ELASTIC_API_KEY }}"
+         elastic_index: "ci-cd"
