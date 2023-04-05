@@ -5,3 +5,25 @@ $ sudo apt install software-properties-common
 $ sudo add-apt-repository --yes --update ppa:ansible/ansible
 $ sudo apt install ansible
 ansible --version
+------------------
+
+ 41  # host inventory
+   42  cd /etc/ansible/
+   43  ls
+   44  vi hosts
+   45  pwd
+   46  ansible webserver -m command -a 'hostname'
+   47  ansible database -m command -a 'hostname'
+   48  ansible google -m command -a 'hostname'
+   49  ansible google -m command -a 'uname -r'
+   50  ansible google -m command -a 'cat /etc/hosts'
+   51  ansible google -m command -a 'date'
+   52  ansible google -m command -a 'cat /etc/os-release'
+   53  history
+   54  # update inventory file
+   55  # adhoc commands
+   56  cat hosts
+   57  vi hosts
+   58  ansible vadapav --list-hosts
+   59  ansible webserver --list-hosts
+   60  history
