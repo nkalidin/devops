@@ -1,0 +1,16 @@
+[root@master project1]# cat loop2.yaml
+---
+- name: exploring variables and loop
+  hosts: all
+  vars:
+    mail1:
+      - postfix
+      - dovecot
+      - tree
+      - screen
+  tasks:
+    - name: installing variaous packages
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ mail1 }}"
