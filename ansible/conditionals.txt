@@ -1,0 +1,12 @@
+[root@master project1]# cat conditionals.yaml
+---
+- name: learn conditionals
+  hosts: all
+  tasks:
+  - name: install packages
+    yum:
+      name: mariadb-server
+    loop: "{{ ansible_mounts }}"
+    when: item.mount == "/" and item.size_available > 3000000 and item.fstype == "xfs"
+
+...
