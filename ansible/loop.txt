@@ -1,0 +1,42 @@
+[root@master project1]# cat loop.yaml
+---
+- name: learn loops
+  hosts: all
+  tasks:
+  - name: learn loops using installtion
+    yum:
+       name: httpd
+       state: present
+
+  - name: learn loops using installtion
+    yum:
+       name: tree
+       state: present
+  - name: learn loops using installtion
+    yum:
+       name: screen
+       state: present
+  - name: learn loops using installtion
+    yum:
+       name: samba
+       state: present
+
+...
+------------------------------------------------------------------------
+
+[root@master project1]# cat loop1.yaml
+---
+- name: learn loops
+  hosts: all
+  tasks:
+  - name: learn loops using installtion
+    yum:
+       name: "{{ item }}"
+       state: absent
+    loop:
+      - httpd
+      - tree
+      - samba
+      - screen
+
+...
