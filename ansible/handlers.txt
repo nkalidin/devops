@@ -1,0 +1,26 @@
+[root@master project1]# cat handler.yaml
+---
+- name: handlers
+  hosts: vadapav
+  tasks:
+    - name: install httpd
+      yum:
+        name: httpd
+        state: present
+
+    - name: starthttpd
+      service:
+        name: httpd
+        state: restarted
+        enabled: yes
+
+      notify:
+        - samosafile
+
+  handlers:
+    - name: samosafile
+      copy:
+        content: "I like vadapav"
+        dest: /var/www/html/index.html
+
+...
