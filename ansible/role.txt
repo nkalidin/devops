@@ -1,0 +1,27 @@
+532  ansible-galaxy role init project1
+  533  ls
+  534  ansible-galaxy role init project2
+  535  ls
+  536  ansible-galaxy role init project3
+  537  ls
+  538  cd project1/
+  539  ls
+  540  ansible-galaxy role list
+  541  pwd
+  542  cd /etc/ansible/roles/
+  543  ls
+  544  ansible-galaxy role init role1
+  545  ansible-galaxy role init role2
+  546  ansible-galaxy role init role3
+  547  ansible-galaxy role init role4
+  548  ansible-galaxy role list
+  549  cd /hcl/
+  550  ls
+  551  vi /etc/ansible/ansible.cfg
+  552  ansible-galaxy role list
+  553  clear
+  554  tree project1
+  555  yum install tree -y
+  556  clear
+  557  ls
+  558  tree project1
