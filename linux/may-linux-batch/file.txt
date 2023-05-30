@@ -1,0 +1,108 @@
+  2  mkdir /vadapav/
+    3  # 1/2/3/4/5/6/7/8/9
+    4  mkdir -p /vadapav/1/2/3/4/5/6/7/8/9
+    5  cd /vadapav/
+    6  ls
+    7  cd 1/
+    8  ls
+    9  cd 2/
+   10  pwd
+   11  ls
+   12  cd 3/
+   13  ls
+   14  cd 4/
+   15  ls
+   16  cd 5
+   17  ls
+   18  cd 6
+   19  ls
+   20  cd 7/
+   21  ls
+   22  cd 8
+   23  ls
+   24  cd 9
+   25  pwd
+   26  cd ..
+   27  pwd
+   28  cd ../..
+   29  pwd
+   30  cd ../../..
+   31  pwd
+   32  cd ../..
+   33  pwd
+   34  cd ..
+   35  cd 1/2/3/4/5/6/7/8/9/
+   36  pwd
+   37  cd -
+   38  pwd
+   39  cd ..
+   40  cd ../../../../../
+   41  cd ..
+   42  # to delete directory
+   43  rm 1
+   44  rm -r 1
+   45  mkdir -p /vadapav/1/2/3/4/5/6/7/8/9
+   46  rm -rf 1
+   47  cd /etc/
+   48  ls
+   49  cd ..
+   50  cd /vadapav/
+   51  ls
+   52  clear
+   53  mkdir 1
+   54  cp 1 2
+   55  cp -r 1 2
+   56  ls
+   57  rm -fr 1
+   58  ls
+   59  rm -fr 2
+   60  rm -fr samosa
+   61  ls
+   62  mkdir samosa
+   63  mkdir /samosa
+   64  mkdir /home/samosa
+   65  mkdir -p /india/maha/mumbai/navimumbai/vashi/kharghar
+   66  pwd
+   67  mkdir  /india/maha/mumbai/navimumbai/vashi/kharghar/sector15/ground/15/3
+   68  mkdir  -p /india/maha/mumbai/navimumbai/vashi/kharghar/sector15/ground/15/3
+   69  clear
+   70  tree /india
+   71  mkdir -p /vadapav/1/2/3/4/5/6/7/8/9
+   72  tree /vadapav/
+   73  clear
+   74  rm -fr *
+   75  s
+   76  ls
+   77  clear
+   78  touch 1.txt
+   79  ls
+   80  ls -l 1.txt
+   81  touch 2.txt
+   82  ls-l
+   83  ls -l
+   84  touch {1..100000}.txt
+   85  ls
+   86  clear
+   87  # touch {1..100000}.txt
+   88  tocuh {a..z}{1..10}{A..C}
+   89  touch {a..z}{1..10}{A..C}
+   90  ls
+   91  clear
+   92  date
+   93  date "+%d"
+   94  date "+%d-%m"
+   95  date "+%d-%m-%y"
+   96  date "+%d-%m-%Y"
+   97  date "+%d-%b-%Y"
+   98  date "+%d-%b-%Y:%H:%s"
+   99  date "+%d-%b-%Y:%H:%m:%s"
+  100  date
+  101  date "+%d-%b-%Y:%H:%M:%s"
+  102  touch backup.`date "+%d-%b-%Y:%H:%M:%s"`
+  103  ls -l backup.30-May-2023\:21\:26\:1685462166
+  104* touch backup.
+  105  ls -l backup.*
+  106  touch backup.`date "+%d-%b-%Y:%H:%M:%s"`
+  107  ls -l backup.*
+  108  touch backup.`date "+%d-%b-%Y:%H:%M:%s"`
+  109  ls -l backup.*
