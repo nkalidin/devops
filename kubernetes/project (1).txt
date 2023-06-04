@@ -1,0 +1,276 @@
+
+*A) Project with firezilla on Docker :-   
+   
+    *  amazon-linux-extras install docker
+    *  systemctl enable --now docker
+    *  curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+    *  chmod +x /usr/local/bin/docker-compose
+    *  cp /usr/local/bin/docker-compose /usr/bin
+   
+    1  cd /home/ec2-user
+    2  ls
+    3  cd project1
+    4  ls
+    5  touch frontend.df backend.df project.yaml
+    6  vi frontend.df
+    7  vi backend.df
+    8  vi project.yaml
+
+    9  docker-compose -f project.yaml up -d
+   10  docker ps
+   11  docker exec -it backend bash
+   12  psql -U postgres -h localhost
+   13  \l
+   14  \c sprint1
+   15  \dt
+   16 select * from admin_details;
+   17 INSERT INTO admin_details VALUES(1001,989856985,'Siddhant',123123123,'1997-08-10');
+
+----------------------------------------------------------------------------------
+
+*frontend.df
+
+FROM openjdk:8-jdk-alpine
+ARG JAR_FILE=*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+*backend.df
+       
+FROM postgres
+ENV POSTGRES_DB=sprint1
+
+*project.yaml
+ 
+version: "3.9"
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: ./frontend.df
+    container_name: frontend
+    ports:
+    - "9090:8083"
+    depends_on:
+    - db
+    environment:
+    - servername=db
+    - username=postgres
+    - password=1234
+  db:
+    build:
+      context: .
+      dockerfile: ./backend.df
+    container_name: backend
+    ports:
+    - "5432:5432"
+    environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=1234
+
+----------------------------------------------------------------
+
+*push images to docker hub :-
+  
+   1  docker ps -a
+   2  docker login
+   3  docker images
+
+   5  docker tag 7b98648f37e1 siddhant1867/sprint:frontend_v1
+   6  docker push siddhant1867/sprint:frontend_v1
+
+   7  docker tag 3516448ecf78 siddhant1867/sprint:backend_v1
+   8  docker push siddhant1867/sprint:backend_v1
+
+
+*************************************************************************
+
+
+*B) Project on Docker by pushed images :- 
+
+    5  amazon-linux-extras install docker
+    6  systemctl enable --now docker
+    7  curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+    8  chmod +x /usr/local/bin/docker-compose
+    9  cp /usr/local/bin/docker-compose /usr/bin
+
+   10  mkdir /sprint1
+   11  cd /sprint1
+   12  kubectl create ns sprint
+   13  touch dp1.yaml
+   14  vi dp1.yaml
+   15  docker-compose -f dp1.yaml up -d
+   16  docker ps
+   
+   11  docker exec -it backend bash
+   12  psql -U postgres -h localhost
+   13  \l
+   14  \c sprint1
+   15  \dt
+   16 select * from admin_details;
+   17 INSERT INTO admin_details VALUES(1001,989856985,'Siddhant',123123123,'1997-08-10');
+-------------------------------------------------------------------------
+
+*dp1.yaml
+
+
+version: "3.9"
+services:
+  frontend:
+    image: siddhant1867/sprint:frontend_v1
+    container_name: frontend
+    ports:
+    - "9090:8083"
+    depends_on:
+    - db
+    environment:
+    - servername=db
+    - username=postgres
+    - password=1234
+  db:
+    image: siddhant1867/sprint:backend_v1
+    container_name: backend
+    ports:
+    - "5432:5432"
+    environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=1234
+
+
+************************************************************************* 
+
+
+*C) Project on Docker by pushed images :- 
+
+    1  mkdir /sprint2
+    2  cd /sprint2
+
+    3  kubectl create ns sprint
+    4  touch sts.yaml
+    5  vi sts.yaml
+    6  kubectl create -f sts.yaml
+
+              * If changes in sts.yaml then :- 
+                kubectl apply -f sts.yaml
+
+    7  kubectl get pods -n sprint
+    8  kubectl describe sts projectsts -n sprint
+
+---------------------------------------------------------------------
+   
+    1  touch dp.yaml
+    2  vi dp.yaml
+
+    3  kubectl create -f dp.yaml
+    4  kubectl get deployment -n sprint
+    5  kubectl get pods -n sprint
+    6  kubectl describe deployment/projectdp -n sprint
+
+    7  kubectl expose deployment/projectdp --name=projectdp-s1 --type=NodePort --port=8083 -n sprint
+    8  kubectl get svc -n sprint
+
+
+   11  kubectl exec -it projectsts-0 bash -n sprint
+   12  psql -U postgres -h localhost
+   13  \l
+   14  \c sprint1
+   15  \dt
+   16 select * from admin_details;
+   17 INSERT INTO admin_details VALUES(1001,989856985,'Siddhant',123123123,'1997-08-10');
+
+------------------------------------------------------------------------
+
+*sts.yaml
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: projects1
+  namespace: sprint
+  labels:
+   app: project
+spec:
+  ports:
+  - port: 5432
+  clusterIP: None
+  selector:
+    app: project
+...
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: project
+  name: projectsts
+  namespace: sprint
+spec:
+  serviceName: projects1
+  replicas: 3
+  selector:
+    matchLabels:
+      app: project
+  template:
+    metadata:
+      labels:
+        app: project
+    spec:
+      containers:
+      - image: siddhant1867/sprint:backend_v1
+        name: backendkb
+        ports:
+        - containerPort: 5432
+        env:
+          - name: POSTGRES_USER
+            value: 'postgres'
+          - name: POSTGRES_PASSWORD
+            value: '1234'
+...
+
+
+-----------------------------------------------------------------------------
+
+*dp.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: project
+  name: projectdp
+  namespace: sprint
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: project
+  template:
+    metadata:
+      labels:
+        app: project
+    spec:
+      containers:
+      - image: siddhant1867/sprint:frontend_v1
+        name: frontendkb
+        ports:
+        - containerPort: 8083
+        env:
+          - name: servername
+            value: 'projects1'
+          - name: username
+            value: 'postgres'
+          - name: password
+            value: '1234'
+
+*****************************************************************************
+
+
+
+
+
+
+
+
+
+
