@@ -6,6 +6,18 @@ $ sudo add-apt-repository --yes --update ppa:ansible/ansible
 $ sudo apt install ansible
 ansible --version
 ------------------
+ANother Method to install ansible on Ubuntu
+  
+      apt update -y
+      apt install python3-pip
+      python3 -m pip install --user ansible
+      python3 -m pip show ansible
+      cp /root/.local/bin/ansible /usr/bin/
+      ansible --version
+   
+
+
+
 
  41  # host inventory
    42  cd /etc/ansible/
