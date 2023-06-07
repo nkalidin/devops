@@ -23,3 +23,32 @@
   247  setfacl -x g:IT /home/mangu/
   248  setfacl -x u:changu /home/mangu/
   249  getfacl /home/mangu/
+  -----------------------------------
+    523  useradd changu
+  524  userdel -r changu
+  525  userdel -r mangu
+  526  clear
+  527  useradd changu
+  528  useradd mangu
+  529  passwd changu
+  530  passwd mangu
+  531  chmod o+x /home/mangu/
+  532  chmod o+r /home/mangu/
+  533  chmod o+w /home/mangu/
+  534  chmod o-rwx /home/mangu/
+  535  # ACL
+  536  setfacl -m u:changu:r-x /home/mangu/
+  537  ls -ld /home/mangu/
+  538  getfacl /home/mangu/
+  539  groupadd IT
+  540  setfacl -m g:IT:r-x /home/mangu/
+  541  getfacl /home/mangu/
+  542  setfacl -x g:IT /home/mangu/
+  543  getfacl /home/mangu/
+  544  setfacl -x u:changu /home/mangu/
+  545  getfacl /home/mangu/
+  546  ls -ld /home/mangu/
+  547  setfacl -b  /home/mangu/
+  548  ls -ld /home/mangu/
+  549  history
+
