@@ -51,4 +51,28 @@
   547  setfacl -b  /home/mangu/
   548  ls -ld /home/mangu/
   549  history
+  -------------------------------------
+    673  useradd a1
+  674  useradd b1
+  675  useradd c1
+  676  useradd d1
+  677  useradd e1
+  678  tail -n 5 /etc/passwd
+  679  # username:x:uid:primary group id : commnets : home directory : shell
+  680  tail -n /etc/shadow
+  681  tail -n 5 /etc/shadow
+  682  # 99999 : password will expired for these many days
+  683  # 7 : warning for 7 days
+  684  # 19515 : number of days from epoch year -- 1st Jan 1970
+  685  # 0 --- password can be changed anytime
+  686  # !! -- passord is not set yet
+  687  passwd a1
+  688  tail -n 5 /etc/shadow
+  689  userdel -r a1
+  690  userdel -r b1
+  691  userdel -r c1
+  692  userdel -r d1
+  693  userdel -r e1
+  694  history
+
 
