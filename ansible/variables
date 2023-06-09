@@ -1,0 +1,23 @@
+Create users.yml file in vars folder 
+user: a3
+uid: 3000
+shell: /bin/bash
+home: /home/a3
+
+root@vm-0:/yamls# cat v2.yaml
+---
+- name: trying variables from file
+  hosts: web
+  vars:
+    user: a4
+  vars_files:
+    - "vars/users.yml"
+  tasks:
+  - name: task1 to create user {{ user }}
+    user:
+      name: "{{ user }}"
+      uid: "{{ id }}"
+      shell: "{{ shell }}"
+      comment: "{{ comment }}"
+      home: "{{ home }}"
+...
