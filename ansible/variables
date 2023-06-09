@@ -21,3 +21,23 @@ root@vm-0:/yamls# cat v2.yaml
       comment: "{{ comment }}"
       home: "{{ home }}"
 ...
+-------------------------------------
+
+root@vm-0:/yamls# cat v3.yaml
+---
+- name: trying variables from file
+  hosts: web
+  vars:
+    emp:
+      - a12
+      - a13
+      - a14
+      - a15
+  tasks:
+  - name: print employee names
+    debug:
+      msg: "{{ emp[0:3] }}"
+  - name: add user
+    user:
+      name: "{{ emp[1:3] }}"
+...
