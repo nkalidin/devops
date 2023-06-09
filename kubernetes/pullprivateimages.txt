@@ -1,0 +1,25 @@
+docker pull httpd
+docker tag httpd:latest 500452834600.dkr.ecr.us-east-1.amazonaws.com/vadapav:webserver
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 500452834600.dkr.ecr.us-east-1.amazonaws.com
+docker push 500452834600.dkr.ecr.us-east-1.amazonaws.com/vadapav:webserver
+--------------
+
+kubectl create ns test
+kubectl create secret docker-registry secret1 --docker-server=500452834600.dkr.ecr.us-east-1.amazonaws.com/vadapav --docker-username=AWS --docker-password=$(aws ecr get-login-password) --namespace test
+--------------------
+[root@ip-172-31-94-7 ~]# cat image.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: pod1
+  name: pod1
+  namespace: test
+spec:
+  containers:
+  - image: 500452834600.dkr.ecr.us-east-1.amazonaws.com/vadapav:webserver
+    name: pod1
+  imagePullSecrets:
+  - name: secret1
+-------------------------
