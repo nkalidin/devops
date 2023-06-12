@@ -1,0 +1,70 @@
+https://docs.ansible.com/ansible/latest/collections/community/mysql/mysql_db_module.html
+
+https://medium.com/@kelom.x/ansible-mysql-installation-2513d0f70faf
+
+root@master:/yamls/db/ansible-install-mysql# cat db.yml
+- name: setup Mysql with medium_db db and remote login
+  become: yes
+  hosts: web
+  tasks:
+    - name: Installing Mysql  and dependencies
+      package:
+         name: "{{item}}"
+         state: present
+         update_cache: yes
+      loop:
+        - mysql-server
+        - mysql-client
+        - python3-mysqldb
+        - libmysqlclient-dev
+      become: yes
+
+    - name: start and enable mysql service
+      service:
+         name: mysql
+         state: started
+         enabled: yes
+
+    - name: creating mysql user (medium_post)
+      mysql_user:
+         name: "{{db_user}}"
+         password: "{{db_pass}}"
+         priv: '*.*:ALL'
+         host: '%'
+         state: present
+
+    - name: creating medium_db
+      mysql_db:
+         name: "{{db_name}}"
+         state: present
+
+    - name: Enable remote login to mysql
+      lineinfile:
+         path: /etc/mysql/mysql.conf.d/mysqld.cnf
+         regexp: '^bind-address'
+         line: 'bind-address = 0.0.0.0'
+         backup: yes
+      notify:
+        - Restart mysql
+
+  handlers:
+    - name: Restart mysql
+      service:
+        name: mysql
+        state: restarted
+
+
+===============================================
+
+
+root@master:/yamls/db/ansible-install-mysql# ls
+README.md  db.yml  group_vars
+root@master:/yamls/db/ansible-install-mysql# cd group_vars/
+root@master:/yamls/db/ansible-install-mysql/group_vars# ls
+all
+root@master:/yamls/db/ansible-install-mysql/group_vars# cat all
+db_user: admin
+db_pass: admin123
+db_name: medium_db
+root@master:/yamls/db/ansible-install-mysql/group_vars#
+=================================================================
