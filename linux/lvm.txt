@@ -97,4 +97,68 @@
   537  # lvcreate
   538  # mkfs.ext4
   539  # mount
+---------------------------------------------
+  591  yum install dosfstools -y
+  592  mkfs.vfat -F 32 /dev/vg01/pavbhaji
+  593  fsck -y /dev/vg01/pavbhaji
+  594  mkfs.vfat -F 32 /dev/vg01/pavbhaji
+  595  mkfs.vfat  /dev/vg01/pavbhaji
+  596  e2fsck /dev/vg01/pavbhaji
+  597  e2fsck -b 8193 /dev/vg01/pavbhaji
+  598  mkfs.fat -F 32 /dev/vg01/pavbhaji
+  599  fsck -y /dev/vg01/pavbhaji
+  600  mount /dev/vg01/pavbhaji /mnt
+  601  df -h
+  602  vgs
+  603  lvextend -L+200M /dev/vg01/pavbhaji
+  604  resize2fs /dev/vg01/pavbhaji
+  605  history
+  606  clear
+  607  df -h
+  608  history
+  609  vgdisplay -v vg01
+  610  lvcreate -L 100M -n test -v vg01
+  611  lvcreate -L 96M -n test1 -v vg01
+  612  vgs
+  613  lvs
+  614  lvcreate -L 95M -n test2 -v vg01
+  615  lvs
+  616  lvcreate -L 107M -n test3 -v vg01
+  617  lvs
+  618  lvcreate -l 10 -n test4 vg01
+  619  lvcreate -l 9 -n test4 vg01
+  620  lvs
+  621  history
+  622  # create a partition using 10 PE
+  623  clear
+  624  vgs
+  625  vgcfgbackup vg01 -f vg01.bkp
+  626  vi vg01.bkp
+  627  df -h
+  628  umount /mnt
+  629  vgremove vg01
+  630  lvs
+  631  vgs
+  632  pvs
+  633  vgcfgrestore --help
+  634  vgcfgrestore -f vg01.bkp vg01
+  635  vgs
+  636  lvs
+  637  vgchange -a y vg01
+  638  mount /dev/vg01/pavbhaji /dosa
+  639  df -h
+  640  umount /dosa
+  641  vgchange -a n vg01
+  642  vgchange -a y vg01
+  643  vgexport --help
+  644  history
+  645  # unmount
+  646  lvs
+  647  lvremove lv03
+  648  lvremove /dev/vg01/lv03
+  649  vgremove vg01
+  650  vgs
+  651  lvs
+  652  pvs
+  653  pvremove /dev/sda{5..7}
 
