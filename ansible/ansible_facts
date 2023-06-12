@@ -4,7 +4,24 @@ ansible web -m ansible.builtin.setup -a 'filter=ansible_*_ipv4'
 ansible web -m ansible.builtin.setup -a 'filter=ansible_*_hostname'
 ansible web -m ansible.builtin.setup -a 'filter=ansible_hostname'
 
+------------------
+root@master:/yamls# cat facts.yaml
+---
+- name: gathering facts
+  hosts: web
+  tasks:
+  - name: print hostname
+    debug:
+      msg:
+        My machine hostnam is  {{ ansible_hostname }}
+        and fqdn is {{ ansible_facts['fqdn'] }}
+        and ipv4 address is {{ ansible_facts.default_ipv4.address }}
+         and ipv4 address is {{ ansible_facts['default_ipv4']['address'] }}
+...
 
+
+
+-----------------
 
 
 # Display facts from all hosts and store them indexed by I(hostname) at C(/tmp/facts).
