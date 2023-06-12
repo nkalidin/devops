@@ -67,4 +67,34 @@
  1123  # pvremove /dev/sda7
  1124  # vgcreate -s 8M google /dev/sda7 /dev/sda8
  1125  # vgcreate -s 32M google /dev/sda7 /dev/sda8
+---------------------------------------------------
+
+ 512  # create pv
+  513  yum install lvm2 -y
+  514  pvcreate /dev/sda5
+  515  pvcreate /dev/sda6
+  516  pvcreate /dev/sda7
+  517  pvs
+  518  pvdisplay -v /dev/sda5
+  519  pvdisplay -v /dev/sda6
+  520  vgcreate -s 8M vg01 /dev/sda5 /dev/sda6
+  521  vgs
+  522  man vgs
+  523  clear
+  524  vgs
+  525  lvcreate -L 100M -n vadapav -v vg01
+  526  lvcreate -L 200M -n samosa -v vg01
+  527  lvs
+  528  mkfs.ext4 /dev/vg01/samosa
+  529  mkfs.ext4 /dev/vg01/vadapav
+  530  mkdir /vadapav
+  531  mkdir /samosa
+  532  mount /dev/vg01/vadapav /vadapav
+  533  mount /dev/vg01/samosa /samosa
+  534  df -h
+  535  # pvcreate
+  536  # vgcreate
+  537  # lvcreate
+  538  # mkfs.ext4
+  539  # mount
 
