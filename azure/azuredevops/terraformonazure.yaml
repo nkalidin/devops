@@ -1,0 +1,69 @@
+trigger: none
+pool:
+  #vmImage: ubuntu-latest
+  name: dev
+variables:
+  bkstrgrg: 'test'
+  bkstrg: 'priartest01'
+  bkcontainer: 'tfstate'
+  bkstrkey: 'devpipeline.terrafor.tfstate'
+stages:
+- stage: tfvalidate
+  jobs:
+    - job: validate
+      continueOnError: false
+      steps:
+        - task: TerraformInstaller@1
+          displayName: tfinstall
+          inputs:
+            terraformVersion: 'latest'
+        
+        - task: TerraformTaskV4@4
+          displayName: tfinit
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            backendServiceArm: 'npstackro-1676009602788(01e8c0b2-cb6d-48c7-9a53-38da6aadfb97)'
+            backendAzureRmResourceGroupName: 'test'
+            backendAzureRmStorageAccountName: 'tfpipeline1'
+            backendAzureRmContainerName: 'tfstate'
+            backendAzureRmKey: 'tf/terraform.tfstate'
+        
+        - task: TerraformTaskV4@4
+          displayName: validate
+          inputs:
+            provider: 'azurerm'
+            command: 'validate'
+- stage: tfdeploy
+  condition: succeeded('tfvalidate')
+  dependsOn: tfvalidate
+  jobs:
+    - job: apply
+      steps:
+        - task: TerraformInstaller@1
+          displayName: tfinstall
+          inputs:
+            terraformVersion: 'latest'
+        
+        - task: TerraformTaskV4@4
+          displayName: tfinit
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            backendServiceArm: 'npstackro-1676009602788(01e8c0b2-cb6d-48c7-9a53-38da6aadfb97)'
+            backendAzureRmResourceGroupName: 'test'
+            backendAzureRmStorageAccountName: 'tfpipeline1'
+            backendAzureRmContainerName: 'tfstate'
+            backendAzureRmKey: 'tf/terraform.tfstate'
+        - task: TerraformTaskV4@4
+          displayName: tfplan
+          inputs:
+              provider: 'azurerm'
+              command: 'plan'
+              environmentServiceNameAzureRM: 'npstackro-1676009602788(01e8c0b2-cb6d-48c7-9a53-38da6aadfb97)'
+        - task: TerraformTaskV4@4
+          displayName: tfapply
+          inputs:
+            provider: 'azurerm'
+            command: 'apply'
+            environmentServiceNameAzureRM: 'npstackro-1676009602788(01e8c0b2-cb6d-48c7-9a53-38da6aadfb97)'
