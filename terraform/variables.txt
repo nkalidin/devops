@@ -1,0 +1,84 @@
+variable "disk" {
+  type    = string
+  default = "ssd"
+}
+variable "age" {
+  type    = number
+  default = 25
+
+}
+
+variable "instance_type" {
+  type    = string
+  default = "t2.micro"
+}
+# list of type string
+variable "name1" {
+  type    = list(string)
+  default = ["uat", "prod", "dev", "test1"]
+}
+
+# list of type number
+variable "name2" {
+  type    = list(number)
+  default = [21, 23, 25]
+}
+
+# combination of both
+variable "name3" {
+  type    = list(any)
+  default = ["staging", 29]
+
+}
+
+# boolean
+
+variable "logical" {
+  type    = bool
+  default = false
+
+}
+
+variable "map1" {
+  type = map(string)
+  default = {
+    "public_cidr"  = "100.0.0.0/24",
+    "private_cidr" = "100.0.1.0/24"
+    "age"          = "25"
+
+  }
+}
+
+variable "map2" {
+  type = map(any)
+  default = {
+    "uat"  = "ap-south-1",
+    "prod" = "us-east-1",
+    "dev"  = "us-east-2"
+    "age"  = 25
+  }
+  #nullable = false
+}
+
+variable "keys" {
+  type = map(string)
+  default = {
+    "access_key" = "AKIAXJBKQHUUMEC2EJOV",
+    "secret_key" = "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"
+  }
+  sensitive = true
+
+}
+
+# variable "tuple1" {
+#    type    = tuple([list(any)])
+#    default = ([23, 24, 25, 26])
+#  }
+resource "aws_instance" "instance1" {
+  count = length(var.name1)
+  ami           = "ami-0f5ee92e2d63afc18"
+  instance_type = var.instance_type
+  tags = {
+    Name = var.name1[count.index]
+  }
+}
