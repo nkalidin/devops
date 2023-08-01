@@ -1,0 +1,15 @@
+resource "aws_iam_user" "addusers" {
+  # for_each = var.users
+  # name     = each.value
+
+  #  for_each = var.names
+  #  name = each.key
+
+  count = length(var.names)
+  name  = var.names[count.index]
+}
+
+
+output "printnames" {
+  value = [for name in var.names : name]
+}
