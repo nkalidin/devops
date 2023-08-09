@@ -1,0 +1,20 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "5.11.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = var.region
+}
+
+
+resource "null_resource" "null1" {
+  provisioner "local-exec" {
+    command = "echo 123 >> dosa.txt"
+  }
+}
+ 
