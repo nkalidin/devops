@@ -1,0 +1,9 @@
+ 1  subscription-manager register
+    2  subscription-manager auto-attach
+     4  subscription-manager repos --enable codeready-builder-for-rhel-9-$(arch)-rpms
+    5  dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+    6  dnf install ansible -y
+    7  cd /etc/ansible/
+    8  ls
+   10  ansible --version
+   11  history
