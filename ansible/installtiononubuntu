@@ -15,6 +15,20 @@ ANother Method to install ansible on Ubuntu
       cp /root/.local/bin/ansible /usr/bin/
       ansible --version
    
+-------------------------------------------
+Setting up passwordless authentication
+
+On ansible master :
+
+16  ssh-keygen -t rsa
+17  cat /root/.ssh/id_rsa.pub
+ssh-copy-id root@client1
+ssh-copy-id root@client2
+
+ssh clinet1
+ssh clinet2
+-----------------------------------------------
+
 
 
 
