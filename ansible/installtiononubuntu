@@ -53,3 +53,31 @@ ssh clinet2
    58  ansible vadapav --list-hosts
    59  ansible webserver --list-hosts
    60  history
+ 26  vi hosts
+   27  ansible email --list-hosts
+   28  cat hosts
+   29  ansible dns--list-hosts
+   30  ansible dns --list-hosts
+   31  ansible web --list-hosts
+   32  ansible db --list-hosts
+   33  ansible web -m ping
+   34  ansible db -m ping
+   35  ansible 10.0.0.100 -m ping
+   36  clear
+   37  ansible web -m command -a 'hostname'
+   38  ansible web -m command -a 'date'
+   39  ansible web -m command -a 'hostnamectl'
+   40  ansible db -m command -a 'hostnamectl'
+   41  vi hosts
+   42  clear
+   43  ansible db -m command -a 'lsblk'
+   44  ansible web -m command -a 'lsblk'
+   45  history
+   46  ansible all -m command -a 'lsblk'
+   47  clear
+   48  ansible-doc -l | less
+   49  ansible-doc -l | grep user
+   50  clear
+   51  ansible-doc user
+   52  ansible all -m user -a 'name=user1 uid=9009 comment=SstemAdmin'
+   53  ansible all -m user -a 'name=user1 state=absent'
