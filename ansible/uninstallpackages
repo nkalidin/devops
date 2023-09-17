@@ -1,0 +1,13 @@
+[root@master yamls]# cat uninstallpackages.yaml
+---
+- name: unsinstall
+  hosts: all
+  tasks:
+  - name: uninstall packages
+    dnf:
+      name:  httpd
+      state: absent
+  - name: uninstall packages
+    dnf:
+      name:  mariadb-server
+      state: absent
