@@ -1,0 +1,11 @@
+[root@master yamls]# cat user.yaml
+---
+- name: create user
+  hosts: all
+  tasks:
+  - name: create user A1
+    user:
+      name: a1
+      # uid: 3001
+      # comment: "System Admin"
+      state: absent
