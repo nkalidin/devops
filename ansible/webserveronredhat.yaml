@@ -1,0 +1,23 @@
+[root@master yamls]# cat installpackeges.yaml
+---
+- name: install webserver
+  hosts: all
+  tasks:
+  - name: install apache server
+    dnf:
+      name: httpd
+      state: present
+  - name: start apache server
+    service:
+      name: httpd
+      state: started
+#  - name: enable httpd service in firewall
+ #   firewalld:
+  #     service: httpd
+   #    permanent: true
+    #   state: enabled
+
+  - name: copy index.html
+    copy:
+      src: /yamls/index.html
+      dest: /var/www/html
