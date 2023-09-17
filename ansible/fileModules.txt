@@ -1,0 +1,48 @@
+[root@master yamls]# cat file.yaml
+---
+#https://docs.ansible.com/ansible/latest/collections/ansible/builtin/lineinfile_module.html
+- name: creating files on client machines
+  hosts: all
+  tasks:
+  - name: create 1.txt file at /home folder
+    file:
+      path: /home/1.txt
+      state: touch
+      mode: '777'
+  - name: create a directory
+    file:
+      path: /home/A1
+      state: directory
+      mode: '1777'
+  - name: add a beutiful message in 1.txt file
+    copy:
+      dest: /home/1.txt
+      content: 'This is a beautiful day '
+  - name: add line in a file
+    lineinfile:
+      path: /home/1.txt
+      line: 'We are learning ansile file management modules'
+      state: present
+  - name: add a block in a file
+    blockinfile:
+      path: /home/1.txt
+      block: |
+        First line in the additional block of text
+        Second line in the additional block of text
+      state: present
+  - name: disable selinux
+    lineinfile:
+      path: /etc/selinux/config
+      regexp: '^SELINUX='
+      line: SELINUX=disabled
+  - name: replacing line where specific string in a line
+    lineinfile:
+      path: /home/1.txt
+      search_string: 'beautiful'
+      line: very nice
+  - name: insert line after specfic condition
+    lineinfile:
+      path: /home/1.txt
+      regexp: '^resting on  sunday '
+      insertafter: '^resting on  sunday '
+      line: 'enjoing on  sunday'
