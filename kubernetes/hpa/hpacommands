@@ -21,4 +21,4 @@
 ===============
 run command to increase load inside pod
 
-dd if=/dev/null /dev/zero
+dd if=/dev/zero /dev/null
