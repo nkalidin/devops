@@ -18,3 +18,7 @@
  1083  clear
  1084  kubectl get pods
  1085  kubectl exec -it app1-7ddf897f69-fgqgr bash
+===============
+run command to increase load inside pod
+
+dd if=/dev/null /dev/zero
