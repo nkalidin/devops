@@ -1,0 +1,22 @@
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: idli
+  namespace: ibm
+  labels:
+    dish: samosa
+  annotations:
+    region: us-east-1
+spec:
+  containers:
+  - name: riceflour
+    image: nginx
+
+  - name: chuttney
+    image: ubuntu
+    command: ["/bin/sh", "-c", "sleep 1000"]
+  - name: sambar
+    image: httpd
+    command: ["/bin/sh", "-c", "sleep 1000"]
