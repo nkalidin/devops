@@ -1,0 +1,29 @@
+Subjects: The set of users and processes that want to access the Kubernetes API.
+
+Resources: The set of Kubernetes API Objects available in the cluster. Examples include Pods, Deployments, 
+           Services, Nodes, and PersistentVolumes, among others.
+
+Verbs: The set of operations that can be executed to the resources above. 
+       Different verbs are available (examples: get, watch, create, delete, etc.), 
+       but ultimately all of them are Create, Read, Update or Delete (CRUD) operations.
+
+
+useradd -m jean
+cd /home/jean/
+openssl genrsa -out jean.key 2048
+touch /root/.rnd  ### for ubuntu
+
+openssl req -new -key jean.key -out jean.csr -subj "/CN=jean"
+
+openssl x509 -req -in jean.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out jean.crt -days 500
+
+mkdir .certs && mv jean.crt jean.key .certs
+--------------------------------------------
+kubectl config set-credentials jean --client-certificate=/home/jean/.certs/jean.crt --client-key=/home/jean/.certs/jean.key
+kubectl create namespace development
+kubectl config set-context jean-context --cluster=kubernetes --namespace=development --user=jean
+kubectl config get-contexts
+kubectl --context=jean-context get pods
+
+kubectl config get-contexts
+kubectl config use-context ""
