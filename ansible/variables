@@ -14,6 +14,8 @@ root@vm-0:/yamls# cat v2.yaml
     - "vars/users.yml"
   tasks:
   - name: task1 to create user {{ user }}
+    vars:
+      home: /home/A32
     user:
       name: "{{ user }}"
       uid: "{{ id }}"
