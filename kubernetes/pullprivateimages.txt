@@ -6,6 +6,10 @@ docker push 500452834600.dkr.ecr.us-east-1.amazonaws.com/vadapav:webserver
 
 kubectl create ns test
 kubectl create secret docker-registry secret1 --docker-server=500452834600.dkr.ecr.us-east-1.amazonaws.com/vadapav --docker-username=AWS --docker-password=$(aws ecr get-login-password) --namespace test
+
+for dockerhub:
+
+kubectl create secret docker-registry secret1 --docker-server=docker.io --docker-username=AWS --docker-password=123 --namespace test
 --------------------
 [root@ip-172-31-94-7 ~]# cat image.yaml
 apiVersion: v1
