@@ -1,5 +1,13 @@
+install helm
+wget https://get.helm.sh/helm-v3.13.1-linux-amd64.tar.gz
+tar -xvzf helm-v3.13.1-linux-amd64.tar.gz
+cd linux-amd64/
+cp helm /usr/bin
+==========================================
 
 
+
+=========================================
 helm create cts
 apt install tree -y
 tree cts
