@@ -7,7 +7,19 @@ cp helm /usr/bin
  1167  helm repo list
  1168  helm list
  1169  helm search repo nginx
+ helm repo add bitnami https://charts.bitnami.com/bitnami
 
+ 1167  helm repo list
+ 1168  helm list
+ 1169  helm search repo nginx
+
+ 1171  helm search repo http
+ 1172  helm search repo php
+ helm install stable/phpmyadmin
+ 1177  helm install stable/mysql --generate-name
+ 1181  # helm install stable/mysql --generate-name
+ 1183  helm install stable/phpmyadmin --generate-name
+ 1028  helm install bitnami/apache --generate-name
  1171  helm search repo http
  1172  helm search repo php
  helm install stable/phpmyadmin
