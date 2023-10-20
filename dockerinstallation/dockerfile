@@ -1,0 +1,30 @@
+
+FROM ubuntu
+LABEL "app"="prod"
+
+WORKDIR /samosa
+WORKDIR /samoasa/vadapav
+WORKDIR /samosa/vadapav/idli
+
+COPY 1.txt /samosa
+ADD 2.txt /samosa/vadapav
+ADD https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.79-installer.msi /samosa/vadapav/idli
+ADD 1.tar /home
+COPY 1.tar /home
+
+RUN apt update -y
+RUN apt install apache2 -y && apt install vim -y && apt install tree -y
+
+COPY index.html /var/www/html
+#ADD source_code.tar /var/www/html
+
+EXPOSE 80
+
+ENV hostname=server1
+ENV DATABASE=db1
+ARG dish=samosa
+ARG test=spicy
+
+VOLUME v1
+
+CMD ["apache2ctl","-D","FOREGROUND"]
