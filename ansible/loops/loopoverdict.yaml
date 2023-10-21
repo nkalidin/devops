@@ -1,0 +1,14 @@
+[root@master loops]# cat loopoverdict.yaml
+---
+- name: loop over dictionary
+  hosts: web
+  tasks:
+  - name: working with dictionary
+    debug:
+      msg: "{{ item.key }} -----***- {{ item.value }}"
+    loop: "{{ tag_data | dict2items }}"
+    vars:
+      tag_data:
+        env: dev
+        app: prod
+        test: summer
