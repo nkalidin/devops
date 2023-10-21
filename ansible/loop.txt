@@ -24,19 +24,26 @@
 ...
 ------------------------------------------------------------------------
 
-[root@master project1]# cat loop1.yaml
+[root@master loops]# cat simpleloop.yaml
 ---
 - name: learn loops
-  hosts: all
+  hosts: web
   tasks:
-  - name: learn loops using installtion
+  - name: installing "{{ item }}" packages
     yum:
-       name: "{{ item }}"
-       state: absent
+      name: "{{ item }}"
+      state: absent
     loop:
       - httpd
       - tree
       - samba
-      - screen
-
-...
+      - vsftpd
+      - nfs-utils
+  - name: adding "{{ item }}" users
+    user:
+      name: "{{ item }}"
+      state: absent
+    loop:
+      - A1
+      - B1
+      - C1
