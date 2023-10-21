@@ -1,0 +1,19 @@
+[root@master loops]# cat loop_control.yaml
+---
+- name: checking loop_control
+  hosts: web
+  tasks:
+
+  - name: Create servers
+    debug:
+      msg:
+        name: "{{ item.name }}"
+    loop:
+    - name: server1
+      disks: 3gb
+      ram: 15Gb
+      network:
+        nic01: 100Gb
+        nic02: 10Gb
+    loop_control:
+      label: "{{ item.disks }}"
