@@ -1,3 +1,6 @@
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_loops.html#limiting-loop-output-with-label
+
+
 [root@master loops]# cat loop_control.yaml
 ---
 - name: checking loop_control
