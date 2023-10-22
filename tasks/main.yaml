@@ -1,0 +1,76 @@
+--- 
+  - name: Touch a file and set permissions
+    file:
+      path: /home/one.txt
+      owner: root
+      group: root
+      mode: 0777
+      state: touch
+  - name: copy files from ansible host
+    copy:
+      src: /etc/passwd
+      dest: /home/passwd1
+  - name: fetch files from client1 and store it in destination
+    fetch:
+      src: /etc/passwd
+      dest: /home/passwd-client1
+   # to add line to file use below taks
+  - name: add line to file
+    lineinfile:
+      path: /home/one.txt
+      line: "I like samosa"
+      state: present
+  - name: Add additional lines to a file
+    blockinfile:
+      path: /home/one.txt
+      block: |
+        First line in the additional block of text
+        Second line in the additional block of text
+      state: present
+   
+  - name: Verify the checksum of a file
+    stat:
+      path: /home/one.txt
+      checksum_algorithm: md5
+    register: result
+
+  - name: checksum output
+    debug:
+       msg: "The checksum of the file is {{ result.stat.checksum }}" 
+    
+  - name: synchronize /etc/shadow file to /home/shadow on client1
+    synchronize:
+      src: /etc/shadow
+      dest: /home/shadow
+
+  - name: install httpd
+    yum:
+      name: httpd
+      state: present
+
+  - name: starthttpd
+    service:
+      name: httpd
+      state: restarted
+      enabled: yes
+  - name: copy file
+    copy:
+      src: files/index.html
+      dest: /var/www/html
+
+    notify:
+      - samosafile
+  - name: setting up discalaimer
+    vars:
+      system_owner: "test1@gmail.com"
+    template:
+      src: templates/t1.j2
+      dest: /etc/motd
+      owner: root
+      group: root
+      mode: 0666
+  - name: add users using roles
+    user:
+      name: "{{ name }}"
+      state: present
+

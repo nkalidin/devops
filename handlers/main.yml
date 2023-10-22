@@ -1,0 +1,7 @@
+---
+# handlers file for project1
+- name: samosafile
+  copy:
+    content: "I like samosa"
+    dest: /var/www/html/index.html
+
