@@ -26,20 +26,20 @@ project4/
 
 8 directories, 8 files
 
+1. defaults :  The main.yml file in this directory contains the default values of role
+variables that can be overwritten when the role is used. These variables
+have low precedence and are intended to be changed and customized in
+plays.
 
-  538  cd project1/
-  539  ls
-  540  ansible-galaxy role list
-  541  pwd
-  542  cd /etc/ansible/roles/
-  543  ls
-  544  ansible-galaxy role init role1
-  545  ansible-galaxy role init role2
-  546  ansible-galaxy role init role3
-  547  ansible-galaxy role init role4
-  548  ansible-galaxy role list
-  549  cd /hcl/
-  550  ls
+2. vars: The main.yml file in this directory defines the role's variable values. Often these variables are used for internal purposes within the role. These variables have high precedence, and are not intended to be changed when used in a playbook. Not every role will have all of these directories.
+3. files: This directory contains static files that are referenced by role tasks.
+4. templates: This directory contains Jinja2 templates that are referenced by role tasks.
+5. tasks: The main.yml file in this directory contains the role's task definitions (all paybooks)
+6. handlers: The main.yml file in this directory contains the role's handler definitions.
+7. meta: The main.yml file in this directory contains information about the role, including author, license, platforms, and optional role dependencies. 
+8. tests: This directory can contain an inventory and test.yml playbook that can be used to test the role
+
+
   551  vi /etc/ansible/ansible.cfg
   552  ansible-galaxy role list
   553  clear
