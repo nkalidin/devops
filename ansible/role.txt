@@ -3,7 +3,30 @@
   534  ansible-galaxy role init project2
   535  ls
   536  ansible-galaxy role init project3
-  537  ls
+[root@master projects]# ansible-galaxy role init project4
+- Role project4 was created successfully
+[root@master projects]# tree project4/
+project4/
+├── defaults
+│   └── main.yml
+├── files
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml
+├── README.md
+├── tasks
+│   └── main.yml
+├── templates
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    └── main.yml
+
+8 directories, 8 files
+
+
   538  cd project1/
   539  ls
   540  ansible-galaxy role list
