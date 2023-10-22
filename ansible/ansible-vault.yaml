@@ -1,0 +1,21 @@
+
+To create newfile
+ansible-vault create index_var.yaml
+
+To edit exiting file 
+ansible-vault edit index_var.yaml
+
+To encrypt exiting yaml file
+ansible-vault encrypt index_var.yaml
+
+To change passowrd of yaml file
+ansible-vault rekey project1.yaml
+
+To run encrypted yaml file
+ansible-playbook project1.yaml --ask-vault-pass
+
+To save passwords in file and use for encrypting yaml files
+
+touch secret.yaml
+echo 123 > secret.yaml
+ansible-vault create s1.yaml --vault-password-file=secret.yaml
