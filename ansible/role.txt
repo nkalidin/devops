@@ -48,3 +48,32 @@ plays.
   556  clear
   557  ls
   558  tree project1
+==============================
+
+how to install rhel standard roles
+
+# yum install rhel-system-roles
+
+By default it gets installed in /usr/share/ansible/roles
+
+to see all roles downloaded use
+
+# ansible-galaxy role list
+
+to install exiting role follow below steps
+1. create yaml file and call role in that
+
+[root@master loops]# cat podman.yaml
+---
+- name: installing role podman
+  hosts: all
+  roles:
+  - rhel-system-roles.podman
+
+-----
+now run 
+
+ansible-playbook podman.yaml
+ansible all -m command -a 'podman ps'
+
+-----------------------------------------
