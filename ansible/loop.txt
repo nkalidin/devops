@@ -47,3 +47,23 @@
       - A1
       - B1
       - C1
+------------------------------------------
+
+[root@master yamls]# cat var1.yaml
+---
+- name: learning variables
+  hosts: valeo
+  vars_prompt:
+    - name: "pkg"
+      prompt: "please enter the pkg name to be installed: "
+  tasks:
+  - name: adding user "{{ pkg }}"
+    dnf:
+      name: "{{ pkg }}"
+      state: present
+[root@master yamls]# cat var/loop1.yaml
+pkg:
+  - tree
+  - screen
+
+[root@master yamls]#
