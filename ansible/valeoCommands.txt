@@ -1,0 +1,124 @@
+ 19  vi /etc/hosts
+   20  ping master
+   21  ping client1
+   22  ping client2
+   23  cat /etc/hosts
+   24  clear
+   25  ssh-keygen
+   26  cat .ssh/id_rsa.pub
+   27  ssh-copy-id root@client1
+   28  ssh client1
+   29  ssh-copy-id root@client2
+   30  ssh client2
+   31  clear
+   32  history
+   33  vi /etc/hosts
+   34  ping samosa
+   35  clear
+   36  ansible
+   37  dnf config-manager --set-enabled powertools
+   38  dnf install epel-release epel-next-release
+   39  clear
+   40  dnf install ansible
+   41  clear
+   42  ansible --version
+   43  cd /etc/ansible/
+   44  ls
+   45  cd /etc/yum.repos.d/
+   46  ls
+   47  ls -ltr
+   48  vi CentOS-Stream-PowerTools.repo
+   49  clear
+   50  cd /etc/ansible/
+   51  ls
+   52  cp hosts hosts.org
+   53  vi hosts
+   54  cat hosts
+   55  clear
+   56  ansible web --list-hosts
+   57  ansible db --list-hosts
+   58  ansible email --list-hosts
+   59  ansible valeo --list-hosts
+   60  ansible database --list-hosts
+   61  cat hosts
+   62  history
+   63  clear
+   64  # modules
+   65  ansible valeo -m ping
+   66  ansible email -m ping
+   67  clear
+   68  ansible-doc -l
+   69  clear
+   70  cat hosts
+   71  :wq!
+   72  history
+   73  clear
+   74  ansible-doc ping
+   75  clear
+   76  ansible-doc dnf
+   77  clear
+   78  ansible-doc user
+   79  cleae
+   80  clear
+   81  history
+   82  clear
+   83  # adhoc commands
+   84  ansible web -m command -a 'hostname'
+   85  ansible web -m command -a 'cat /etc/os-release'
+   86  ansible web -m command -a 'uptime'
+   87  clear
+   88  ansible web -m command -a 'touch /home/1.txt'
+   89  ansible web -m command -a 'ls /home/1.txt'
+   90  ansible-doc file
+   91  ansible web -m file -a 'path=/home/2.txt state=touch mode=1000'
+   92  ansible web -m command -a 'ls /home/2.txt'
+   93  ansible web -m command -a 'll /home/2.txt'
+   94  ansible web -m command -a 'ls -l /home/2.txt'
+   95  history
+   96  clear
+   97  history
+   98  clear
+   99  ansible web -m command -a 'vi /home/3.txt'
+  100  ansible-doc file
+  101  clear
+  102  ansible-doc copy
+  103  aclear
+  104  ansible-doc file
+  105  clear
+  106  cd ~
+  107  ls
+  108  mkdir /yamls
+  109  cd /yamls/
+  110  touch 1.txt
+  111  echo "Learning Ansible" > 1.txt
+  112  cat 1.txt
+  113  ansible web -m copy -a 'src=/yamls/1.txt dest=/tmp'
+  114  clear
+  115  ansible web -m copy -a 'remote_src=/home/2.txt dest=/tmp'
+  116  ansible-doc copy
+  117  clear
+  118  ansible web -m copy -a 'src=/home/2.txt dest=/tmp remote_src=yes'
+  119  ansible web -m command -a 'cat /tmp/2.txt'
+  120  clear
+  121  ansible valeo -m copy -a 'src=/etc/passwd dest=/tmp remote_src=yes'
+  122  clear
+  123  histroy
+  124  history
+  125  clear
+  126  ansible web -m copy -a 'src=/home/1.txt content="I like idli"'
+  127  ansible web -m copy -a 'dest=/home/1.txt content="I like idli"'
+  128  ansible web -m command -a 'cat /home/1.txt'
+  129  clear
+  130  ansible-doc copy
+  131  clear
+  132  ansible web -m file -a 'path=/home/chennai state=directory owner=root group=root mode=0777 '
+  133  ansible web -m command -a 'ls -l /home'
+  134  clear
+  135  ansible-doc synchronize
+  136  clear
+  137  ls
+  138  du -sh /etc
+  139  ansible web -m synchronize -a 'src=/etc dest=/tmp'
+  140  useradd a1
+  141  ansible web -m synchronize -a 'src=/etc dest=/tmp'
+  142  ansible web -m synchronize -a 'src=/etc dest=/tmp compress=yes'
