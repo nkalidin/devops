@@ -1,0 +1,2 @@
+Copy file from remote server to another folder
+ansible web -m copy -a 'src=/home/2.txt dest=/tmp remote_src=yes'
