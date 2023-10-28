@@ -43,3 +43,37 @@ root@vm-0:/yamls# cat v3.yaml
     user:
       name: "{{ emp[1:3] }}"
 ...
+=====================
+[root@master yamls]# cat var.yaml
+---
+- name: learning variables
+  hosts: valeo
+  vars_files:
+    - "var/file1.yaml"
+  tasks:
+  - name: adding user "{{ name }}"
+    vars:
+      name: A1
+    user:
+      name: "{{ name }}"
+      state: present
+=============================
+[root@master yamls]# cat samosa.yaml
+---
+- name: learning variables
+  hosts: valeo
+  vars_files:
+  - "samosa/tea.yaml"
+  vars:
+    dish: vadapav
+  tasks:
+  - name: adding user "{{ user }}" who likes "{{ dish }}"
+    user:
+      name: "{{ user }}"
+      state: present
+----------------
+[root@master yamls]# cat samosa/tea.yaml
+user: tea
+
+
+=============================================================
