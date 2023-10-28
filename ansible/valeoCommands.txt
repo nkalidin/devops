@@ -122,3 +122,17 @@
   140  useradd a1
   141  ansible web -m synchronize -a 'src=/etc dest=/tmp'
   142  ansible web -m synchronize -a 'src=/etc dest=/tmp compress=yes'
+==============
+[root@master yamls]# cat var1.yaml
+---
+- name: learning variables
+  hosts: valeo
+  vars_prompt:
+    - name: "pkg"
+      prompt: "please enter the pkg name to be installed: "
+  tasks:
+  - name: adding user "{{ pkg }}"
+    dnf:
+      name: "{{ pkg }}"
+      state: present
+================================
