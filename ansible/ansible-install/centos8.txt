@@ -1,0 +1,10 @@
+epel repo link
+
+https://docs.fedoraproject.org/en-US/epel/
+
+dnf config-manager --set-enabled powertools
+dnf install epel-release epel-next-release
+
+dnf install ansible -y
+
+  ansible --version
