@@ -3,3 +3,10 @@ ansible web -m copy -a 'src=/home/2.txt dest=/tmp remote_src=yes'
 
 Create Directory
 ansible web -m file -a 'path=/home/chennai state=directory owner=root group=root mode=0777 '
+
+Synchronize
+
+  139  ansible web -m synchronize -a 'src=/etc dest=/tmp'
+  140  useradd a1
+  141  ansible web -m synchronize -a 'src=/etc dest=/tmp'
+  142  ansible web -m synchronize -a 'src=/etc dest=/tmp compress=yes'
