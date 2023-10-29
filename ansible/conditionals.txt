@@ -8,6 +8,8 @@
       name: mariadb-server
     loop: "{{ ansible_mounts }}"
     when: item.mount == "/" and item.size_available > 3000000 and item.fstype == "xfs"
+  - name: find status of db
+    command: systemctl status mariadb
 
 ...
 --------------------------------------------------------------------------------
