@@ -1,0 +1,259 @@
+ansible localhost --list-hosts
+ansible myself --list-hosts
+ansible all --list-hosts
+ansible all -m ping
+## ansible host-pattern -m module [-a 'module arguments'] [-i inventory]
+ansible-doc -l ## list all modules
+
+ansible-doc ping ## Documentation for ping command
+ansible-doc copy ## Documentation for copy command
+
+User Module
+
+ansible -m user -a 'name=newbie uid=4000 state=present' all ### add user in all servers
+ansible -m user -a 'name=newbie uid=4000 state=present' 192.168.0.104 
+
+
+###Most modules are idempotent, which means that they can be run safely multiple times, and if the
+system is already in the correct state, they will do nothing. For example, we can run the previous
+ad hoc command again and we should see it report no changes:
+
+ansible -m user -a 'name=newbie uid=4000 state=present' servera.lab.example.com ## monitor the change
+
+Command Module 
+
+ansible all -m command -a /usr/bin/hostname
+ansible mymanagedhosts -m command -a /usr/bin/hostname -o
+
+Shell Module
+
+ansible localhost -m shell -a set
+ansible localhost -m command -a 'id'
+ansible localhost -m command -a 'id' -u devops
+ansible localhost -m command -a 'cat /etc/motd' -u devops
+
+##Copy Contents to File
+ansible localhost -m copy -a 'content="Managed by Ansible\n" dest=/etc/motd' -u devops
+ansible localhost -m copy -a 'content="Managed by Ansible\n" dest=/etc/motd' -u devops --become ## It gives root privileges
+ansible everyone -m copy -a 'content="Managed by Ansible\n" dest=/etc/motd' -u devops --become
+ansible everyone -m command -a 'cat /etc/motd' -u devops
+===============================================================================
+
+Writing PlayBooks
+
+ansible -m user -a "name=newbie uid=4000 state=present servera.lab.example.com
+ansible all -m command -a 'tail -1 /etc/passwd'
+
+ansible-playbook --syntax-check webserver.yml
+ansible-playbook --C  webserver.yml
+
+[root@master playbooks]# cat simple.yaml
+---
+- name: Vice President
+  hosts: all
+  tasks:
+  - name: User Admin
+    user:
+      name: admin1
+      uid: 4001
+      state: present
+================================================
+[root@master playbooks]# cat enable_services.yaml
+---
+- name: web server is enabled
+  hosts: 192.168.0.106
+  tasks:
+  - name: http service enabled
+    service:
+      name: httpd
+      enabled: true
+  - name: NTP server is enabled
+    service:
+      name: chronyd
+      enabled: true
+  - name: Postfix is enabled
+    service:
+      name: postfix
+      enabled: true
+[root@master playbooks]#
+
+=================================================
+[root@master playbooks]# cat website.yaml
+---
+- name: play to setup web server
+  hosts: 192.168.0.104
+  tasks:
+  - name: latest httpd version installed
+    yum:
+      name: httpd
+      state: latest
+...
+[root@master playbooks]#
+
+--------------------------------------------------
+[root@master playbooks]# cat webserver1.yaml
+---
+- name: Install and start Apache HTTPD
+  hosts: 192.168.0.106
+  tasks:
+  - name: httpd package is present
+    yum:
+      name: httpd
+      state: present
+  - name: correct index.html is present
+    copy:
+      src: files/index.html
+      dest: /var/www/html/index.html
+  - name: httpd is started
+    service:
+      name: httpd
+      state: started
+      enabled: true
+[root@master playbooks]#
+
+=========================================================
+
+---
+- name: Enable intranet services
+hosts: servera.lab.example.com
+become: yes
+tasks:
+- name: latest version of httpd and firewalld installed
+yum:
+name:
+- httpd
+- firewalld
+state: latest
+- name: firewalld enabled and running
+service:
+name: firewalld
+enabled: true
+state: started
+- name: firewalld permits http service
+firewalld:
+service: http
+permanent: true
+state: enabled
+immediate: yes
+- name: httpd enabled and running
+service:
+name: httpd
+enabled: true
+state: started
+- name: test html page is installed
+copy:
+content: "Welcome to the example.com intranet!\n"
+dest: /var/www/html/index.html
+- name: Test intranet web server
+hosts: localhost
+become: no
+tasks:
+- name: connect to intranet web server
+uri:
+url: http://servera.lab.example.com
+status_code: 200
+
+===============================================
+
+[student@workstation imp-lab]$ cat internet.yml
+---
+- name: Enable internet services
+hosts: serverb.lab.example.com
+become: yes
+tasks:
+- name: latest version of all required packages installed
+yum:
+name:
+- firewalld
+- httpd
+- mariadb-server
+- php
+- php-mysql
+state: latest
+- name: firewalld enabled and running
+service:
+name: firewalld
+enabled: true
+state: started
+- name: firewalld permits http service
+firewalld:
+service: http
+permanent: true
+state: enabled
+immediate: yes
+- name: httpd enabled and running
+service:
+name: httpd
+enabled: true
+state: started
+- name: mariadb enabled and running
+service:
+name: mariadb
+enabled: true
+state: started
+- name: test php page is installed
+get_url:
+url: "http://materials.example.com/grading/var/www/html/index.php"
+dest: /var/www/html/index.php
+mode: 0644
+- name: Test internet web server
+hosts: localhost
+become: no
+tasks:
+- name: connect to internet web server
+uri:
+url: http://serverb.lab.example.com
+status_code: 200
+
+===========================================================
+
+
+---
+ - hosts: all
+   tasks:
+   - name: hostname
+     debug:
+       var=ansible_hostname
+
+   - name: date and time
+     vars:
+      msg: |
+       Date: {{ ansible_date_time.date }}
+       Timezone: {{ ansible_date_time.tz }}
+     debug:
+      msg: "{{ msg.split('\n') }}"
+
+   - name: network info
+     vars:
+      msg: |
+       All Interface List: {{ ansible_interfaces }}
+       All IP: {{ ansible_all_ipv4_addresses }}
+       Gateway: {{ ansible_default_ipv4.gateway }}
+       Eth0 MAC: {{ ansible_eth0.macaddress }}
+     debug:
+      msg: "{{ msg.split('\n') }}"
+
+   - name: OS and Kernel info
+     vars:
+      msg: |
+       Distribution: {{ ansible_distribution }}
+       Release: {{ ansible_distribution_release }}
+       Distribution Version: {{ ansible_distribution_version }}
+       Kernel: {{ ansible_kernel }}
+       Architecture: {{ ansible_architecture }}
+     debug:
+      msg: "{{ msg.split('\n') }}"
+
+   - name: HW info
+     vars:
+      msg: |
+       CPU: {{ ansible_processor }}
+       CPU Core: {{ ansible_processor_cores }}
+       RAM: {{ ansible_memtotal_mb }}
+       SWAP: {{ ansible_memory_mb.swap.total }}
+     debug:
+
+      msg: "{{ msg.split('\n') }}"
+
+
+==================================================================

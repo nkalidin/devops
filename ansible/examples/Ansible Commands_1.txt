@@ -1,0 +1,88 @@
+Why use ad-hoc commands?
+Ad-hoc commands are great for tasks you repeat rarely. For example, if you want to power off all the machines in your lab for Christmas vacation, you could execute a quick one-liner in Ansible without writing a playbook. An ad-hoc command looks like this:
+
+$ ansible [pattern] -m [module] -a "[module options]"
+---------------------------------------------------------
+
+Rebooting servers
+
+$ ansible atlanta -a "/sbin/reboot"
+By default Ansible uses only 5 simultaneous processes. If you have more hosts than the value set for the fork count, 
+Ansible will talk to them, but it will take a little longer. To reboot the [atlanta] servers with 10 parallel forks:
+
+$ ansible atlanta -a "/sbin/reboot" -f 10
+$ ansible atlanta -a "/sbin/reboot" -f 10 -u username
+$ ansible atlanta -a "/sbin/reboot" -f 10 -u username --become [--ask-become-pass]
+
+##Shell Module
+
+$ ansible raleigh -m shell -a 'echo $TERM'
+When running any command with the Ansible ad hoc CLI (as opposed to Playbooks), 
+pay particular attention to shell quoting rules, so the local shell retains the variable and passes it to Ansible. 
+For example, using double rather than single quotes in the above example would evaluate the variable on the box you were on.
+
+
+Managing files : File Module
+
+An ad-hoc task can harness the power of Ansible and SCP to transfer many files to multiple machines in parallel. 
+To transfer a file directly to all servers in the [atlanta] group:
+
+$ ansible atlanta -m copy -a "src=/etc/hosts dest=/tmp/hosts"
+$ ansible webservers -m file -a "dest=/srv/foo/a.txt mode=600"
+$ ansible webservers -m file -a "dest=/srv/foo/b.txt mode=600 owner=mdehaan group=mdehaan"
+
+The file module can also create directories, similar to mkdir -p:
+
+$ ansible webservers -m file -a "dest=/path/to/c mode=755 owner=mdehaan group=mdehaan state=directory"
+
+As well as delete directories (recursively) and delete files:
+
+$ ansible webservers -m file -a "dest=/path/to/c state=absent"
+
+
+Managing packages
+
+You might also use an ad-hoc task to install, update, or remove packages on managed nodes using a package management module 
+like yum. To ensure a package is installed without updating it:
+
+$ ansible webservers -m yum -a "name=screen state=present"
+To ensure a specific version of a package is installed:
+
+$ ansible webservers -m yum -a "name=acme-1.5 state=present"
+
+To ensure a package is at the latest version:
+
+$ ansible webservers -m yum -a "name=acme state=latest"
+
+To ensure a package is not installed:
+
+$ ansible webservers -m yum -a "name=acme state=absent"
+
+Ansible has modules for managing packages under many platforms. If there is no module for your package manager, you can install packages using the command module or create a module for your package manager.
+
+Managing users and groups
+
+You can create, manage, and remove user accounts on your managed nodes with ad-hoc tasks:
+
+$ ansible all -m user -a "name=foo password=<crypted password here>"
+
+$ ansible all -m user -a "name=foo state=absent"
+
+Managing services
+
+Ensure a service is started on all webservers:
+
+$ ansible webservers -m service -a "name=httpd state=started"
+Alternatively, restart a service on all webservers:
+
+$ ansible webservers -m service -a "name=httpd state=restarted"
+Ensure a service is stopped:
+
+$ ansible webservers -m service -a "name=httpd state=stopped"
+Gathering facts
+Facts represent discovered variables about a system. 
+You can use facts to implement conditional execution of tasks but also just to get ad-hoc information about your systems.
+
+To see all facts:
+
+$ ansible all -m setup

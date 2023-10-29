@@ -1,0 +1,28 @@
+1. To find ami id:
+aws ec2 describe-images --owners aws-marketplace --filters Name=product-code,Values=aw0evgkw8e5c1q413zgy5pjce       --query 'Images[*].[CreationDate,Name,ImageId]'       --filters "Name=name,Values=CentOS Linux 7*"       --region ap-south-1       --output table
+
+2. find out default vpc id and subnet
+aws ec2 describe-vpcs
+ 
+vpc-015c331caccab7888 
+vpc-015c331caccab7888
+
+3. find vpc subnet id
+aws ec2 describe-subnets
+
+subnet-0975b5835d3b371ad
+
+4. to create pem key to access ec2 instance 
+
+aws ec2 create-key-pair --key-name ansible-key --query 'KeyMaterial' --output text > ansible-key.pem
+
+5. To create security group
+
+aws ec2 create-security-group --group-name ansible-sg --description "ansible sg" --vpc-id vpc-015c331caccab7888 
+
+To assign ports to security group
+
+aws ec2 authorize-security-group-ingress --group-name ansible --protocol tcp --port 22 --cidr 0.0.0.0/0 --vpc-id vpc-015c331caccab7888
+
+---------------------------------------------
+
