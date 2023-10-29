@@ -1,0 +1,31 @@
+[root@master home]# cat hand.yaml
+---
+- hosts: db
+  connection: local
+  gather_facts: False
+  tasks:
+    - set_fact:
+        foo: True
+    - debug: msg="call handler1"
+      changed_when: True
+      notify: do something
+
+  handlers:
+    - name: do something
+      debug: msg="I'm doing something"
+      when: foo|default(False)|bool
+
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - set_fact:
+        foo: False
+
+    - debug: msg="call handler2"
+      changed_when: True
+      notify: do something1
+
+  handlers:
+    - name: do something1
+      debug: msg="I'm doing something"
