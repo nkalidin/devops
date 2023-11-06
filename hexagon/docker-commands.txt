@@ -52,3 +52,16 @@ echo "I like Dosa" > index.html
 curl localhost
 
 ====================================
+Mount/bind
+docker run -d --name=v1 -p 9090:80 -v /data:/usr/local/apache2/htdocs httpd
+docker volume Volume
+ 93  docker volume ls
+   94  docker volume create v1
+   95  docker volume ls
+   96  docker volume create v2
+   97  docker volume ls
+   98  docker run -d --name=v3 -v v1:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123 -p 3308:3306 mysql
+   99  docker run -d --name=v33 -v v1:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123 -p 3308:3306 mysql
+  100  docker ps -a
+tmpfs 
+ docker run -d --name=t1 -v tmpfs:/logs httpd
