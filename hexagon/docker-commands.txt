@@ -1,0 +1,31 @@
+sudo -i
+docker ps
+docker images
+systemctl status docker
+docker info
+
+docker search httpd --limit=5
+docker search mysql --limit=5
+docker search php --limit=5
+docker search mongo --limit=5
+docker search nginx stars=3000 -f is-official=true --limt=5
+
+docker pull httpd:latest
+docker pull nginx
+docker pull mysql
+
+docker start c1
+docker start c2
+
+docker stop c1
+
+docker rm c1
+
+docker ps -a
+dockerfile --->image --> container
+
+docker container create --name=c4 nginx
+docker start c4
+
+docker run -d --name=c5 nginx
+docker ps -a
