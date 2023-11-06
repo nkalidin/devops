@@ -29,3 +29,26 @@ docker start c4
 
 docker run -d --name=c5 nginx
 docker ps -a
+===========
+
+ 18  docker run -d --name=c2 -p 9090:80 httpd
+   19  docker ps -a
+   20  docker run -d --name=c3 -p 8080:80 kharatramesh/vadapavimages:vadapav
+   21  docker ps -a
+=========================
+
+httpd :
+cd /usr/local/apache2/htdocs
+ls
+echo "I like Dosa" > index.html
+curl localhost
+exit
+curl Ipaddressof_Container
+
+nginx :
+cd /usr/share/nginx/html
+ls
+echo "I like Dosa" > index.html
+curl localhost
+
+====================================
