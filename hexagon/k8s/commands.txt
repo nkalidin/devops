@@ -1,0 +1,30 @@
+  6  # kubectl run pod1 --image=httpd -n google
+    7  # kubectl create deployment app1 --image=httpd -n google
+    8  # kubectl scale deployment/app1 --replicas=3 -n google
+    9  # kubectl scale deployment/app1 --replicas=1 -n google
+   10  # kubectl get deploymnet -n google
+   11  # kubectl get rs -n google
+   12  # kubectl describe deployment  app1  -n google
+   13  watch kubectl get pods -n google
+   14  mkdir /yamls
+   15  cd /yamls/
+   16  ls
+   17  clear
+   18  vi pod1.yaml
+   19  kubectl create -f pod1.yaml
+   20  kubectl get pods -n ibm
+   21  kubectl describe  pod samosa1 -n ibm
+   22  clear
+   23  cat pod1.yaml
+   24  pwd
+   25  clear
+   26  cat pod1.yaml
+   27  # kubectl create -f pod1.yaml
+   28  clear
+   29  kubectl run samosa2 --image=httpd -n ibm --dry-run=client -o yaml
+   30  kubectl run samosa2 --image=httpd -n ibm --dry-run=client -o yaml > samosa2.yaml
+   31  kubectl run samosa2 --image=httpd -n ibm --dry-run=client -o json
+   32  history
+   33  vi samosa2.yaml
+   34  clear
+   35  kubectl create deployment hexa2 --image=httpd -n ibm --dry-run=client -o yaml
