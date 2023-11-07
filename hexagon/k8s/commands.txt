@@ -28,3 +28,28 @@
    33  vi samosa2.yaml
    34  clear
    35  kubectl create deployment hexa2 --image=httpd -n ibm --dry-run=client -o yaml
+================================================================
+   99  kubectl get deployment -n google
+  100  kubectl expose deployment/app1 --name=app1s1 --type=NodePort --port=80 --target-port=80 -n google
+  101  kubectl expose deployment/hexa1 --name=app1s1 --type=NodePort --port=80 --target-port=80 -n google
+  102  kubectl get service -n google
+  103  kubectl get pods -n google
+  104  kubectl describe service app1s1 -n google
+  105  kubectl scale deployment/hexa2 --replicas=3 -n google
+  106  kubectl scale deployment/hexa1 --replicas=3 -n google
+  107  kubectl get pods -n google
+  108  kubectl get pods -n google -o wide
+  109  kubectl describe service app1s1 -n google
+  110  kubectl get service -n google
+  111  kubectl get pods -n google -o wide
+  112  history
+  113  clear
+  114  iptables -t filter -L INPUT
+  115  iptables -t nat -L INPUT
+  116  iptables -t mangle -L INPUT
+  117  iptables -L
+  118  history
+  119  iptables -t filter -L INPUT
+  120  iptables -L
+  121  ip a s
+===============================================================
