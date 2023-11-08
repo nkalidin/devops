@@ -1,0 +1,20 @@
+root@master:/yamls/bosch/yamls# cat ds1.yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    app: ds1
+  name: ds1
+spec:
+  selector:
+    matchLabels:
+      app: ds1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ds1
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
