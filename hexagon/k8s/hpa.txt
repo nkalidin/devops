@@ -1,0 +1,22 @@
+Deploy metric Server
+kubectl apply -f metric-server.yaml
+kubectl get pods -n kube-system
+kubectl top pods
+kubectl top nodes
+
+git clone https://github.com/kharatramesh/bosch.git
+ cd bosch/yamls/
+ ls -l nginx-hpa.yaml
+ vi nginx-hpa.yaml
+kubectl create -f nginx-hpa.yaml
+kubectl get deployment
+kubectl get pods
+kubectl autoscale deployment/nginx-hpa --cpu-percent=50 --min=3 --max=15
+kubectl get pods
+kubectl get rs
+kubectl get pods
+
+kubectl get hpa
+
+login to one of the pod and fire below command to increase CPU utilization
+dd if=/dev/zero of=/dev/null
