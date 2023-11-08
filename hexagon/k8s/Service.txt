@@ -1,0 +1,25 @@
+  4  kubectl create ns hexa
+    5  kubectl run pod1 --image=httpd -l app=prod1 -n hexa
+    6  kubectl get pods --show-labels -n hexa
+    7  kubectl expose pod/pod1 --name=pod1s1 --type=NodePort --port=80 -n hexa --dry-run=client -o yaml > pod1s1.yaml
+    8  ls
+    9  vi pod1s1.yaml
+   10  clear
+   11  kubectl create -f pod1s1.yaml
+   12  kubectl get svc -n hexa
+   13  vi pod1s1.yaml
+   14  kubectl get pods -n hexa --show-lables
+   15  kubectl get pods -n hexa --show-labels
+   16  kubectl edit pod pod1 -n hexa
+   17  kubectl label pod/pod1 app- -n hexa
+   18  kubectl label pod/pod1 app=prod1 -n hexa
+   19  kubectl run pod2 --image=nginx -l app=prod1 -n hexa
+   20  clear
+   21  kubectl get pods -n hexa
+   22  kubectl get svc -n hexa
+   23  kubectl expose pod/pod1 --type=Loadbalancer --port=80 --target-port=80 -n hexa
+   24  kubectl expose pod/pod1 --type=LoadBalancer --port=80 --target-port=80 -n hexa
+   25  kubectl get svc -n hexa
+   26  kubectl expose pod/pod1 --name=pod1lb1 --type=Loadbalancer --external-ip=32.43.45.67 --port=80 --target-port=80 -n hexa
+   27  kubectl expose pod/pod1 --name=pod1lb1 --type=LoadBalancer --external-ip=32.43.45.67 --port=80 --target-port=80 -n hexa
+   28  kubectl get svc -n hexa
