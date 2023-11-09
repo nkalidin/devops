@@ -1,0 +1,16 @@
+useradd -m deepak
+cd /home/deepak/
+openssl genrsa -out deepak.key 2048
+touch /root/.rnd  ### for ubuntu
+
+openssl req -new -key deepak.key -out deepak.csr -subj "/CN=deepak"
+
+openssl x509 -req -in deepak.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out deepak.crt -days 500
+
+mkdir .certs && mv deepak.crt deepak.key .certs
+--------------------------------------------
+kubectl config set-credentials deepak --client-certificate=/home/deepak/.certs/deepak.crt --client-key=/home/deepak/.certs/deepak.key
+kubectl create namespace development
+kubectl config set-context deepak-context --cluster=kubernetes --namespace=development --user=deepak
+kubectl config get-contexts
+kubectl --context=deepak-context get pods
