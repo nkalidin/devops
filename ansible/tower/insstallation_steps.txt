@@ -1,2 +1,9 @@
 https://developers.redhat.com/articles/2023/01/01/how-install-red-hat-ansible-automation-platform-rhel-9#subscriptions
 
+Download ansible automation platform 
+
+https://access.cdn.redhat.com/content/origin/files/sha256/95/95f5bfc00f65be7785098bf196f21e76c3eca54f95b203ba8655c80676f665a7/ansible-automation-platform-setup-bundle-2.4-1-x86_64.tar.gz?_auth_=1699709707_0e653d7fac3a9380190b01b5ae5fbf95
+
+modify inventory file
+
+then run .setup.sh
