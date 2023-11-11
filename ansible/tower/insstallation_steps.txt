@@ -1,0 +1,2 @@
+https://developers.redhat.com/articles/2023/01/01/how-install-red-hat-ansible-automation-platform-rhel-9#subscriptions
+
