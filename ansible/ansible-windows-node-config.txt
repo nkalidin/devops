@@ -53,10 +53,12 @@ ansible_winrm_kerberos_delegation=true
 
 On Windows Node Machine
 
-Enable PowerShell remoting
+Enable PowerShell remoting :
+
 Enable-PSRemoting -Force
 
-Set WinRM service startup type to automatic
+Set WinRM service startup type to automatic:
+
 Set-Service WinRM -StartupType 'Automatic'
 
 Configure WinRM Service
