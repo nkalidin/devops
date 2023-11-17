@@ -92,3 +92,11 @@ Restart-Service WinRM
 winrm enumerate winrm/config/Listener
 
 ========================================================================
+
+[root@ansible-host ~]# cat win1.yaml
+---
+ - name: Ansible win_command module example
+   hosts: win # host group to run the module on
+   tasks:
+   -  name: run an executable command on a remote Windows system
+      win_command: netstat -e # win_command is a Windows module.
