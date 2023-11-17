@@ -1,0 +1,90 @@
+Installation of Ansible Automation (Tower)  
+
+yum install wget
+
+wget https://access.cdn.redhat.com/content/origin/files/sha256/95/95f5bfc00f65be7785098bf196f21e76c3eca54f95b203ba8655c80676f665a7/ansible-automation-platform-setup-bundle-2.4-1-x86_64.tar.gz?_auth_=1700191691_58bb2337a8f2b6a93502630b4d610ae1
+
+tar -xvzf ansible-automation-platform-setup-bundle-2.4-1-x86_64.tar.gz\?_auth_\=1700191691_58bb2337a8f2b6a93502630b4d610ae1
+
+cd ansible-automation-platform-setup-bundle-2.4-1-x86_64
+
+vi inventory
+(Set up passwords)
+
+./setup.sh
+
+Complete PasswordLess AUthentication
+
+ssh-keygen -t rsa
+ssh-copy-id root@localhost
+cat /root/.ssh/id_rsa.pub
+vi /root/.ssh/authorized_keys
+./setup.sh
+
+cd /root/ansible-automation-platform-setup-bundle-2.4-1-x86_64
+yum install pip
+ 68  vi hosts.ini
+   69  ansible win -m win_ping -i hosts.ini
+   70  ansible-galaxy collection install ansible.windows
+   71  ansible-galaxy collection list
+   73  pip install pywinrm
+   76  ansible win -m win_ping -i hosts.ini
+   77  history
+ [root@ansible-host ansible]# cat hosts.ini
+
+[web]
+172.31.35.177
+
+[win]
+172.31.42.18
+[win:vars]
+ansible_user=Administrator
+ansible_password="Qx@sJ)VriL$Dc.mMJ@zhAJmCu%w5HCYo"
+ansible_port=5985
+ansible_connection=winrm
+#ansible_winrm_schema=http
+ansible_winrm_server_cert_validation=ignore
+ansible_winrm_kerberos_delegation=true
+
+  
+===============
+
+
+
+On Windows Node Machine
+
+Enable PowerShell remoting
+Enable-PSRemoting -Force
+
+Set WinRM service startup type to automatic
+Set-Service WinRM -StartupType 'Automatic'
+
+Configure WinRM Service
+Set-Item -Path WSMan:\localhost\Service\Auth\Certificate -Value $true
+Set-Item -Path 'WSMan:\localhost\Service\AllowUnencrypted' -Value $true
+Set-Item -Path 'WSMan:\localhost\Service\Auth\Basic' -Value $true
+Set-Item -Path 'WSMan:\localhost\Service\Auth\CredSSP' -Value $true
+
+Create a self-signed certificate and set up an HTTPS listener
+$cert = New-SelfSignedCertificate -DnsName $(Invoke-RestMethod -Uri http://169.254.169.254/latest/meta-data/public-hostname) -CertStoreLocation "cert:\LocalMachine\My"
+winrm create winrm/config/Listener?Address=*+Transport=HTTPS "@{Hostname=`"$(Invoke-RestMethod -Uri http://169.254.169.254/latest/meta-data/public-hostname)`";CertificateThumbprint=`"$($cert.Thumbprint)`"}"
+
+Create a firewall rule to allow WinRM HTTPS inbound
+New-NetFirewallRule -DisplayName "Allow WinRM HTTPS" -Direction Inbound -LocalPort 5986 -Protocol TCP -Action Allow
+
+Configure TrustedHosts
+Set-Item WSMan:\localhost\Client\TrustedHosts -Value "*" -Force
+
+Set LocalAccountTokenFilterPolicy
+New-ItemProperty -Name LocalAccountTokenFilterPolicy -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System -PropertyType DWord -Value 1 -Force
+
+Set Execution Policy to Unrestricted
+Set-ExecutionPolicy Unrestricted -Force
+
+Restart the WinRM service
+Restart-Service WinRM
+
+List the WinRM listeners
+winrm enumerate winrm/config/Listener
+
+========================================================================
