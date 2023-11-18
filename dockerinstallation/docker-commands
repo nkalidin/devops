@@ -1,0 +1,34 @@
+ 31  docker search httpd --limt=5
+   32  docker search httpd --limit=5
+   33  docker search nginx --limit=5
+   34  docker search mysql --limit=5
+   35  docker search mysql --limit=5 -f is-official=true
+   36  docker search mysql --limit=5 -f is-official=true -f stars=3000
+   42  docker pull httpd
+   43  docker images
+   44  docker pull nginx
+   45  docker images
+   46  docker container create --name=c1 httpd
+   47  docker ps -a
+   48  docker container create --name=c2 httpd
+   49  docker ps -a
+   50  docker container create --name=c3 httpd
+   51  docker container create --name=c4 httpd
+   52  docker container create --name=c5 httpd
+   53  docker ps -a
+   54  docker container create --name=c5 nginx:latest
+   55  docker container create --name=c6 nginx:latest
+  138  docker run -d --name=c3 -p 9090:80 httpd
+  139  docker ps -a
+  140  docker run -d --name=c4 -p 9091:80 nginx
+  141  docker run -d --name=c5 -p 9092:80 kharatramesh/vadapavimages:vadapav
+  142  docker ps -a
+  143  clear
+
+  145  docker run -d --name=web -p 9095:80 kharatramesh/vadapavimages:biryani
+  147  docker run -d --name=web1 -p 9097:80 kharatramesh/vadapavimages:pavbhaji
+       docker rm -f $(docker ps -a -q)
+
+to create db container
+
+ docker run -d --name=db3 -p 3307:3306 -e MYSQL_ROOT_PASSWORD=123 mysql
