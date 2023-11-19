@@ -100,3 +100,20 @@ winrm enumerate winrm/config/Listener
    tasks:
    -  name: run an executable command on a remote Windows system
       win_command: netstat -e # win_command is a Windows module.
+================
+
+[root@ip-172-31-36-1 ~]# cat win2.yaml
+---
+- name: running windows commands
+  hosts: win
+  tasks:
+  - name: copy files
+    win_copy:
+      src: C:\Users\Administrator\Desktop\ansible\win1.yaml
+      dest: C:\Users\Administrator\Desktop\ansible\win11.yaml
+      remote_src: true
+  - name: copy files1
+    win_copy:
+      src: /root/1.yaml
+      dest: C:\Users\Administrator\Desktop\ansible\11.yaml
+
