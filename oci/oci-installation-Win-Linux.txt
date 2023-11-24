@@ -1,1 +1,22 @@
+Link to Follow:
+
+https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm
+
+oracle8:
+sudo dnf -y install oraclelinux-developer-release-el8
+sudo dnf install python36-oci-cli
+
+for windows:
+
+Set-ExecutionPolicy RemoteSigned
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
+Invoke-WebRequest https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.ps1 -OutFile install.ps1
+./install.ps1 -AcceptAllDefaults  
+
+---------------
+then run 
+oci --version
+oci setup config
+
+
 
