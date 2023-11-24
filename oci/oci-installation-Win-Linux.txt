@@ -17,6 +17,11 @@ Invoke-WebRequest https://raw.githubusercontent.com/oracle/oci-cli/master/script
 then run 
 oci --version
 oci setup config
-
+=========
+   13  oci os ns get
+   14  oci os ns get --debug
+  
+   26  oci os bucket list --compartment-id=
+  28  oci os bucket list --compartment-id= --output table
 
 
