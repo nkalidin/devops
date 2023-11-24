@@ -1,0 +1,3 @@
+To convert PublicKey to PrivateKey 
+
+ssh-keygen -f ~/.ssh/id_rsa.pub -e pkcs8
