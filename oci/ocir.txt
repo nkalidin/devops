@@ -1,3 +1,7 @@
+ 
+username: bmovbvfsedac/kharatramesh@gmail.com
+password: token
+
 docker login bom.ocir.io
 docker tag httpd:latest bom.ocir.io/bmovbvfsedac/repo1:webserver1.0
 docker push bom.ocir.io/bmovbvfsedac/repo1:webserver1.0
