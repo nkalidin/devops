@@ -12,6 +12,13 @@ Set-ExecutionPolicy RemoteSigned
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
 Invoke-WebRequest https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.ps1 -OutFile install.ps1
 ./install.ps1 -AcceptAllDefaults  
+-----------------
+for ubuntu:
+
+sudo apt update
+sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev
+apt install python3-pip
+pip install oci-cli
 
 ---------------
 then run 
