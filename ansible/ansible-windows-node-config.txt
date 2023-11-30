@@ -1,3 +1,15 @@
+Ansible-Master IP 
+13.233.245.134
+ec2-user
+------------
+Win
+
+13.232.79.251
+aJOb*AFJH762hq7sp%$pmEzgy=qX;g1-
+Administrator
+==========================================
+
+
 Installation of Ansible Automation (Tower)  
 
 yum install wget
