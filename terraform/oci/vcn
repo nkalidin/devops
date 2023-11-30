@@ -1,0 +1,62 @@
+main.tf
+-------------------
+
+terraform {
+  required_providers {
+    oci = {
+      source  = "oracle/oci"
+      version = "5.21.0"
+    }
+  }
+}
+
+provider "oci" {
+  tenancy_ocid     = var.tenancy_ocid
+  user_ocid        = var.user_ocid
+  private_key_path = var.private_key_path
+  fingerprint      = var.fingerprint
+  region           = var.region
+}
+
+resource "oci_objectstorage_bucket" "cts-bucket1" {
+  compartment_id = var.compartment_id
+  name           = var.bucket_name
+  namespace      = var.bucket_namespace
+  access_type    = var.bucket_access_type
+
+}
+
+output "bucket_name" {
+  value = oci_objectstorage_bucket.cts-bucket1.name
+}
+output "bucket_id" {
+  value = oci_objectstorage_bucket.cts-bucket1.id
+
+}
+--------------------------
+variables.tf
+--
+variable "tenancy_ocid" { type = string }
+variable "user_ocid" { type = string }
+variable "private_key_path" { type = string }
+variable "fingerprint" { type = string }
+variable "region" { type = string }
+variable "root_compartment_id" { type = string }
+variable "compartment_id" { type = string }
+variable "bucket_name" { type = string }
+variable "bucket_namespace" { type = string }
+variable "bucket_access_type" {
+  type    = string
+  default = "NoPublicAccess"
+}
+--------------------------------
+varibles.auto.tfvars
+// tenancy_ocid        = "ocid1.tenancy.oc1..aaaaaaaapx7u6vc6rx6l2kpzlttm3hl7focl3yn37kxaop6tiufbstdn33fq"
+// user_ocid           = "ocid1.user.oc1..aaaaaaaayl3d5wloiqjn477bjmqt25iyxooq7uucvmqdokj6if37uvfbzz3a"
+// private_key_path    = "/c/Users/Priar Technoworld/.oci"
+// fingerprint         = "8f:e8:b0:35:32:91:1b:0d:54:f4:44:0d:04:1f:c5:ef"
+// region              = "ap-mumbai-1"
+// root_compartment_id = "ocid1.compartment.oc1..aaaaaaaaesrgm7qqh4qw4fkfelq4nwpgzi74iss6mpbo6jhhxnuzsamd3qpa"
+// compartment_id      = "ocid1.compartment.oc1..aaaaaaaaesrgm7qqh4qw4fkfelq4nwpgzi74iss6mpbo6jhhxnuzsamd3qpa"
+// bucket_name         = "cts-demo-1"
+// bucket_namespace    = "bmovbvfsedac"
