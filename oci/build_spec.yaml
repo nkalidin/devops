@@ -3,6 +3,34 @@ Details of spec yaml file can be found :
 https://docs.oracle.com/en-us/iaas/Content/devops/using/build_specs.htm
 =================
 example 
+
+
+- type: Command
+  name: Create Containers
+  timeoutInSeconds: 60
+  command: |
+    cd ${OCI_PRIMARY_SOURCE_DIR}/project1
+    echo running docker update - Working in `pwd`
+    docker build --tag project:latest --file Dockerfile .
+    echo images are
+    docker images
+
+outputArtifacts:
+  - name: container_image
+    type: Docker_IMAGE
+    location: project:latest
+  - name: service_yaml
+    type: BINARY
+    location: ${OCI_PRIMARY_SOURCE_DIR}/project1
+  - name: deployment_yaml
+    type: BINARY
+    location: ${OCI_PRIMARY_SOURCE_DIR}/project1/yaml/deployment/project1.yaml
+
+
+
+
+
+
 ==============
 version: 0.1
 component: build
