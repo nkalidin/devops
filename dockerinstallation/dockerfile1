@@ -1,0 +1,36 @@
+root@vm1:/vadapav# cat 1.df
+FROM ubuntu
+MAINTAINER "test@gmail.com"
+
+LABEL "app"="prod"
+LABEL "com.example.vendor"="ACME Incorporated"
+LABEL com.example.label-with-value="foo"
+LABEL version="1.0"
+LABEL description="This text illustrates \
+that label-values can span multiple lines."
+
+WORKDIR /samosa
+WORKDIR vadapav
+WORKDIR dosa
+
+COPY 1.txt /samosa
+ADD 2.txt /samosa/vadapav
+ADD 1.tar /samosa/vadapav/dosa
+ADD https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.79-installer.msi /home
+# COPY --link /vadapav /samosa
+# COPY --parents ./x/a.txt ./y/a.txt /parents/
+# ADD --link /vadapav /dosa
+
+
+
+volume vol1
+VOLUME /var/log /var/db
+
+RUN apt update -y
+RUN apt install apache2 -y
+
+# RUN --mount=type=bind, target=/misalpav,src=/data
+COPY index.html /var/www/html
+
+CMD ["apache2ctl","-D","FOREGROUND"]
+
