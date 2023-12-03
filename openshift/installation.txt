@@ -1,1 +1,29 @@
-h
+Step1:
+
+Openshift installer
+
+wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-install-linux.tar.gz
+
+Step2: Copy pull Secret
+
+Step3:
+
+Download oc and kubectl 
+
+https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz
+==============================================
+
+
+Step4:
+
+./openshift-install create install-config --dir /openshif-install/
+
+
+
+Step5
+
+./openshift-install create cluster --dir /openshif-install/ --log-level=debug
+
+to destroy cluster
+
+./openshift-install destroy cluster --dir /openshif-install/ --log-level=debug
