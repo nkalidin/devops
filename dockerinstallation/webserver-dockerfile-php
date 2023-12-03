@@ -1,0 +1,29 @@
+FROM ubuntu
+
+MAINTAINER "chetan@gmail.com"
+LABEL "app"="php application"
+
+
+WORKDIR /samosa
+COPY 1.txt /samosa
+ADD 2.txt /samosa
+ADD abhay.tar /samosa
+ADD https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz /samosa
+
+ENV heap_memory=1mb
+ENV MYSQL_DB=demo1
+ARG disksize=20GB
+
+RUN apt update -y
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN true
+RUN apt install apache2 -y
+RUN apt install sudo php php-mysql libapache2-mod-php -y
+
+COPY index.html /var/www/html
+EXPOSE 80
+
+RUN useradd -m test1
+VOLUME v1
+
+CMD ["apache2ctl","-D","FOREGROUND"]
