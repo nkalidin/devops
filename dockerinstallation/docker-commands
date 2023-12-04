@@ -32,3 +32,57 @@
 to create db container
 
  docker run -d --name=db3 -p 3307:3306 -e MYSQL_ROOT_PASSWORD=123 mysql
+=================================
+
+ 121  docker network ls
+  122  docker network create --subnet=99.99.0.0/24 --driver=bridge net1
+  123  nmcli c s
+  124  docker inspect net1
+  125  docker run -d --name=n1 --network=net1 --ip=99.99.0.11 --dns=8.8.8.8 --cpus="0000001" --memeory=15M --hostname=vadapav.biryani.com httpd
+  126  docker run -d --name=n1 --network=net1 --ip=99.99.0.11 --dns=8.8.8.8 --cpus="0000001" --memory=15M --hostname=vadapav.biryani.com httpd
+  127  docker inspect n1 | grep -i ipaddr
+  128  curl 99.99.0.11
+  129  docker ps -a
+  130  docker exec -it vadapav bash
+  131  docker run -d --name=n1 --network=net2 --dns=8.8.8.8 --cpus="0000001" --memory=15M --hostname=vadapav.biryani.com httpd
+  132  docker run -d --name=n2 --network=net1 --dns=8.8.8.8 --cpus="0000001" --memory=15M --hostname=vadapav.biryani.com httpd
+  133  docker inspect n1 | grep -i ipaddr
+  134  docker inspect n2 | grep -i ipaddr
+  135  docker network ls
+  136  docker run -d --name=h1 httpd
+  137  docker inspect h1 | grep -i ipaddr
+  138  curl "172.17.0.8"
+  139  docker run -d --name=h2 --network=host  httpd
+  140  docker inspect h2 | grep -i ipaddr
+  141  curl localhost:80
+  142  docker run -d --name=h3 --network=host  httpd
+  143  docker ps -a
+  144  docker logs h3
+  145  docker run -d --name=h4 --network=none  httpd
+  146  docker exec -it h4 bash
+  147  clear
+  148  # docker volumes
+  149  docker ps -a -q
+  150  docker rm -f $(docker ps -a -q)
+  151  docker images
+  152  docker iamges -q
+  153  docker images -q
+  154  docker rmi -f $(docker images -q)
+  155  docker images
+  156  docker ps -a
+  157  mkdir /data
+  158  cd /data
+  159  ls
+  160  docker run -d --name=db1 -e MYSQL_ROOT_PASSWORD=123 -v /data:/var/lib/mysql -p 3306:3306 mysql
+  161  ls
+  162  docker exec -it db1 bash
+  163  ls
+  164  cd samosa
+  165  ks
+  166  ls
+  167  docker rm -f db1
+  168  docker ps -a
+  169  cd /data
+  170  ls
+  171  docker run -d --name=db1 -e MYSQL_ROOT_PASSWORD=123 -v /data:/var/lib/mysql -p 3306:3306 mysql
+  172  docker exec -it db1 bash
