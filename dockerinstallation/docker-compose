@@ -1,0 +1,66 @@
+[root@ip-172-31-2-35 docker]# cat db.df
+FROM mysql
+ENV MYSQL_DATABASE db1
+COPY ./createtables.sql /docker-entrypoint-initdb.d/
+COPY ./insertvalues.sql /docker-entrypoint-initdb.d/
+[root@ip-172-31-2-35 docker]# cat createtables.sql
+create table emp (firstname varchar(20), lastname varchar(20));
+create table emp1 (firstname varchar(20), lastname varchar(20));
+create table emp2 (firstname varchar(20), lastname varchar(20));
+create table emp3 (firstname varchar(20), lastname varchar(20));
+[root@ip-172-31-2-35 docker]# cat insertvalues.sql
+insert into emp values('A1','K1');
+insert into emp values('A2','K2');
+insert into emp values('A3','K3');
+insert into emp values('A4','K4');
+[root@ip-172-31-2-35 docker]#
+===========================================================
+
+  [root@ip-172-31-2-35 docker]# cat webserver.df
+FROM ubuntu
+RUN apt update -y
+RUN apt install apache2 -y
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN true
+RUN apt install sudo php php-mysql libapache2-mod-php -y
+CMD ["apache2ctl", "-D", "FOREGROUND"]
+[root@ip-172-31-2-35 docker]#
+
+=================================================
+
+  mkdir /data
+  mkdir /php
+  cd /php
+  touch index.php
+
+  [root@ip-172-31-2-35 docker]# cat /php/index.php
+<?php
+$servername = "database";
+$username = "root";
+$password = "123";
+$dbname = "db1";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT firstname, lastname FROM emp";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+  }
+} else {
+  echo "0 results";
+}
+$conn->close();
+?>
+===========================
+
+  docker-compose -f one.yaml up -d
+  
