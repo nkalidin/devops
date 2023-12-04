@@ -86,3 +86,40 @@ to create db container
   170  ls
   171  docker run -d --name=db1 -e MYSQL_ROOT_PASSWORD=123 -v /data:/var/lib/mysql -p 3306:3306 mysql
   172  docker exec -it db1 bash
+===========================================================
+ 157  mkdir /data
+  158  cd /data
+  159  ls
+  160  docker run -d --name=db1 -e MYSQL_ROOT_PASSWORD=123 -v /data:/var/lib/mysql -p 3306:3306 mysql
+  161  ls
+  162  docker exec -it db1 bash
+  163  ls
+  164  cd samosa
+  165  ks
+  166  ls
+  167  docker rm -f db1
+  168  docker ps -a
+  169  cd /data
+  170  ls
+  171  docker run -d --name=db1 -e MYSQL_ROOT_PASSWORD=123 -v /data:/var/lib/mysql -p 3306:3306 mysql
+  172  docker exec -it db1 bash
+  173  history
+  174  clear
+  175  docker volume ls
+  176  docker volume create v1
+  177  docker volume ls
+  178  docker run -d --name=db2 -v v1:/var/lib/mysql -p 3307:3306 -e MYSQL_ROOT_PASSWORD=123 mysql
+  179  docker ps
+  180  docker exec -it db2 bash
+  181  docker volume ls
+  182  docker rm -f db2
+  183  docker run -d --name=db2 -v v1:/var/lib/mysql -p 3307:3306 -e MYSQL_ROOT_PASSWORD=123 mysql
+  184  docker exec -it db2 bash
+  185  docker volume ls
+  186  history
+  187  docker volume ls
+  188  cd /var/lib/docker/volumes/v1/
+  189  ls
+  190  cd _data/
+  191  ls
+  192  history
