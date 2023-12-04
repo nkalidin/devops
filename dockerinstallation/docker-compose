@@ -61,6 +61,13 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 ===========================
+install docker-compose
+
+ 80  curl -SL https://github.com/docker/compose/releases/download/v2.20.3/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+   81  ls
+   82  chmod a+x /usr/local/bin/docker-compose
+   83  cp /usr/local/bin/docker-compose /usr/bin
+==================================
 
   docker-compose -f one.yaml up -d
   
