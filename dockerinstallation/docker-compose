@@ -68,6 +68,32 @@ install docker-compose
    82  chmod a+x /usr/local/bin/docker-compose
    83  cp /usr/local/bin/docker-compose /usr/bin
 ==================================
+[root@ip-172-31-2-35 docker]# cat one.yaml
+version: "3.9"
+services:
+  webserver:
+    build:
+      context: .
+      dockerfile: ./webserver.df
+    container_name: web1
+    ports:
+    - "8086:80"
+    volumes:
+    - "/php:/var/www/html"
+    depends_on:
+      - database
+  database:
+    build:
+      context: .
+      dockerfile: ./db.df
+    container_name: db1
+    ports:
+    - "3309:3306"
+    volumes:
+    - "/data:/var/lib/mysql"
+    environment:
+    - MYSQL_ROOT_PASSWORD=123
 
+=====================================
   docker-compose -f one.yaml up -d
   
