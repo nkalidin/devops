@@ -1,0 +1,23 @@
+ 289  kubectl apply -f d1.yaml
+  290  kubectl get rs -n google
+  291  kubectl get pods -n google
+  292  kubectl rollout history deployment/r1 -n google
+ 
+  297  kubectl expose deploy/r1 --name=r1s1 --type=NodePort --port=80 --target-port=80 -n google
+  298  kubectl get svc -n google
+  299  clear
+
+  302  kubectl set image deployment r1 c1=kharatramesh/vadapavimages:vadapav --record -n google
+  303  kubectl get rs -n google
+  304  kubectl rollout history deploy/r1 -n google
+  305  kubectl set image deployment r1 c1=kharatramesh/vadapavimages:pavbhaji --record -n google
+  306  kubectl get rs -n google
+  307  clear
+  308  kubectl set image deployment r1 c1=kharatramesh/vadapavimages:biryani --record -n google
+  309  kubectl get rs -n google
+  310  kubectl rollout history deploy/r1 -n google
+  315  kubectl rollout undo deployment/r1 --to-revision=3 -n google
+  316  clear
+  317  kubectl rollout history deploy/r1 -n google
+  318  kubectl rollout undo deployment/r1 --to-revision=2 -n google
+  319  kubectl get rs -n google
