@@ -27,3 +27,8 @@ Step5
 to destroy cluster
 
 ./openshift-install destroy cluster --dir /openshif-install/ --log-level=debug
+
+==========
+https://console-openshift-console.apps.zunkabhakar.priartw.com/dashboards
+username: kubeadmin
+password: JGUIQ-gu4fE-QXAg5-kCVfT
