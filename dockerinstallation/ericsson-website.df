@@ -38,3 +38,14 @@ docker build . -f 1.df -t trainer:webserver1.0
 ======================
 docker run -d --name=web1 -p 9898:80 trainer:webserver1.0
 
+===================
+tag and push the image to dockerhub
+
+ 652  docker images
+  653  docker tag trainer:webserver1.0 kharatramesh/ericsson:webserver-google-v1.0
+  654  docker images
+  655  docker login
+  656  docker push kharatramesh/ericsson:webserver-google-v1.0
+  657  docker run -d --name=test1 kharatramesh/ericsson:webserver-google-v1.0
+
+
