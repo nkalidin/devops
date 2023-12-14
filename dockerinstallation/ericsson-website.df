@@ -1,0 +1,23 @@
+FROM ubuntu
+MAINTAINER "trainer@samosa.com"
+LABEL "application"="billing"
+
+WORKDIR /samosa
+WORKDIR vadapav
+
+COPY 1.txt /samosa
+ADD 2.txt /samosa/vadapav
+
+ADD https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.79-installer.msi /samosa
+ADD 1.tar /samosa
+
+ENV MYSQL_DATABASE db1
+ARG dish samosa
+
+RUN apt update -y
+RUN apt install apache2 -y
+
+COPY index.html /var/www/html
+
+CMD ["apache2ctl","-D","FOREGROUND"]
+
