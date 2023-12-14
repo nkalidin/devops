@@ -1,3 +1,13 @@
+mkdir /trainer
+cd /trainer
+touch 1.df
+touch 1.txt 2.txt 
+tar -cvf 1.tar *
+touch index.html
+===========================
+vi 1.df 
+=================
+
 FROM ubuntu
 MAINTAINER "trainer@samosa.com"
 LABEL "application"="billing"
@@ -20,4 +30,11 @@ RUN apt install apache2 -y
 COPY index.html /var/www/html
 
 CMD ["apache2ctl","-D","FOREGROUND"]
+
+========================================
+save the file
+========================================
+docker build . -f 1.df -t trainer:webserver1.0
+======================
+docker run -d --name=web1 -p 9898:80 trainer:webserver1.0
 
