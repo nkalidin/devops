@@ -1,0 +1,77 @@
+20.169.228.51
+username: docker
+passwd: Docker@12345
+
+sudo -i
+
+kubectl get nodes 
+kubectl get nodes -o wide
+
+kubectl create ns yourname
+kubectl get ns
+
+create pod:
+kubectl run p1 --image=httpd -n yourname
+kubectl run p2 --image=httpd -n yourname
+kubectl run p3 --image=httpd -n yourname
+
+list pods :
+kubectl get pods -n yourname -o wide
+
+Describe pods:
+kubectl describe pod p1 -n yourname
+
+delete pod:
+kubectl delete pod p1 -n yourname
+
+Check logs:
+kubectl logs p1 -n yourname
+
+==============================================
+Create deployment
+
+kubectl create deployment app1 --image=httpd -n yourname
+
+list deployment:
+
+kubectl get deploy -n yourname
+
+list replicasets:
+
+kubectl get rs -n yourname
+
+list pods:
+
+kubectl get pods -n yourname
+
+scale up:
+
+kubectl scale deployment/app1 --replicas=3 -n yourname
+
+kubectl get pods -n yourname -o wide
+
+scale down:
+kubectl scale deployment/app1 --replicas=1 -n yourname
+
+delete deployment:
+kubectl delete deployment app1 -n yourname
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
