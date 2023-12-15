@@ -57,6 +57,21 @@ delete deployment:
 kubectl delete deployment app1 -n yourname
 
 
+================
+
+kubectl create deployment app1 --image=nginx -n google
+
+kubectl get pods -n google
+
+NodePort:
+
+kubectl expose deploy/app1 --name=app1s1 --type=NodePort --port=80 --target-port=80 -n google
+kubectl get svc -n google
+
+LoadBalancer: 
+
+kubectl expose deploy/app1 --name=app4lb1 --type=LoadBalancer --port=80 --target-port=80 -n googl
+kubectl get svc -n google
 
 
 
