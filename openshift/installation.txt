@@ -32,3 +32,11 @@ to destroy cluster
 https://console-openshift-console.apps.cluster1.priartw.com
 username: kubeadmin
 password: ncnkx-eqbXL-93D8q-x23cz
+==================
+
+feedback link
+
+https://www.surveymonkey.com/r/G6NZPCF
+=============================================
+Exam link:
+https://www.surveymonkey.com/r/GZV6VHR
