@@ -1,3 +1,4 @@
 download kubectl and oc 
 
 https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-windows.zip
+curl.exe -LO "https://dl.k8s.io/release/v1.23.0/bin/windows/amd64/kubectl.exe"
