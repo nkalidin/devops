@@ -1,4 +1,10 @@
- 31  docker search httpd --limt=5
+install docker on centos/redhat 
+
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+31  docker search httpd --limt=5
    32  docker search httpd --limit=5
    33  docker search nginx --limit=5
    34  docker search mysql --limit=5
