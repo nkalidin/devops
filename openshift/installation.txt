@@ -33,5 +33,7 @@ https://console-openshift-console.apps.ericsson.priartw.com
 kubeadmin
 AJHTG-jz7g7-VFyss-s6EHc
 
+to install oc
 https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-windows.zip
-
+to install kubectl on windows
+curl.exe -LO "https://dl.k8s.io/release/v1.29.0/bin/windows/amd64/kubectl.exe"
