@@ -33,3 +33,5 @@ https://console-openshift-console.apps.ericsson.priartw.com
 kubeadmin
 AJHTG-jz7g7-VFyss-s6EHc
 
+https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-windows.zip
+
