@@ -29,14 +29,7 @@ to destroy cluster
 ./openshift-install destroy cluster --dir /openshif-install/ --log-level=debug
 
 ==========
-https://console-openshift-console.apps.cluster1.priartw.com
-username: kubeadmin
-password: ncnkx-eqbXL-93D8q-x23cz
-==================
+https://console-openshift-console.apps.ericsson.priartw.com
+kubeadmin
+AJHTG-jz7g7-VFyss-s6EHc
 
-feedback link
-
-https://www.surveymonkey.com/r/G6NZPCF
-=============================================
-Exam link:
-https://www.surveymonkey.com/r/GZV6VHR
