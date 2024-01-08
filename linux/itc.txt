@@ -1,2 +1,11 @@
   175  find / -type f -name passwd
   176  find / -type d -name passwd
+ 179  find /trainer -type f -name 1.txt
+  180  find /trainer -type f -name 1.txt -exec ls -l {} \;
+  181  find /trainer -type f -name 1.txt -exec cp {} /home/one.txt  \;
+  182  ls -l /home
+  183  find /trainer -type f -name 1.txt -exec rm {}   \;
+  184  clear
+  185  find / -type f -size +50M -exec ls -l {} \;
+  186  find / -type f -size +50M -exec ls -lh {} \;
+  187  find / -type f -size +50M -size -100M -exec ls -lh {} \;
