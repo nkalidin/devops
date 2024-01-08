@@ -9,3 +9,19 @@
   185  find / -type f -size +50M -exec ls -l {} \;
   186  find / -type f -size +50M -exec ls -lh {} \;
   187  find / -type f -size +50M -size -100M -exec ls -lh {} \;
+
+
+  224  cat /etc/passwd | awk -F ":" '{print $1}'
+  225  clear
+  226  cat /etc/passwd | awk -F ":" '{print $1 "\t" $7}'
+  227  clear
+  228  cat /etc/passwd | awk -F ":" '{print $7 "\t" $1}'
+  229  clear
+  230  history
+  231  clear
+  232  cat /etc/passwd
+  233  cat /etc/passwd | awk -F ":" '{print $1}'
+  234  cat /etc/passwd | awk -F ":" '{print $1,$7}'
+  235  cat /etc/passwd | awk -F ":" '{print $1 "\t\t" $7}'
+  236  history
+
