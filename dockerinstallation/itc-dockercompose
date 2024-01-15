@@ -59,7 +59,37 @@ services:
     environment:
     - MYSQL_ROOT_PASSWORD=123
 ================================
+root@vm1:/trainer# cat /data-trainer/index.php
+<?php
+$servername = "samosa-database";
+$username = "root";
+$password = "123";
+$dbname = "itc";
 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT firstname, rollnumber FROM priarworld";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "Name: " . $row["firstname"]. " " . $row["rollnumber"]. "<br>";
+  }
+} else {
+  echo "0 results";
+}
+$conn->close();
+?>
+
+
+
+================================
 docker-compose -f project1.yaml up -d
 
 
