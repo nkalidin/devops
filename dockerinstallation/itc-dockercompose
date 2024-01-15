@@ -1,0 +1,65 @@
+webserver.df
+-----------------
+FROM ubuntu
+RUN apt update -y
+RUN apt install apache2 -y
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN true
+RUN apt install sudo php php-mysql libapache2-mod-php -y
+EXPOSE 80
+CMD ["apache2ctl","-D","FOREGROUND"]
+--------------------
+database.df
+
+FROM mysql
+ENV MYSQL_DATABASE itc
+
+COPY ./createtable.sql /docker-entrypoint-initdb.d/
+COPY ./insertvalues.sql /docker-entrypoint-initdb.d/
+------------
+
+root@vm1:/trainer# cat createtable.sql
+CREATE TABLE priarworld ( firstname varchar(20), rollnumber int(5));
+CREATE TABLE priarworld1 ( firstname varchar(20), rollnumber int(5));
+CREATE TABLE priarworld2 ( firstname varchar(20), rollnumber int(5));
+
+--------------
+root@vm1:/trainer# cat insertvalues.sql
+INSERT INTO priarworld (firstname, rollnumber) VALUES ('Pushpak',1);
+INSERT INTO priarworld (firstname, rollnumber) VALUES ('Nayan',2);
+INSERT INTO priarworld (firstname, rollnumber) VALUES ('Chait',3);
+INSERT INTO priarworld (firstname, rollnumber) VALUES ('Rutuja',4);
+INSERT INTO priarworld (firstname, rollnumber) VALUES ('Tanmay',5);
+====================================
+
+root@vm1:/trainer# cat project1.yaml
+version: "3.9"
+services:
+  vadapav-webserver:
+    build:
+      context: .
+      dockerfile: webserver.df
+    container_name: webserver1
+    ports:
+    - "9090:80"
+    volumes:
+    - "/data-trainer:/var/www/html"
+    depends_on:
+      - samosa-database
+
+  samosa-database:
+    build:
+      context: .
+      dockerfile: database.df
+    container_name: database1
+    ports:
+    - "3307:3306"
+    volumes:
+    - "/data-database:/var/lib/mysql"
+    environment:
+    - MYSQL_ROOT_PASSWORD=123
+================================
+
+docker-compose -f project1.yaml up -d
+
+
